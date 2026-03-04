@@ -191,13 +191,16 @@
 
     .nav-guided {
       font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: #6b9fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #09090b;
+      background: #fafafa;
       text-decoration: none;
-      transition: opacity 0.15s;
+      padding: 5px 14px;
+      border-radius: 6px;
+      transition: background 0.15s;
     }
-    .nav-guided:hover { opacity: 0.8; }
+    .nav-guided:hover { background: #d4d4d8; color: #09090b; }
 
     @media (max-width: 640px) {
       .nav-link { display: none; }
@@ -705,21 +708,35 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       padding-bottom: 4px;
+      /* Break out of container to use full viewport width */
+      margin-left: calc(-1 * (100vw - 960px) / 2 - 24px);
+      margin-right: calc(-1 * (100vw - 960px) / 2 - 24px);
+      padding-left: calc((100vw - 960px) / 2 + 24px);
+      padding-right: calc((100vw - 960px) / 2 + 24px);
+    }
+    @media (max-width: 1008px) {
+      .filter-bar {
+        margin-left: -24px;
+        margin-right: -24px;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
     }
     .filter-bar::-webkit-scrollbar { display: none; }
 
     .filter-pill {
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 20px;
       border: 1px solid #27272a;
       background: transparent;
       color: #71717a;
       font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .filter-pill:hover {
@@ -918,10 +935,8 @@
     }
     .footer-inner {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 24px;
     }
     .footer-links { display: flex; gap: 24px; }
     .footer-links a { color: #52525b; font-size: 0.85rem; }
@@ -1051,7 +1066,7 @@
   <!-- CTA -->
   <section class="cta-section" id="cta">
     <div class="container">
-      <p style="font-size: 1.1rem; color: #a1a1aa; margin-bottom: 24px;">Open source. Early stage.</p>
+      <p style="font-size: 1.1rem; color: #a1a1aa; margin-bottom: 24px;">Open source. Early stage. Apply to be a design partner.</p>
       <div class="btn-group">
         <a href="https://calendar.app.google/9Cye1yr6fMJVZNLD6" class="btn btn-primary" target="_blank" rel="noopener">Setup help</a>
         <a href="https://github.com/LuthienResearch/luthien-proxy#quickstart" class="btn btn-secondary" target="_blank" rel="noopener">
@@ -1059,7 +1074,7 @@
           Try it yourself
         </a>
       </div>
-      <p class="cta-fine">Apache 2.0 &middot; design partners wanted &middot; <a href="mailto:contact@luthienresearch.org">contact@luthienresearch.org</a></p>
+      <p class="cta-fine">Apache 2.0 &middot; <a href="mailto:contact@luthienresearch.org">contact@luthienresearch.org</a></p>
     </div>
   </section>
 
