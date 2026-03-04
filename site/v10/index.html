@@ -697,10 +697,16 @@
     /* ========== FILTER PILLS (problem section) ========== */
     .filter-bar {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 8px;
       margin-bottom: 20px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 4px;
     }
+    .filter-bar::-webkit-scrollbar { display: none; }
 
     .filter-pill {
       padding: 6px 14px;
@@ -731,6 +737,10 @@
       --pill-color: #fafafa;
       --pill-bg: rgba(250, 250, 250, 0.08);
     }
+    .filter-pill[data-filter="deleted"].active {
+      --pill-color: #ef4444;
+      --pill-bg: rgba(239, 68, 68, 0.1);
+    }
     .filter-pill[data-filter="ignored"].active {
       --pill-color: #f59e0b;
       --pill-bg: rgba(245, 158, 11, 0.1);
@@ -739,21 +749,17 @@
       --pill-color: #6b9fff;
       --pill-bg: rgba(107, 159, 255, 0.1);
     }
+    .filter-pill[data-filter="security"].active {
+      --pill-color: #34d399;
+      --pill-bg: rgba(52, 211, 153, 0.1);
+    }
     .filter-pill[data-filter="cheated"].active {
       --pill-color: #a78bfa;
       --pill-bg: rgba(167, 139, 250, 0.1);
     }
-    .filter-pill[data-filter="overconfident"].active {
+    .filter-pill[data-filter="coverup"].active {
       --pill-color: #fb923c;
       --pill-bg: rgba(251, 146, 60, 0.1);
-    }
-    .filter-pill[data-filter="context"].active {
-      --pill-color: #34d399;
-      --pill-bg: rgba(52, 211, 153, 0.1);
-    }
-    .filter-pill[data-filter="quality"].active {
-      --pill-color: #ef4444;
-      --pill-bg: rgba(239, 68, 68, 0.1);
     }
 
     .card-wrapper {
@@ -771,6 +777,46 @@
     @keyframes cardFadeIn {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== CARD NAV ARROWS ========== */
+    .card-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-nav-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #27272a;
+      background: transparent;
+      color: #71717a;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+
+    .card-nav-btn:hover:not(:disabled) {
+      border-color: #6b9fff;
+      color: #6b9fff;
+    }
+
+    .card-nav-btn:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+
+    .card-nav-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #52525b;
+      white-space: nowrap;
     }
 
     /* ========== UX: BEFORE/AFTER ========== */
@@ -959,6 +1005,11 @@
         <div class="card-grid" id="cardGrid"></div>
       </div>
       <div class="card-grid-footer">
+        <div class="card-nav">
+          <button class="card-nav-btn" id="cardPrev" aria-label="Previous cards">&larr;</button>
+          <span class="card-nav-count" id="cardCount"></span>
+          <button class="card-nav-btn" id="cardNext" aria-label="Next cards">&rarr;</button>
+        </div>
         <span class="meme-trigger" id="memeTrigger" style="font-family: 'JetBrains Mono', monospace; color: #3f3f46; font-size: 0.65rem; font-style: italic; cursor: pointer;">meanwhile...</span>
         <a href="../v8/incidents.html" style="color: #6b9fff; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-decoration: none; border-bottom: 1px solid rgba(107,159,255,0.3);">see more &rarr;</a>
       </div>
@@ -1027,47 +1078,42 @@
 
       // === QUOTE DATA (curated "best hits" for grid) ===
       var quotes = [
-        { text: "I\u2019m a product manager for a stochastic parrot.", source: "Scott Spence", format: "blog", sourceUrl: "https://scottspence.com/posts/working-with-claude-code-the-honest-version", date: "Jun 2025", cat: "overconfident" },
-        { text: "Claude will absolutely try to bullshit its way through situations where it doesn\u2019t know the answer but won\u2019t admit it. So now I have to verify everything before letting it touch any code.", source: "Scott Spence", format: "blog", sourceUrl: "https://scottspence.com/posts/working-with-claude-code-the-honest-version", date: "Nov 2025", cat: "cheated" },
+        { text: "I\u2019m a product manager for a stochastic parrot.", source: "Scott Spence", format: "blog", sourceUrl: "https://scottspence.com/posts/working-with-claude-code-the-honest-version", date: "Jun 2025", cat: "hallucinated" },
+        { text: "Claude will absolutely try to bullshit its way through situations where it doesn\u2019t know the answer but won\u2019t admit it. So now I have to verify everything before letting it touch any code.", source: "Scott Spence", format: "blog", sourceUrl: "https://scottspence.com/posts/working-with-claude-code-the-honest-version", date: "Nov 2025", cat: "coverup" },
         { text: "Polite correction \u2014 ignored. Firm correction \u2014 ignored. ALL CAPS \u2014 partially followed. Profanity \u2014 finally worked. Multiple profanities \u2014 consistent compliance.", source: "GitHub #8154", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/8154", date: "Jul 2025", cat: "ignored" },
-        { text: "If this was a junior dev you\u2019d given a task to, and they came back full of praise for themselves for the stellar job they\u2019d done \u2014 and then it turned out they\u2019d botched it badly, after a few times you\u2019d be having an HR discussion.", source: "Hacker News", format: "hn", sourceUrl: "https://news.ycombinator.com/item?id=44908733", date: "Jul 2025", cat: "overconfident" },
-        { text: "Hopeless state. Harmfully negative productivity using AI to code.", source: "@VictorTaelin", format: "twitter", twitterDisplay: "Victor Taelin", twitterHandle: "@VictorTaelin", sourceUrl: "https://x.com/VictorTaelin", date: "Feb 2026", cat: "quality" },
+        { text: "If this was a junior dev you\u2019d given a task to, and they came back full of praise for themselves for the stellar job they\u2019d done \u2014 and then it turned out they\u2019d botched it badly, after a few times you\u2019d be having an HR discussion.", source: "Hacker News", format: "hn", sourceUrl: "https://news.ycombinator.com/item?id=44908733", date: "Jul 2025", cat: "coverup" },
+        { text: "Hopeless state. Harmfully negative productivity using AI to code.", source: "@VictorTaelin", format: "twitter", twitterDisplay: "Victor Taelin", twitterHandle: "@VictorTaelin", sourceUrl: "https://x.com/VictorTaelin", date: "Feb 2026", cat: "hallucinated" },
         { text: "Slow, consumes way too much CPU, and freezes often. It also lies, goes for the quick-win, and even sabotages my code to pass tests.", source: "@MarcJSchmidt", format: "twitter", twitterDisplay: "Marc J. Schmidt", twitterHandle: "@MarcJSchmidt", sourceUrl: "https://x.com/MarcJSchmidt", date: "Jan 2026", cat: "cheated" },
-        { text: "Each compaction is lossy. After several, you\u2019re working with a summary of a summary. Signal degrades into noise.", source: "@aeitroc", format: "twitter", twitterDisplay: "aeitroc", twitterHandle: "@aeitroc", sourceUrl: "https://x.com/aeitroc", date: "Feb 2026", cat: "context" },
+        { text: "Each compaction is lossy. After several, you\u2019re working with a summary of a summary. Signal degrades into noise.", source: "@aeitroc", format: "twitter", twitterDisplay: "aeitroc", twitterHandle: "@aeitroc", sourceUrl: "https://x.com/aeitroc", date: "Feb 2026", cat: "deleted" },
         { text: "When asked to write unit tests, it re-implemented the function in the test file and tested that, rather than testing the actual implementation.", source: "Tildes", format: "hn", sourceUrl: "https://tildes.net", date: "Jun 2025", cat: "cheated" }
       ];
 
-      // === CATEGORY CONFIG ===
-      var categories = {
-        "all": { label: "All", color: "#fafafa", bg: "rgba(250,250,250,0.08)" },
-        "ignored": { label: "Ignored instructions", color: "#f59e0b", bg: "rgba(245,158,11,0.1)" },
-        "cheated": { label: "Cheated on tests", color: "#a78bfa", bg: "rgba(167,139,250,0.1)" },
-        "overconfident": { label: "Overconfident", color: "#fb923c", bg: "rgba(251,146,60,0.1)" },
-        "context": { label: "Context rot", color: "#34d399", bg: "rgba(52,211,153,0.1)" },
-        "quality": { label: "Quality issues", color: "#ef4444", bg: "rgba(239,68,68,0.1)" }
-      };
+      // === CATEGORY CONFIG (counts match incidents database) ===
+      var categories = [
+        { key: "all",          label: "All",                   count: 70 },
+        { key: "deleted",      label: "Deleted stuff",         count: 15 },
+        { key: "ignored",      label: "Ignored instructions",  count: 19 },
+        { key: "hallucinated", label: "Hallucinated",          count: 26 },
+        { key: "security",     label: "Security holes",        count: 10 },
+        { key: "cheated",      label: "Cheated on tests",      count: 15 },
+        { key: "coverup",      label: "Covered it up",         count: 20 }
+      ];
 
       var grid = document.getElementById("cardGrid");
       var filterBar = document.getElementById("filterBar");
+      var prevBtn = document.getElementById("cardPrev");
+      var nextBtn = document.getElementById("cardNext");
+      var countLabel = document.getElementById("cardCount");
       var currentFilter = "all";
+      var currentPage = 0;
       var VISIBLE_COUNT = 3;
 
       // === BUILD FILTER PILLS ===
-      // Count quotes per category
-      var catCounts = {};
-      quotes.forEach(function(q) {
-        catCounts[q.cat] = (catCounts[q.cat] || 0) + 1;
-      });
-
-      Object.keys(categories).forEach(function(key) {
-        var cat = categories[key];
-        var count = key === "all" ? quotes.length : (catCounts[key] || 0);
-        if (key !== "all" && !count) return; // skip empty categories
-
+      categories.forEach(function(cat) {
         var pill = document.createElement("button");
-        pill.className = "filter-pill" + (key === "all" ? " active" : "");
-        pill.setAttribute("data-filter", key);
-        pill.textContent = cat.label + " (" + count + ")";
+        pill.className = "filter-pill" + (cat.key === "all" ? " active" : "");
+        pill.setAttribute("data-filter", cat.key);
+        pill.textContent = cat.label + " (" + cat.count + ")";
         filterBar.appendChild(pill);
       });
 
@@ -1210,51 +1256,65 @@
         grid.appendChild(wrapper);
       });
 
-      // === FILTER LOGIC ===
-      function applyFilter(filter) {
-        currentFilter = filter;
-        var wrappers = grid.querySelectorAll(".card-wrapper");
-        var shown = 0;
+      // === FILTER + PAGINATION LOGIC ===
+      function getMatchingWrappers(filter) {
+        var wrappers = Array.from(grid.querySelectorAll(".card-wrapper"));
+        if (filter === "all") return wrappers;
+        return wrappers.filter(function(w) { return w.getAttribute("data-cat") === filter; });
+      }
 
-        wrappers.forEach(function(w) {
-          var cat = w.getAttribute("data-cat");
-          var matches = (filter === "all") || (cat === filter);
+      function renderPage() {
+        var matching = getMatchingWrappers(currentFilter);
+        var totalPages = Math.ceil(matching.length / VISIBLE_COUNT);
+        if (currentPage >= totalPages) currentPage = Math.max(0, totalPages - 1);
+        var start = currentPage * VISIBLE_COUNT;
+        var end = start + VISIBLE_COUNT;
 
-          if (matches && shown < VISIBLE_COUNT) {
-            w.classList.remove("hidden");
-            w.classList.add("fade-in");
-            shown++;
-          } else if (matches) {
-            // Show all matching cards for specific category filters
-            if (filter !== "all") {
-              w.classList.remove("hidden");
-              w.classList.add("fade-in");
-              shown++;
-            } else {
-              w.classList.add("hidden");
-              w.classList.remove("fade-in");
-            }
-          } else {
-            w.classList.add("hidden");
-            w.classList.remove("fade-in");
-          }
+        // Hide all, then show current page
+        grid.querySelectorAll(".card-wrapper").forEach(function(w) {
+          w.classList.add("hidden");
+          w.classList.remove("fade-in");
         });
+
+        matching.slice(start, end).forEach(function(w) {
+          w.classList.remove("hidden");
+          w.classList.add("fade-in");
+        });
+
+        // Update arrow states
+        prevBtn.disabled = (currentPage === 0);
+        nextBtn.disabled = (currentPage >= totalPages - 1);
+
+        // Update count label
+        var showEnd = Math.min(end, matching.length);
+        countLabel.textContent = (start + 1) + "\u2013" + showEnd + " of " + matching.length;
 
         // Update pill active states
         filterBar.querySelectorAll(".filter-pill").forEach(function(pill) {
-          pill.classList.toggle("active", pill.getAttribute("data-filter") === filter);
+          pill.classList.toggle("active", pill.getAttribute("data-filter") === currentFilter);
         });
       }
 
-      // Initial filter: show 3
-      applyFilter("all");
+      // Arrow click handlers
+      prevBtn.addEventListener("click", function() {
+        if (currentPage > 0) { currentPage--; renderPage(); }
+      });
+      nextBtn.addEventListener("click", function() {
+        currentPage++;
+        renderPage();
+      });
 
       // Pill click handlers
       filterBar.addEventListener("click", function(e) {
         var pill = e.target.closest(".filter-pill");
         if (!pill) return;
-        applyFilter(pill.getAttribute("data-filter"));
+        currentFilter = pill.getAttribute("data-filter");
+        currentPage = 0;
+        renderPage();
       });
+
+      // Initial render
+      renderPage();
     })();
   </script>
 
