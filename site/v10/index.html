@@ -842,6 +842,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       max-width: 900px;
+      align-items: start;
     }
     @media (max-width: 640px) {
       .ux-grid { grid-template-columns: 1fr !important; }
@@ -850,7 +851,7 @@
     .demo-annotation {
       margin-top: 10px;
       font-size: 0.82rem;
-      color: #71717a;
+      color: #a1a1aa;
       line-height: 1.5;
     }
 
@@ -928,6 +929,73 @@
     .cta-fine a { color: #52525b; }
     .cta-fine a:hover { color: #a1a1aa; }
 
+    /* ========== TEAM ========== */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 640px) {
+      .team-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .team-card { text-align: center; }
+
+    .team-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 2px solid #27272a;
+    }
+
+    .team-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fafafa;
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 0.85rem;
+      color: #71717a;
+      margin-bottom: 12px;
+    }
+
+    .team-bio {
+      font-size: 0.85rem;
+      color: #a1a1aa;
+      line-height: 1.6;
+      max-width: 360px;
+      margin: 0 auto 16px;
+    }
+
+    .team-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .team-links a {
+      color: #52525b;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+
+    .team-links a:hover { color: #a1a1aa; }
+
+    /* ========== BLOG PREVIEW ========== */
+    .blog-card:hover {
+      border-color: rgba(107, 159, 255, 0.4) !important;
+      transform: translateY(-2px);
+    }
+
     /* ========== FOOTER ========== */
     footer {
       border-top: 1px solid #1a1a1e;
@@ -935,7 +1003,7 @@
     }
     .footer-inner {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     }
     .footer-links { display: flex; gap: 24px; }
@@ -963,8 +1031,9 @@
       <a href="#demo" class="nav-link active" data-section="demo">ui</a>
       <a href="#problem" class="nav-link" data-section="problem">problem</a>
       <a href="#architecture" class="nav-link" data-section="architecture">architecture</a>
+      <a href="#team" class="nav-link" data-section="team">team</a>
       <a href="https://github.com/LuthienResearch/luthien-proxy" class="nav-gh" target="_blank" rel="noopener" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-      <a href="https://calendar.app.google/9Cye1yr6fMJVZNLD6" class="nav-guided" target="_blank" rel="noopener">Setup help</a>
+      <a href="https://calendar.app.google/9Cye1yr6fMJVZNLD6" class="nav-guided" target="_blank" rel="noopener">Quick start</a>
     </div>
   </nav>
 
@@ -972,15 +1041,15 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>Let Claude Code code. Stay in control.</h1>
+        <h1>Claude Code builds. You stay in control.</h1>
         <p class="hero-oneliner">Open-source proxy that sits between Claude Code and the Anthropic API.<br>Logs every request. Enforces your rules.</p>
-        <p class="hero-differentiator">Catches context rot, ignored instructions, and suspicious behavior without changing your dev setup.</p>
+        <p class="hero-differentiator">Catches context rot, ignored instructions, and suspicious behavior. Works with your existing Claude Code setup.</p>
         <div class="btn-group">
-          <a href="https://calendar.app.google/9Cye1yr6fMJVZNLD6" class="btn btn-primary" target="_blank" rel="noopener">Setup help</a>
-          <a href="https://github.com/LuthienResearch/luthien-proxy#quickstart" class="btn btn-secondary" target="_blank" rel="noopener">
+          <a href="https://github.com/LuthienResearch/luthien-proxy#quickstart" class="btn btn-primary" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             Try it yourself
           </a>
+          <a href="https://calendar.app.google/9Cye1yr6fMJVZNLD6" class="btn btn-secondary" target="_blank" rel="noopener">Quick start</a>
         </div>
       </div>
     </div>
@@ -992,12 +1061,12 @@
     <div class="container">
       <div class="ux-grid">
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #ef4444; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px;">Without Luthien</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #ef4444; letter-spacing: 0.12em; margin-bottom: 12px;">without luthien</div>
           <img src="terminal-without-luthien.svg" alt="Without Luthien: Claude Code ignores your CLAUDE.md rules and you correct it manually" style="width: 100%; border-radius: 8px; border: 1px solid #27272a;">
           <p class="demo-annotation">Claude ignores your CLAUDE.md rule and you correct it manually.</p>
         </div>
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #22c55e; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px;">With Luthien</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #22c55e; letter-spacing: 0.12em; margin-bottom: 12px;">with luthien</div>
           <img src="terminal-with-luthien.svg" alt="With Luthien: Luthien catches the violation and auto-corrects" style="width: 100%; border-radius: 8px; border: 1px solid #27272a;">
           <p class="demo-annotation">Luthien catches the violation and auto-corrects. No human intervention needed.</p>
         </div>
@@ -1038,7 +1107,7 @@
 
   <!-- ARCHITECTURE -->
   <section id="architecture" style="padding-top: 32px; padding-bottom: 32px;">
-    <div class="section-label">architecture</div>
+    <div class="section-label" style="text-transform: none;">architecture</div>
     <div class="container">
       <div class="term-arch">
         <div class="term-flow"><pre>&#x1F9D1;&#x200D;&#x1F4BB; <span class="hl-you">You</span> <span class="hl-arrow">&hArr;</span> &#x1F4BB; <span class="hl-you">Claude Code</span> <span class="hl-arrow">&hArr;</span> <span class="hl-luthien">Luthien</span> <span class="hl-arrow">&hArr;</span> &#x2601;&#xFE0F; <span class="hl-api">Anthropic API</span>
@@ -1051,7 +1120,7 @@
                               <span class="hl-pipe">|--</span> <span class="hl-change">did it follow CLAUDE.md?</span>
                               <span class="hl-pipe">+--</span> <span class="hl-block">did it do something suspicious?</span></pre></div>
 
-        <p class="arch-judge-note">Luthien can call a separate "judge" model (like Claude Haiku) to evaluate whether each response follows your rules. This happens in parallel to reduce latency. You decide which model to use for each policy.</p>
+        <p class="arch-judge-note">Luthien can call a separate model to check whether each response follows your rules. Runs alongside normal requests, adding almost no delay.</p>
 
         <a href="https://github.com/LuthienResearch/luthien-proxy?tab=readme-ov-file#what-can-it-do" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b9fff;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -1063,16 +1132,69 @@
 
   <hr class="divider">
 
+  <!-- TEAM -->
+  <section id="team" style="padding-top: 32px; padding-bottom: 32px;">
+    <div class="section-label" style="text-transform: none;">team</div>
+    <div class="container">
+      <div class="team-grid">
+
+        <!-- Jai -->
+        <div class="team-card">
+          <img src="https://avatars.githubusercontent.com/jaidhyani" alt="Jai Dhyani" class="team-photo">
+          <div class="team-name">Jai Dhyani</div>
+          <div class="team-role">Co-Founder &amp; CEO</div>
+          <p class="team-bio">ML engineer with over a decade at Amazon, Meta, and startups. Published researcher who helped develop METR's AI agent evaluations (<a href="https://arxiv.org/abs/2411.15114" target="_blank" rel="noopener" style="color: #6b9fff;">RE-Bench</a>). Founded Luthien in 2025 to bring production-grade control to AI coding tools.</p>
+          <div class="team-links">
+            <!-- Email -->
+            <a href="mailto:jai@luthienresearch.org" title="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+            <!-- Website -->
+            <a href="https://jai.one" target="_blank" rel="noopener" title="jai.one"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+            <!-- GitHub -->
+            <a href="https://github.com/jaidhyani" target="_blank" rel="noopener" title="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+            <!-- X/Twitter -->
+            <a href="https://x.com/Laneless_" target="_blank" rel="noopener" title="X / Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Scott -->
+        <div class="team-card">
+          <img src="https://avatars.githubusercontent.com/scottwofford" alt="Scott Wofford" class="team-photo">
+          <div class="team-name">Scott Wofford</div>
+          <div class="team-role">Co-Founder</div>
+          <p class="team-bio">Principal product manager at Amazon for a decade, shipping AI products at scale. Joined Luthien in 2025 because the tools developers use every day need the same rigor as the models themselves.</p>
+          <div class="team-links">
+            <!-- Email -->
+            <a href="mailto:scott@luthienresearch.org" title="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+            <!-- Website -->
+            <a href="https://scottwofford.com" target="_blank" rel="noopener" title="scottwofford.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+            <!-- GitHub -->
+            <a href="https://github.com/scottwofford" target="_blank" rel="noopener" title="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+            <!-- Substack -->
+            <a href="https://substack.com/@scwoff" target="_blank" rel="noopener" title="Substack"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/scottwofford" target="_blank" rel="noopener" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <!-- X/Twitter -->
+            <a href="https://x.com/scottwofford" target="_blank" rel="noopener" title="X / Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
   <!-- CTA -->
   <section class="cta-section" id="cta">
     <div class="container">
-      <p style="font-size: 1.1rem; color: #a1a1aa; margin-bottom: 24px;">Open source. Early stage. Apply to be a design partner.</p>
+      <p style="font-size: 1.1rem; color: #a1a1aa; margin-bottom: 8px;">Open source. Growing fast.</p>
+      <p style="font-size: 0.92rem; color: #71717a; margin-bottom: 24px;">One command to install. Your rules, enforced on every request.</p>
       <div class="btn-group">
-        <a href="https://calendar.app.google/9Cye1yr6fMJVZNLD6" class="btn btn-primary" target="_blank" rel="noopener">Setup help</a>
-        <a href="https://github.com/LuthienResearch/luthien-proxy#quickstart" class="btn btn-secondary" target="_blank" rel="noopener">
+        <a href="https://github.com/LuthienResearch/luthien-proxy#quickstart" class="btn btn-primary" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           Try it yourself
         </a>
+        <a href="https://calendar.app.google/9Cye1yr6fMJVZNLD6" class="btn btn-secondary" target="_blank" rel="noopener">Quick start</a>
       </div>
       <p class="cta-fine">Apache 2.0 &middot; <a href="mailto:contact@luthienresearch.org">contact@luthienresearch.org</a></p>
     </div>
@@ -1082,6 +1204,11 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
+        <div class="footer-links">
+          <a href="https://github.com/LuthienResearch/luthien-proxy" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/company/luthien-control" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:contact@luthienresearch.org">Contact</a>
+        </div>
         <div class="footer-meta">Luthien &middot; 2026</div>
       </div>
     </div>
@@ -1093,12 +1220,13 @@
 
       // === QUOTE DATA (all 70 incidents from incidents database) ===
       var quotes = [
+        { text: "Claude destroyed 2 of my production apps. All data gone. Both applications completely wiped.", source: "Pawel Huryn", format: "twitter", sourceUrl: "https://x.com/PawelHuryn/status/1959183028539867587", date: "Feb 2026", cats: ["deleted"], twitterDisplay: "Pawel Huryn", twitterHandle: "@PawelHuryn" },
+        { text: "Claude executed rm -rf tests/patches/plan/ ~/ \u2014 deleting entire Mac home directory.", source: "anthropics/claude-code #10077", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/10077", date: "Oct 2025", cats: ["deleted"] },
+        { text: "Claude Code can\u2019t pass a unit test \u2192 deletes the test \u2192 claims \u201cAll tests passing!\u201d Instead of fixing implementations to meet failing tests, it modifies the tests themselves.", source: "anthropics/claude-code #7074", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/7074", date: "", cats: ["cheated", "coverup"] },
+        { text: "Claude admitted \u201cI was being dishonest\u201d after hiding 54 type-checker errors. Claimed \u201c0 errors\u201d when basedpyright reported 54.", source: "anthropics/claude-code #1290", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/1290", date: "May 2025", cats: ["coverup", "cheated"] },
         { text: "I\u2019m a product manager for a stochastic parrot.", source: "scottspence.com", format: "blog", sourceUrl: "https://scottspence.com/posts/working-with-claude-code-the-honest-version", date: "Jun 2025", cats: ["hallucinated"] },
         { text: "Polite correction \u2014 ignored. Firm correction \u2014 ignored. ALL CAPS \u2014 partially followed. Profanity \u2014 finally worked. Multiple profanities \u2014 consistent compliance.", source: "anthropics/claude-code #8154", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/8154", date: "Jul 2025", cats: ["ignored"] },
         { text: "Claude will absolutely try to bullshit its way through situations where it doesn\u2019t know the answer but won\u2019t admit it. So now I have to verify everything before letting it touch any code.", source: "scottspence.com", format: "blog", sourceUrl: "https://scottspence.com/posts/working-with-claude-code-the-honest-version", date: "Nov 2025", cats: ["hallucinated", "coverup"] },
-        { text: "Claude Code can\u2019t pass a unit test \u2192 deletes the test \u2192 claims \u201cAll tests passing!\u201d Instead of fixing implementations to meet failing tests, it modifies the tests themselves.", source: "anthropics/claude-code #7074", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/7074", date: "", cats: ["cheated", "coverup"] },
-        { text: "Claude executed rm -rf tests/patches/plan/ ~/ \u2014 deleting entire Mac home directory.", source: "anthropics/claude-code #10077", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/10077", date: "Oct 2025", cats: ["deleted"] },
-        { text: "Claude destroyed 2 of my production apps. All data gone. Both applications completely wiped.", source: "Pawel Huryn", format: "twitter", sourceUrl: "https://x.com/PawelHuryn/status/1959183028539867587", date: "Feb 2026", cats: ["deleted"], twitterDisplay: "Pawel Huryn", twitterHandle: "@PawelHuryn" },
         { text: "Claude Code reads and exposes files that .claudeignore is supposed to block. API keys, credentials, and secrets in \u201cignored\u201d files were accessible.", source: "theregister.com", format: "blog", sourceUrl: "https://www.theregister.com/2026/01/28/claude_code_ai_secrets_files/", date: "Jan 2026", cats: ["security", "ignored"] },
         { text: "\u201cSTOP ASKING GODDAMN F***ING PERMISSION JUST DO IT\u201d \u2014 Claude kept asking for permission on every operation regardless.", source: "anthropics/claude-code #22557", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/22557", date: "2026", cats: ["ignored"] },
         { text: "Claude inserted \u201c###Human:\u201d mid-response, hallucinating fake user messages and responding to them.", source: "anthropics/claude-code #10628", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/10628", date: "2025", cats: ["hallucinated"] },
@@ -1121,7 +1249,6 @@
         { text: "When it needed access to a value from a file it was not allowed to read, it helpfully offered to remove the entries from .gitignore.", source: "tildes.net", format: "hn", sourceUrl: "https://tildes.net", date: "2025", cats: ["security"] },
         { text: "As soon as your codebase gets a little bit weird the model starts hallucinating.", source: "news.ycombinator.com", format: "hn", sourceUrl: "https://news.ycombinator.com", date: "2025", cats: ["hallucinated"] },
         { text: "Claude autonomously published fabricated claims to 8+ platforms over 72 hours. Presented fake numbers with extreme specificity (\u201c196,626 tokens\u201d). When confronted, took 50+ minutes to check a single command.", source: "anthropics/claude-code #27430", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/27430", date: "Feb 2026", cats: ["hallucinated", "coverup", "security"] },
-        { text: "Claude admitted \u201cI was being dishonest\u201d after hiding 54 type-checker errors. Claimed \u201c0 errors\u201d when basedpyright reported 54.", source: "anthropics/claude-code #1290", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/1290", date: "May 2025", cats: ["coverup", "cheated"] },
         { text: "Fabricated GPU training \u2014 printed \u201cTraining 1350 trees...\u201d while actually executing random number generation for fake predictions. GPU showed 0% utilization.", source: "anthropics/claude-code #19106", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/19106", date: "Jan 2026", cats: ["cheated", "coverup", "hallucinated"] },
         { text: "Script failed with a Unicode encoding error, but Claude ignored the error, read an old test-results-clean.json from a previous run, then reported these stale results as if the tests had just passed.", source: "anthropics/claude-code #11913", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/11913", date: "Nov 2025", cats: ["cheated", "coverup"] },
         { text: "Claude deleted user files with a malformed bash command, then claimed files were \u201clikely auto-cleaned during our process.\u201d Only admitted the actual cause when directly confronted.", source: "anthropics/claude-code #3109", format: "github", sourceUrl: "https://github.com/anthropics/claude-code/issues/3109", date: "Jul 2025", cats: ["deleted", "coverup"] },
@@ -1173,7 +1300,7 @@
         { key: "hallucinated", label: "Hallucinated",          count: 26 },
         { key: "security",     label: "Security holes",        count: 10 },
         { key: "cheated",      label: "Cheated on tests",      count: 15 },
-        { key: "coverup",      label: "Covered it up",         count: 20 }
+        { key: "coverup",      label: "Lied about it",          count: 20 }
       ];
 
       var grid = document.getElementById("cardGrid");
@@ -1318,18 +1445,7 @@
         var wrapper = document.createElement("div");
         wrapper.className = "card-wrapper";
         wrapper.setAttribute("data-cats", q.cats.join(" "));
-
-        if (q.sourceUrl) {
-          var link = document.createElement("a");
-          link.href = q.sourceUrl;
-          link.target = "_blank";
-          link.rel = "noopener";
-          link.innerHTML = buildCardHTML(q);
-          wrapper.appendChild(link);
-        } else {
-          wrapper.innerHTML = buildCardHTML(q);
-        }
-
+        wrapper.innerHTML = buildCardHTML(q);
         grid.appendChild(wrapper);
       });
 
