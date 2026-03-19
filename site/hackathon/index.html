@@ -223,6 +223,21 @@
     }
     .idea-fork:hover { color: #93b8ff; }
 
+    /* ========== CATEGORY HEADERS ========== */
+    .category-header {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fafafa;
+      margin-bottom: 6px;
+    }
+    .category-desc {
+      color: #71717a;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
     /* ========== BACK LINK ========== */
     .back-link {
       display: inline-flex;
@@ -317,9 +332,9 @@
         <p style="color: #71717a; font-size: 0.85rem; margin-bottom: 20px;">One-shot a policy in minutes. Tweet it. Post it in Discord. This is a closed beta just for hackathon participants.</p>
 
         <!-- ====== CATEGORY: COOL POLICIES ====== -->
-        <div style="margin-bottom: 8px; margin-top: 24px;">
-          <span class="section-label" style="font-size: 0.85rem; padding-left: 0;">// cool policies</span>
-          <p style="color: #52525b; font-size: 0.8rem; margin-top: 4px;">One-shot these in minutes. 20 stupid ideas = 20 hilarious policies. Make a meme that represents each commit, then tweet about it.</p>
+        <div style="margin-top: 24px; margin-bottom: 16px;">
+          <div class="category-header">// cool policies</div>
+          <div class="category-desc">One-shot these in minutes. 20 stupid ideas = 20 hilarious policies. Make a meme that represents each commit, then tweet about it and post in Discord.</div>
         </div>
 
         <div class="idea-card">
@@ -343,9 +358,9 @@
         </div>
 
         <!-- ====== CATEGORY: SECRET MOTIVE ====== -->
-        <div style="margin-bottom: 8px; margin-top: 32px;">
-          <span class="section-label" style="font-size: 0.85rem; padding-left: 0;">// inject a secret motive</span>
-          <p style="color: #52525b; font-size: 0.8rem; margin-top: 4px;">The proxy can instruct the model to do things that don't appear in the conversation. Build something sneaky.</p>
+        <div style="margin-top: 32px; margin-bottom: 16px;">
+          <div class="category-header">// inject a secret motive</div>
+          <div class="category-desc">The proxy can instruct the model to do things that don't appear in the conversation. Hidden instructions, secret objectives, self-modifying behavior. Build something sneaky.</div>
         </div>
 
         <div class="idea-card">
@@ -364,9 +379,9 @@
         </div>
 
         <!-- ====== CATEGORY: HACK US ====== -->
-        <div style="margin-bottom: 8px; margin-top: 32px;">
-          <span class="section-label" style="font-size: 0.85rem; padding-left: 0;">// hack us</span>
-          <p style="color: #52525b; font-size: 0.8rem; margin-top: 4px;">Red team Luthien. Break it. Extract secrets. We'll fix what you find.</p>
+        <div style="margin-top: 32px; margin-bottom: 16px;">
+          <div class="category-header">// hack us</div>
+          <div class="category-desc">Red team Luthien. Break our policies. Extract secrets we're trying to protect. Every attack is logged &mdash; we'll fix what you find and credit you.</div>
         </div>
 
         <div class="idea-card">
@@ -384,9 +399,6 @@
           <div class="idea-desc">Use Luthien for your hackathon project. When it breaks &mdash; and it will &mdash; post the error in Discord. That's it. Your broken thing is our most valuable data right now. <a href="https://github.com/LuthienResearch/luthien-proxy/fork" target="_blank" rel="noopener">Fork the repo &rarr;</a></div>
         </div>
 
-        <p style="color: #71717a; font-size: 0.82rem; margin-top: 8px;">
-          <a href="https://github.com/LuthienResearch/luthien-org/blob/main/ui-fb-dev/0-outreach4feedback/hackathon-march-2026/project-ideas.md" target="_blank" rel="noopener">Full project details + more ideas &rarr;</a>
-        </p>
 
         <a href="../v10.8/" class="back-link">&larr; Learn more about Luthien</a>
 
