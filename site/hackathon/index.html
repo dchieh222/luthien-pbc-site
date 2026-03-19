@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Build on Luthien — AI Control Hackathon 2026</title>
+  <title>Build on Luthien - AI Control Hackathon 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -150,11 +150,11 @@
   <div class="container">
 
     <h1>Build on Luthien this weekend</h1>
-    <p class="subtitle">Open-source proxy for AI control research. Intercepts every request between AI coding agents and model APIs to enforce policies, log activity, and catch dangerous behaviors.</p>
+    <p class="subtitle">Open-source proxy for AI control research. Sits between AI coding agents and model APIs. Enforces policies, logs everything, catches dangerous stuff before it executes.</p>
     <p class="social-proof"><a href="https://github.com/LuthienResearch/luthien-proxy" target="_blank">Jai Dhyani</a> (Luthien co-founder) is a speaker and judge at this hackathon. Catch his talk <strong>Friday at noon</strong> for a live demo.</p>
 
     <div class="callout">
-      <strong>Why Luthien for this hackathon?</strong> The hackathon calls for "control protocols that involve traditional security measures, such as giving the trusted model access to a firewall." Luthien IS that firewall — it sits between agent and API, applies configurable policy checks (regex, DLP, LLM-as-judge), and logs everything. You get the interception infrastructure for free. Focus on the research.
+      <strong>Why Luthien for this hackathon?</strong> The hackathon calls for "control protocols that involve traditional security measures, such as giving the trusted model access to a firewall." Luthien IS that firewall. It sits between agent and API, runs policy checks (regex, DLP, LLM-as-judge), and logs everything. You get the interception layer for free. Focus on the research.
     </div>
 
     <h2>Project Ideas</h2>
@@ -168,7 +168,7 @@
           <span class="track-badge track-2">Track 2: Protocol Design</span>
           <span class="difficulty-badge">Accessible</span>
         </div>
-        <div class="idea-desc">Write a Luthien policy that monitors agent actions in BashArena and flags suspicious sysadmin commands before execution. Ctrl-Z showed resample protocols reduce attack success from 58% to 7% — can a proxy-level monitor do better?</div>
+        <div class="idea-desc">Write a Luthien policy that watches agent actions in BashArena and flags suspicious sysadmin commands before they run. Ctrl-Z showed resample protocols cut attack success from 58% to 7%. Can a proxy-level monitor do better?</div>
         <div class="idea-luthien">Luthien provides: request interception, pattern matching, full audit logging</div>
       </div>
 
@@ -178,7 +178,7 @@
           <span class="track-badge track-2">Track 2: Protocol Design</span>
           <span class="difficulty-badge">Moderate</span>
         </div>
-        <div class="idea-desc">Before the untrusted model's action executes, a trusted model reviews it and asks clarifying questions. Extend Luthien's existing LLM-as-judge policy to implement interrogation and measure the safety/usefulness tradeoff at different depths.</div>
+        <div class="idea-desc">Before the untrusted model's action runs, a trusted model reviews it and asks clarifying questions. Extend Luthien's built-in LLM-as-judge policy to add interrogation and measure the safety/usefulness tradeoff at different depths.</div>
         <div class="idea-luthien">Luthien provides: SimpleLLMJudge policy (extend it), response interception, logging</div>
       </div>
 
@@ -188,8 +188,8 @@
           <span class="track-badge track-3">Track 3: Red Teams</span>
           <span class="difficulty-badge">Accessible</span>
         </div>
-        <div class="idea-desc">Craft prompts and agent behaviors that bypass Luthien's built-in defenses (command blocking, DLP, LLM judge). Document which evasion strategies work, which don't, and why. Build a dataset of adversarial transcripts.</div>
-        <div class="idea-luthien">Luthien provides: production-grade policies to attack, full attack/defense audit trail</div>
+        <div class="idea-desc">Try to get harmful actions past Luthien's built-in defenses (command blocking, DLP, LLM judge). Document which evasion strategies work, which don't, and why. Build a dataset of adversarial transcripts.</div>
+        <div class="idea-luthien">Luthien provides: real policies to attack, full attack/defense audit trail</div>
       </div>
 
       <div class="idea-card">
@@ -208,7 +208,7 @@
           <span class="track-badge track-3">Track 3: Red Teams</span>
           <span class="difficulty-badge difficulty-advanced">Advanced</span>
         </div>
-        <div class="idea-desc">Use Luthien's conversation logging to detect steganographic communication between colluding agents. Analyze token distributions, formatting anomalies, and information-theoretic signals in logged conversations.</div>
+        <div class="idea-desc">Use Luthien's conversation logs to spot steganographic communication between colluding agents. Look for weird token distributions, formatting anomalies, and statistical signals that shouldn't be there.</div>
         <div class="idea-luthien">Luthien provides: complete request/response capture, token-level logging</div>
       </div>
 
@@ -218,7 +218,7 @@
           <span class="track-badge track-1">Track 1: Setting Design</span>
           <span class="difficulty-badge">Moderate</span>
         </div>
-        <div class="idea-desc">Design a control setting where an AI agent does code review (main task) while attempting to approve code with hidden security vulnerabilities (side task). Luthien monitors the review process and flags suspicious approvals.</div>
+        <div class="idea-desc">An AI agent does code review (main task) while trying to approve code with hidden security vulnerabilities (side task). Luthien watches the review process and flags suspicious approvals.</div>
         <div class="idea-luthien">Luthien provides: review interception, vulnerability pattern matching, audit trail</div>
       </div>
 
@@ -238,8 +238,8 @@
           <span class="track-badge track-2">Track 2: Protocol Design</span>
           <span class="difficulty-badge difficulty-advanced">Advanced</span>
         </div>
-        <div class="idea-desc">Implement trusted editing at the proxy layer: Luthien intercepts suspicious code suggestions and has a trusted model rewrite them before they reach the developer. Measure whether the editor preserves functionality while removing sabotage. Build AND red-team it.</div>
-        <div class="idea-luthien">Luthien provides: response modification pipeline, dual-model orchestration, before/after logging</div>
+        <div class="idea-desc">Luthien intercepts suspicious code suggestions and has a trusted model rewrite them before they reach the developer. Does the editor keep the code working while removing sabotage? Build it AND red-team it.</div>
+        <div class="idea-luthien">Luthien provides: response modification pipeline, two-model setup, before/after logging</div>
       </div>
 
     </div>
@@ -254,7 +254,7 @@
       </div>
       <div class="start-card">
         <h3>Jai's Talk</h3>
-        <p>Friday at noon — live demo + Q&A. Great place to ask architecture questions before you start building.</p>
+        <p>Friday at noon. Live demo + Q&A. Good place to ask architecture questions before you start building.</p>
         <p style="color: #71717a; font-size: 0.8rem;">Check the hackathon Discord for the talk link.</p>
       </div>
     </div>
@@ -267,7 +267,7 @@
 
     <hr>
 
-    <p style="color: #52525b; font-size: 0.8rem;">Luthien is an open-source project from <a href="https://luthienresearch.org" target="_blank" style="color: #52525b;">Luthien Research</a>, a nonprofit focused on AI safety. Built by <a href="https://github.com/jdhyani" target="_blank" style="color: #52525b;">Jai Dhyani</a> (ex-AWS, ex-Meta) and Scott Wofford (ex-Amazon).</p>
+    <p style="color: #52525b; font-size: 0.8rem;">Luthien is open source, built by <a href="https://github.com/jdhyani" target="_blank" style="color: #52525b;">Jai Dhyani</a> (ex-AWS, ex-Meta) and Scott Wofford (ex-Amazon) at <a href="https://luthienresearch.org" target="_blank" style="color: #52525b;">Luthien Research</a> (nonprofit).</p>
 
   </div>
 </body>
