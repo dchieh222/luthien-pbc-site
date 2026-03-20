@@ -111,7 +111,7 @@
       padding: 3px 10px; border-radius: 5px; transition: all 0.15s;
     }
     .nav-secondary .section-tab:hover { color: #a1a1aa; background: rgba(255,255,255,0.04); }
-    .nav-secondary .section-tab.active { color: #e4e4e7; }
+    .nav-secondary .section-tab.active { color: #fafafa; }
 
     @media (max-width: 640px) {
       .nav-tab { font-size: 0.75rem; padding: 4px 8px; }
@@ -496,6 +496,27 @@
     }
     positionSubNav();
     window.addEventListener('resize', positionSubNav);
+
+    // Highlight active section tab on scroll
+    var sectionTabs = document.querySelectorAll('.nav-secondary .section-tab');
+    var sectionIds = Array.from(sectionTabs).map(function(t) { return t.getAttribute('href').replace('#', ''); });
+    function updateActiveSection() {
+      var scrollY = window.scrollY + 100;
+      var current = '';
+      for (var i = 0; i < sectionIds.length; i++) {
+        var el = document.getElementById(sectionIds[i]);
+        if (el && el.offsetTop <= scrollY) { current = sectionIds[i]; }
+      }
+      sectionTabs.forEach(function(t) {
+        if (t.getAttribute('href') === '#' + current) {
+          t.classList.add('active');
+        } else {
+          t.classList.remove('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', updateActiveSection);
+    updateActiveSection();
   </script>
 </body>
 </html>
