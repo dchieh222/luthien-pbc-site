@@ -46,7 +46,21 @@ Same objective workflow as luthien-proxy:
 3. Make changes, commit frequently
 4. Push to origin, open draft PR
 5. When done: update `CHANGELOG.md`, clear `dev/OBJECTIVE.md` and `dev/NOTES.md`, mark PR ready
-6. **Update the version tracking doc:** Every new landing page version MUST get a row added to `luthien-org/ui-fb-dev/2-requirements/1-value-prop-requirements-live.md` (landing page versions table) + a changelog entry at the bottom. Commit and push to luthien-org as part of the same work session.
+6. **Update the version tracking doc:** Every new landing page version MUST get a row added to `luthien-org/ui-fb-dev/2-versions-requirements/1.1-landing-page-versions.md` (version summary table) + a changelog entry at the bottom. Commit and push to luthien-org as part of the same work session.
+
+## Creating a New Landing Page Version
+
+**Never edit a released version directory in-place.** Once a version is on main, it's frozen. New changes get a new version directory.
+
+Checklist:
+1. Create `site/vX.Y.Z/` directory
+2. Copy ALL files from the previous version directory (index.html AND all images: SVGs, PNGs, JPGs)
+3. Make your changes in the new directory
+4. Update `site/index.html` redirect to point to the new version
+5. Verify locally: open the page in a browser and confirm all images load (no broken placeholders)
+6. Update the version tracking doc in luthien-org
+
+**COE reference:** Images were broken on v10.9.1 for 3 days because only index.html was copied, not the image files. Esben Kran (Seldon/Apart) reported it.
 
 ## Editing Pages
 
