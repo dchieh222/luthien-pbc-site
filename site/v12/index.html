@@ -56,12 +56,17 @@
 
     .section-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.1rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: #a1a1aa;
       margin-bottom: 20px;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
       padding-left: 24px;
+      padding-right: 24px;
     }
 
     section { padding: 40px 0; }
@@ -79,6 +84,7 @@
     .section-header {
       font-size: clamp(1.5rem, 4vw, 2rem);
       font-weight: 700;
+      letter-spacing: -0.02em;
       margin-bottom: 20px;
     }
 
@@ -120,8 +126,9 @@
 
     .hero h1 {
  font-size: clamp(2.2rem, 6vw, 4rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
   margin-bottom: 16px;
 }
 
@@ -129,8 +136,10 @@
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   color: #a1a1aa;
   margin-bottom: 24px;
-  max-width: 100%;
-  line-height: 1.7;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
   text-wrap: balance;
 }
 
@@ -931,6 +940,7 @@
     footer {
       border-top: 1px solid #1a1a1e;
       padding: 32px 0;
+      margin-top: 48px;
     }
     .footer-inner {
       display: flex;
@@ -950,7 +960,7 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
-    .footer-year { color: #71717a; font-size: 0.8rem; }
+    .footer-year { color: #71717a; font-size: 0.8rem; line-height: 1.7; }
     .footer-right {
       display: flex;
       flex-direction: column;
@@ -958,7 +968,7 @@
       gap: 8px;
     }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: #a1a1aa; font-size: 0.85rem; }
+    .footer-links a { color: #a1a1aa; font-size: 0.85rem; line-height: 1.7; }
     .footer-links a:hover { color: #d4d4d8; }
 
     @media (max-width: 640px) {
@@ -984,7 +994,7 @@
     }
     .testimonial-text {
       font-size: 1rem;
-      color: #d4d4d8;
+      color: #e4e4e7;
       line-height: 1.6;
       font-style: italic;
       margin-bottom: 20px;
@@ -1037,7 +1047,7 @@
     }
     .setup-step-title { font-weight: 700; font-size: 1rem; color: #fafafa; }
     .setup-step-desc { font-size: 0.85rem; color: #a1a1aa; line-height: 1.5; }
-    .setup-step-time { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #a1a1aa; }
+    .setup-step-time { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #71717a; line-height: 1.7; }
 
     /* ========== FOOTER BOTTOM ========== */
     .footer-bottom {
@@ -1099,18 +1109,18 @@
 
 
  <!-- DEMO: WITHOUT / WITH LUTHIEN -->
-  <section id="demo" style="padding-top: 56px; padding-bottom: 32px;">
+  <section id="demo" style="padding-top: 48px; padding-bottom: 32px;">
     <div class="section-label">how it works</div>
     <div class="container">
       
       <div class="ux-grid">
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #ef4444; letter-spacing: 0.12em; margin-bottom: 12px;">without luthien</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; color: #ef4444; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px;">without luthien</div>
           <img src="terminal-without-luthien.svg" alt="Without Luthien: Claude Code ignores your CLAUDE.md rules and you correct it manually" style="width: 100%; border-radius: 8px; border: 1px solid #27272a;">
           <p class="demo-annotation">Claude ignores your CLAUDE.md rule and you correct it manually.</p>
         </div>
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #22c55e; letter-spacing: 0.12em; margin-bottom: 12px;">with luthien</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; color: #22c55e; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px;">with luthien</div>
           <img src="terminal-with-luthien.svg" alt="With Luthien: Luthien catches the violation and auto-corrects" style="width: 100%; border-radius: 8px; border: 1px solid #27272a;">
           <p class="demo-annotation">Luthien catches the violation and auto-corrects. No human intervention needed.</p>
         </div>
@@ -1122,10 +1132,10 @@
 
   
   <!-- PROBLEM: THEME BADGES + FILTERABLE CARDS -->
-  <section class="card-grid-section" id="problem" style="padding-top: 32px; padding-bottom: 24px;">
-    <div class="section-label" style="text-transform: none;">problem</div>
+  <section class="card-grid-section" id="problem" style="padding-top: 32px; padding-bottom: 32px;">
+    <div class="section-label">problem</div>
     <div class="container">
-      <h2 style="font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 600; color: #e4e4e7; margin-bottom: 20px; text-align: left;">Claude Code does weird and lazy stuff sometimes.</h2>
+      <h2 style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #fafafa; letter-spacing: -0.01em; margin-bottom: 20px; text-align: left;">Claude Code does weird and lazy stuff sometimes.</h2>
 
       <!-- Filter pills -->
       <div class="filter-bar" id="filterBar"></div>
@@ -1179,7 +1189,7 @@
 
 <!-- EARLY FEEDBACK -->
   <section id="quotes" style="padding-top: 32px; padding-bottom: 32px;">
-    <div class="section-label" style="text-transform: none;">early feedback</div>
+    <div class="section-label">early feedback</div>
     <div class="container">
       <div class="testimonial-card">
         <p class="testimonial-text">"I saw the website and immediately thought, 'I want that.' I have to correct the pip install thing multiple times per day. You see pip and you're like, I already gave you permissions for uv. But it blocks on that permission and you lose hours of work. Awesome job, guys, it's like CLAUDE.md that actually works."</p>
@@ -1198,10 +1208,10 @@
 
 <!-- Get started --> 
 
-<section id="setup" style="padding-top: 32px; padding-bottom: 80px;">
+<section id="setup" style="padding-top: 32px; padding-bottom: 40px;">
   <div class="section-label">get started</div>
   <div class="container">
-    <h2 style="font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 600; color: #fafafa; margin-bottom: 24px; text-align: center;">Up and running in minutes.</h2>
+    <h2 style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #fafafa; letter-spacing: -0.01em; margin-bottom: 24px; text-align: center;">Up and running in minutes.</h2>
     
     <div class="setup-grid">
       <div class="setup-step">
@@ -1247,7 +1257,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer style="margin-top: 48px;">
+  <footer>
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
