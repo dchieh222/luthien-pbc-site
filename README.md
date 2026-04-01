@@ -27,11 +27,11 @@ GitHub Pages auto-deploys from `site/` on push to main.
 
 ## Related Repos
 
-| Repo | Purpose |
-|------|---------|
-| [luthien-proxy](https://github.com/LuthienResearch/luthien-proxy) | Core product (Python proxy) |
-| [luthien-org](https://github.com/LuthienResearch/luthien-org) | Org docs, feedback synthesis, landing page iteration history |
-| [luthien_site](https://github.com/LuthienResearch/luthien_site) | Eleventy site at luthienresearch.org |
+| Repo                                                              | Purpose                                                      |
+| ----------------------------------------------------------------- | ------------------------------------------------------------ |
+| [luthien-proxy](https://github.com/LuthienResearch/luthien-proxy) | Core product (Python proxy)                                  |
+| [luthien-org](https://github.com/LuthienResearch/luthien-org)     | Org docs, feedback synthesis, landing page iteration history |
+| [luthien_site](https://github.com/LuthienResearch/luthien_site)   | Eleventy site at luthienresearch.org                         |
 
 ## License
 
