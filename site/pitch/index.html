@@ -639,6 +639,64 @@
       border-color: var(--text-dim);
     }
 
+    /* ============ CITATION TOGGLE ============ */
+    .cite-btn {
+      position: fixed;
+      top: 20px;
+      right: 160px;
+      z-index: 100;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-dim);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+    }
+
+    .cite-btn:hover {
+      background: var(--bg-elevated);
+      color: var(--text);
+      border-color: var(--text-dim);
+    }
+
+    .cite-btn.active {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: var(--blue-glow);
+    }
+
+    .citation {
+      display: none;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      background: rgba(107, 159, 255, 0.08);
+      border: 1px solid rgba(107, 159, 255, 0.2);
+      border-radius: 4px;
+      padding: 3px 7px;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .citations-visible .citation {
+      display: inline-block;
+    }
+
+    .org-client {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
     /* ============ SLIDE-IN ANIMATIONS ============ */
     .anim-up {
       opacity: 0;
@@ -812,6 +870,7 @@
           <div class="card-title" style="color: var(--red);">1. AI Misbehaves</div>
           <div class="card-body">
             Agentic AI drops databases, leaks secrets, ignores instructions, and lies about what it did. A Replit agent <em>dropped a production database, then tried to cover it up.</em>
+            <div class="citation">Reported on X/Twitter, widely covered in dev press 2025</div>
           </div>
         </div>
         <div class="card" style="border-color: var(--amber); background: rgba(245, 158, 11, 0.08);">
@@ -829,6 +888,7 @@
       <p class="body-text anim-up delay-4" style="text-align: center;">
         <span class="stat-huge red" style="font-size: clamp(1.8rem, 4vw, 3rem);">93%</span>
         <span class="muted" style="display: block; font-size: 0.95rem;">of permission prompts are auto-accepted. Supervision theater doesn't work.</span>
+        <span class="citation">Luthien user research, 204 developer frustrations tracked across 6 sources (Summer 2025&ndash;2026)</span>
       </p>
     </div>
   </div>
@@ -854,76 +914,150 @@
         <div style="font-family: var(--sans); font-size: 2rem; color: var(--text-dim);">&rarr;</div>
         <div class="card card-green" style="flex: 0 1 220px; text-align: center; padding: 24px;">
           <div style="font-size: 1.8rem; margin-bottom: 8px;">&#x1F4C8;</div>
-          <div class="card-title" style="color: var(--green);">100&ndash;1000x Impact</div>
-          <div class="card-body">One engineer gets the output of a team. That's the real promise of agentic AI.</div>
+          <div class="card-title" style="color: var(--green);">Full Autonomy</div>
+          <div class="card-body">Give agents free rein knowing your org's guardrails are always enforced, invisibly.</div>
         </div>
       </div>
       <div class="spacer-lg"></div>
       <p class="anim-up delay-3" style="font-family: var(--mono); font-size: 0.95rem; color: var(--text-dim);">
-        Runtime policy enforcement &middot; <span class="blue">15ms</span> overhead
+        Runtime policy enforcement &middot; <span class="blue">transparent to developers</span>
       </p>
     </div>
   </div>
 
-  <!-- ======== SLIDE 4: API-LEVEL CONTROL ======== -->
+  <!-- ======== SLIDE 4: ORG-LEVEL CONTROL ======== -->
   <div class="slide" data-slide="3">
     <div class="slide-inner">
       <div class="label anim-up">How It Works</div>
-      <h1 class="headline headline-lg anim-up delay-1">Control at the API Level</h1>
-      <p class="subtitle anim-up delay-2" style="max-width: 700px;">There are three places you can implement AI control. Only one gives organizations the power they need.</p>
-      <div class="spacer-lg"></div>
-      <div class="api-diagram anim-up delay-3">
-        <div class="api-layer">
-          <div class="api-layer-name">The Client</div>
-          <div class="api-layer-title">Claude Code</div>
-          <div class="api-layer-desc">User-controlled. Not suited<br>to org-wide needs.</div>
-        </div>
-        <div class="api-connector"></div>
-        <div class="api-layer highlight">
-          <div class="api-layer-name">The API &bigstar;</div>
-          <div class="api-layer-title">Luthien Proxy</div>
-          <div class="api-layer-desc">Org-specific policies.<br>Instant. Zero friction.</div>
-        </div>
-        <div class="api-connector"></div>
-        <div class="api-layer">
-          <div class="api-layer-name">The Model</div>
-          <div class="api-layer-title">Anthropic</div>
-          <div class="api-layer-desc">Same controls for everyone.<br>Can't customize.</div>
-        </div>
-      </div>
+      <h1 class="headline headline-lg anim-up delay-1">One Control Plane for Your Entire Org</h1>
       <div class="spacer-md"></div>
-      <p class="body-text anim-up delay-4" style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--text-muted);">
-        Luthien sits between the client and the model. Your org writes the policies. Luthien enforces them across every developer, every session, instantly. Individual devs don't have to change anything.
-      </p>
+      <div class="grid-2 anim-up delay-2" style="gap: 40px; align-items: start;">
+
+        <!-- BEFORE -->
+        <div>
+          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px; text-align: center;">Today</div>
+          <div style="display: flex; align-items: center; gap: 0;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div class="org-client">Developer</div>
+              <div class="org-client">Designer</div>
+              <div class="org-client">Comms</div>
+              <div class="org-client">Research</div>
+              <div class="org-client">IT</div>
+            </div>
+            <svg viewBox="0 0 60 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; height: 120px; flex-shrink: 0;">
+              <line x1="0" y1="12" x2="52" y2="12" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+              <line x1="0" y1="36" x2="52" y2="36" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+              <line x1="0" y1="60" x2="52" y2="60" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+              <line x1="0" y1="84" x2="52" y2="84" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+              <line x1="0" y1="108" x2="52" y2="108" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+              <polygon points="52,9 52,15 58,12" fill="#ef4444" opacity="0.5"/>
+              <polygon points="52,33 52,39 58,36" fill="#ef4444" opacity="0.5"/>
+              <polygon points="52,57 52,63 58,60" fill="#ef4444" opacity="0.5"/>
+              <polygon points="52,81 52,87 58,84" fill="#ef4444" opacity="0.5"/>
+              <polygon points="52,105 52,111 58,108" fill="#ef4444" opacity="0.5"/>
+              <polygon points="0,9 0,15 -6,12" fill="#ef4444" opacity="0.5"/>
+              <polygon points="0,33 0,39 -6,36" fill="#ef4444" opacity="0.5"/>
+              <polygon points="0,57 0,63 -6,60" fill="#ef4444" opacity="0.5"/>
+              <polygon points="0,81 0,87 -6,84" fill="#ef4444" opacity="0.5"/>
+              <polygon points="0,105 0,111 -6,108" fill="#ef4444" opacity="0.5"/>
+            </svg>
+            <div style="padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-elevated); text-align: center; min-width: 100px;">
+              <svg viewBox="0 0 180 28" style="width: 100px; height: 16px; margin-bottom: 4px;">
+                <text x="90" y="22" text-anchor="middle" fill="#a1a1aa" font-family="Inter, sans-serif" font-size="22" font-weight="600">anthropic</text>
+              </svg>
+              <div style="font-size: 0.7rem; color: var(--text-dim);">No org control</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AFTER -->
+        <div>
+          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px; text-align: center;">With Luthien</div>
+          <div style="display: flex; align-items: center; gap: 0;">
+            <div style="border: 1.5px solid var(--blue); border-radius: 14px; padding: 12px; background: rgba(107,159,255,0.04); display: flex; align-items: center; gap: 0; position: relative;">
+              <div style="position: absolute; top: -10px; left: 16px; font-family: var(--mono); font-size: 0.6rem; color: var(--blue); background: var(--bg); padding: 0 6px; letter-spacing: 0.08em; text-transform: uppercase;">Internal Network</div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div class="org-client">Developer</div>
+                <div class="org-client">Designer</div>
+                <div class="org-client">Comms</div>
+                <div class="org-client">Research</div>
+                <div class="org-client">IT</div>
+              </div>
+              <svg viewBox="0 0 40 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 40px; height: 120px; flex-shrink: 0;">
+                <line x1="0" y1="12" x2="32" y2="60" stroke="#27272a" stroke-width="1"/>
+                <line x1="0" y1="36" x2="32" y2="60" stroke="#27272a" stroke-width="1"/>
+                <line x1="0" y1="60" x2="32" y2="60" stroke="#27272a" stroke-width="1"/>
+                <line x1="0" y1="84" x2="32" y2="60" stroke="#27272a" stroke-width="1"/>
+                <line x1="0" y1="108" x2="32" y2="60" stroke="#27272a" stroke-width="1"/>
+                <polygon points="32,57 32,63 38,60" fill="#27272a"/>
+                <polygon points="0,9 0,15 -6,12" fill="#27272a"/>
+                <polygon points="0,33 0,39 -6,36" fill="#27272a"/>
+                <polygon points="0,57 0,63 -6,60" fill="#27272a"/>
+                <polygon points="0,81 0,87 -6,84" fill="#27272a"/>
+                <polygon points="0,105 0,111 -6,108" fill="#27272a"/>
+              </svg>
+              <div style="padding: 14px 16px; border-radius: 10px; border: 1px solid var(--blue); background: linear-gradient(135deg, var(--blue-glow), rgba(107,159,255,0.05)); text-align: left; min-width: 140px;">
+                <div style="font-family: var(--mono); font-size: 0.65rem; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 6px;">Luthien Proxy</div>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.72rem; color: var(--text-muted); line-height: 1.7;">
+                  <li>&bull; Block harmful actions</li>
+                  <li>&bull; Enforce company policy</li>
+                  <li>&bull; Real-time augmentation</li>
+                  <li>&bull; Compliance</li>
+                </ul>
+              </div>
+            </div>
+            <svg viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 40px; height: 20px; flex-shrink: 0;">
+              <line x1="0" y1="10" x2="32" y2="10" stroke="#22c55e" stroke-width="1.5"/>
+              <polygon points="32,7 32,13 38,10" fill="#22c55e"/>
+              <polygon points="0,7 0,13 -6,10" fill="#22c55e"/>
+            </svg>
+            <div style="padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-elevated); text-align: center; min-width: 100px;">
+              <svg viewBox="0 0 180 28" style="width: 100px; height: 16px;">
+                <text x="90" y="22" text-anchor="middle" fill="#a1a1aa" font-family="Inter, sans-serif" font-size="22" font-weight="600">anthropic</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
   <!-- ======== SLIDE 5: CAPABILITIES ======== -->
   <div class="slide" data-slide="4">
     <div class="slide-inner">
-      <div class="label anim-up">Capabilities</div>
-      <h1 class="headline headline-lg anim-up delay-1">What You Can Do</h1>
+      <div class="label anim-up">Why Luthien</div>
+      <h1 class="headline headline-lg anim-up delay-1">The Control Layer Orgs Need</h1>
       <div class="spacer-md"></div>
       <div class="grid-3 anim-up delay-2">
         <div class="card">
-          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px;">Protect</div>
-          <div class="card-title">Secret Redaction</div>
-          <div class="card-body">API keys, credentials, secrets. If an agent tries to send them upstream, Luthien strips them out before they leave your network.</div>
+          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px;">Customize</div>
+          <div class="card-title">Full Policy Control</div>
+          <div class="card-body">Route sensitive topics to an in-house model. Seamlessly redact secrets before they leave your network. Identify and intervene on harmful agentic behavior before it happens.</div>
         </div>
         <div class="card">
-          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px;">Guide</div>
-          <div class="card-title">Context Injection</div>
-          <div class="card-body">Automatically add org rules, context, and guardrails to every agent session. No more hoping devs remembered to set up their CLAUDE.md.</div>
+          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px;">Deploy</div>
+          <div class="card-title">Instant Rollouts</div>
+          <div class="card-body">New policies are immediately effective for every user, even mid-session. No restarts, no coordination, no waiting for developers to update their tools.</div>
         </div>
         <div class="card">
-          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px;">Defend</div>
-          <div class="card-title">Command Blocking</div>
-          <div class="card-body">Agent about to <code>rm -rf</code> your prod directory or <code>git push --force</code> to main? Luthien catches it and stops it before it runs.</div>
+          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px;">Enforce</div>
+          <div class="card-title">Guaranteed Compliance</div>
+          <div class="card-body">Policies are enforced no matter what individual users do. No opt-outs. No workarounds. The network layer doesn't forget.</div>
         </div>
       </div>
-      <div class="spacer-lg"></div>
-      <div class="quote anim-up delay-3">
-        You write a policy. We enforce it. Every time. Even when Claude forgets.
+      <div class="spacer-sm"></div>
+      <div class="grid-2 anim-up delay-3">
+        <div class="card">
+          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px;">Observe</div>
+          <div class="card-title">Intuitive Observability</div>
+          <div class="card-body">See what every agent is doing across your org in real time. Usage metrics, policy violations, and behavioral patterns&mdash;all in one place.</div>
+        </div>
+        <div class="card">
+          <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px;">Own</div>
+          <div class="card-title">Open Source</div>
+          <div class="card-body">MIT licensed. Implement what you need, when you need it. No vendor lock-in, no waiting on our roadmap. Fork it if you want.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -981,6 +1115,7 @@
         <div class="card">
           <div class="card-title"><span class="blue">3.</span>&ensp;Anthropic agrees</div>
           <div class="card-body">Anthropic researcher, April 2026: <em>"The long-term solution probably looks more like something proxy-side"</em> and <em>"the space for control protocols is quite big."</em></div>
+          <div class="citation">Fabien Roger (Anthropic), conversation Apr 1 2026</div>
         </div>
       </div>
       <div class="spacer-md"></div>
@@ -1000,18 +1135,22 @@
         <div style="text-align: center;">
           <div class="stat-huge">$4.7B</div>
           <div class="stat-label">Coding agent market today</div>
+          <div class="citation">Investment memo, market sizing (Apr 2026)</div>
         </div>
         <div style="text-align: center;">
           <div class="stat-huge">$14.6B</div>
           <div class="stat-label">Projected by 2033</div>
+          <div class="citation">15% CAGR projection, investment memo</div>
         </div>
         <div style="text-align: center;">
           <div class="stat-huge green">$2.5B</div>
           <div class="stat-label">Claude Code ARR<br><span class="dim">$0 &rarr; $2.5B in 9 months</span></div>
+          <div class="citation">Anthropic investor materials / press reports</div>
         </div>
         <div style="text-align: center;">
           <div class="stat-huge blue">51%</div>
           <div class="stat-label">of GitHub commits are<br>AI-generated (early 2026)</div>
+          <div class="citation">GitHub CEO Thomas Dohmke, public statements 2026</div>
         </div>
       </div>
       <div class="spacer-lg"></div>
@@ -1019,10 +1158,12 @@
         <div class="card">
           <div class="card-title">Enterprise demand</div>
           <div class="card-body"><span class="white" style="font-weight: 600;">80%</span> of Claude Code revenue comes from enterprises. Enterprise AI budgets growing <span class="white" style="font-weight: 600;">75% YoY</span>.</div>
+          <div class="citation">Anthropic enterprise reports; Gartner AI spending surveys</div>
         </div>
         <div class="card" style="border-color: var(--amber); background: rgba(245, 158, 11, 0.06);">
           <div class="card-title" style="color: var(--amber);">Regulatory tailwind</div>
           <div class="card-body">EU AI Act full enforcement: <span class="white" style="font-weight: 600;">August 2, 2026</span>. ~500K EU companies must demonstrate AI oversight.</div>
+          <div class="citation">EU AI Act (Regulation 2024/1689), Article 113</div>
         </div>
       </div>
     </div>
@@ -1032,23 +1173,26 @@
   <div class="slide" data-slide="8">
     <div class="slide-inner">
       <div class="label anim-up">Traction</div>
-      <h1 class="headline headline-lg anim-up delay-1">All inbound. All organic.</h1>
+      <h1 class="headline headline-lg anim-up delay-1">Early traction</h1>
       <div class="spacer-md"></div>
       <div class="grid-4 anim-up delay-2">
         <div style="text-align: center;">
           <div class="stat-huge">92</div>
           <div class="stat-label">Qualified leads<br><span class="dim">30+ hrs/week Claude Code</span></div>
+          <div class="citation">Inbound pipeline, Apr 2026</div>
         </div>
         <div style="text-align: center;">
           <div class="stat-huge">14</div>
           <div class="stat-label">Live trials<br><span class="dim">conducted</span></div>
+          <div class="citation">Internal trial log, Apr 2026</div>
         </div>
         <div style="text-align: center;">
           <div class="stat-huge green">9</div>
           <div class="stat-label">LOIs signed<br><span class="dim">$400&ndash;700K annually</span></div>
+          <div class="citation">Signed LOIs on file (Redwood, Cambridge, etc.)</div>
         </div>
         <div style="text-align: center;">
-          <div class="stat-huge blue">MIT</div>
+          <div class="stat-huge blue" style="font-size: clamp(1.5rem, 4vw, 2.5rem);">Apache 2.0</div>
           <div class="stat-label">Open source<br><span class="dim">license</span></div>
         </div>
       </div>
@@ -1273,6 +1417,9 @@
 <button class="nav-arrow left hidden" id="navLeft" aria-label="Previous slide">&#8249;</button>
 <button class="nav-arrow right" id="navRight" aria-label="Next slide">&#8250;</button>
 
+<!-- Citation toggle -->
+<button class="cite-btn" id="citeBtn" title="Toggle citations">Sources</button>
+
 <!-- Fullscreen button -->
 <button class="fs-btn" id="fsBtn" title="Toggle fullscreen">F11 &middot; Fullscreen</button>
 
@@ -1408,6 +1555,14 @@
   }
 
   fsBtn.addEventListener('click', toggleFullscreen);
+
+  // Citation toggle
+  const citeBtn = document.getElementById('citeBtn');
+  citeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('citations-visible');
+    citeBtn.classList.toggle('active');
+    citeBtn.textContent = citeBtn.classList.contains('active') ? 'Sources ✓' : 'Sources';
+  });
 
   document.addEventListener('fullscreenchange', () => {
     fsBtn.textContent = document.fullscreenElement ? 'ESC · Exit' : 'F11 · Fullscreen';
