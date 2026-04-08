@@ -10,7 +10,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,8 +31,7 @@
       --red: #ef4444;
       --red-dim: rgba(239, 68, 68, 0.12);
       --amber: #f59e0b;
-      --serif: 'Instrument Serif', Georgia, serif;
-      --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --mono: 'JetBrains Mono', 'Fira Code', monospace;
     }
 
@@ -97,10 +96,11 @@
 
     /* ============ TYPOGRAPHY ============ */
     .headline {
-      font-family: var(--serif);
-      font-weight: 400;
+      font-family: var(--sans);
+      font-weight: 700;
       color: var(--white);
-      line-height: 1.1;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
     }
 
     .headline-xl { font-size: clamp(3rem, 7vw, 5.5rem); }
@@ -132,10 +132,12 @@
     }
 
     .stat-huge {
-      font-family: var(--serif);
+      font-family: var(--sans);
+      font-weight: 800;
       font-size: clamp(2.5rem, 6vw, 4.5rem);
       color: var(--white);
       line-height: 1;
+      letter-spacing: -0.02em;
     }
 
     .stat-label {
@@ -147,7 +149,7 @@
     .emphasis {
       color: var(--blue);
       font-style: italic;
-      font-family: var(--serif);
+      font-family: var(--sans);
     }
 
     .green { color: var(--green); }
@@ -229,9 +231,9 @@
     .quote {
       border-left: 3px solid var(--blue);
       padding: 16px 24px;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-family: var(--sans);
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-weight: 500;
       color: var(--text);
       line-height: 1.5;
       background: var(--blue-glow);
@@ -285,7 +287,7 @@
     .api-layer.highlight .api-layer-name { color: var(--blue); }
 
     .api-layer-title {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: 1.3rem;
       color: var(--white);
     }
@@ -426,7 +428,7 @@
     }
 
     .timeline-value {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: 1.1rem;
       color: var(--white);
       margin-bottom: 4px;
@@ -444,9 +446,11 @@
     }
 
     .founder-name {
-      font-family: var(--serif);
+      font-family: var(--sans);
+      font-weight: 700;
       font-size: 1.6rem;
       color: var(--white);
+      letter-spacing: -0.01em;
     }
 
     .founder-role {
@@ -669,10 +673,11 @@
     }
 
     .logo-mark {
-      font-family: var(--serif);
+      font-family: var(--sans);
+      font-weight: 800;
       font-size: clamp(4rem, 10vw, 7.5rem);
       color: var(--white);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       line-height: 1;
       position: relative;
     }
@@ -787,7 +792,7 @@
     <div class="slide-inner">
       <div class="logo-mark anim-up">Luthien</div>
       <div class="spacer-md"></div>
-      <p class="subtitle anim-up delay-1" style="font-family: var(--serif); font-style: italic; font-size: clamp(1.2rem, 2.5vw, 1.7rem); color: var(--text-muted);">
+      <p class="subtitle anim-up delay-1" style="font-size: clamp(1.2rem, 2.5vw, 1.7rem); color: var(--text-muted);">
         Making it safe to run AI at full power
       </p>
       <div class="round-badge anim-up delay-2">
@@ -840,13 +845,13 @@
           <div class="card-title">Reduce Risk</div>
           <div class="card-body">Policies run at the API layer, catching bad behavior before it causes damage</div>
         </div>
-        <div style="font-family: var(--serif); font-size: 2rem; color: var(--text-dim);">&rarr;</div>
+        <div style="font-family: var(--sans); font-size: 2rem; color: var(--text-dim);">&rarr;</div>
         <div class="card card-accent" style="flex: 0 1 220px; text-align: center; padding: 24px;">
           <div style="font-size: 1.8rem; margin-bottom: 8px;">&#x26A1;</div>
           <div class="card-title" style="color: var(--blue);">Unlock Autonomy</div>
           <div class="card-body">Let agents run without someone hovering over every action</div>
         </div>
-        <div style="font-family: var(--serif); font-size: 2rem; color: var(--text-dim);">&rarr;</div>
+        <div style="font-family: var(--sans); font-size: 2rem; color: var(--text-dim);">&rarr;</div>
         <div class="card card-green" style="flex: 0 1 220px; text-align: center; padding: 24px;">
           <div style="font-size: 1.8rem; margin-bottom: 8px;">&#x1F4C8;</div>
           <div class="card-title" style="color: var(--green);">100&ndash;1000x Impact</div>
@@ -1083,17 +1088,17 @@
       <div class="grid-3 anim-up delay-2">
         <div class="card" style="text-align: center;">
           <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 8px;">Community</div>
-          <div style="font-family: var(--serif); font-size: 2rem; color: var(--white);">Free</div>
+          <div style="font-family: var(--sans); font-size: 2rem; color: var(--white);">Free</div>
           <div class="card-body" style="margin-top: 8px;">Forever. Drives adoption.</div>
         </div>
         <div class="card card-accent" style="text-align: center;">
           <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 8px;">Teams</div>
-          <div style="font-family: var(--serif); font-size: 2rem; color: var(--white);">~$49<span style="font-size: 1rem; color: var(--text-dim);">/seat/mo</span></div>
+          <div style="font-family: var(--sans); font-size: 2rem; color: var(--white);">~$49<span style="font-size: 1rem; color: var(--text-dim);">/seat/mo</span></div>
           <div class="card-body" style="margin-top: 8px;">Policy enforcement, dashboards, team controls.</div>
         </div>
         <div class="card" style="text-align: center; border-color: var(--green); background: var(--green-dim);">
           <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 8px;">Enterprise</div>
-          <div style="font-family: var(--serif); font-size: 2rem; color: var(--white);">Custom</div>
+          <div style="font-family: var(--sans); font-size: 2rem; color: var(--white);">Custom</div>
           <div class="card-body" style="margin-top: 8px;">$25K&ndash;$300K/yr. SSO, audit, compliance.</div>
         </div>
       </div>
@@ -1207,17 +1212,17 @@
       <div class="spacer-lg"></div>
       <div class="grid-3 anim-up delay-3">
         <div class="card" style="text-align: center;">
-          <div style="font-family: var(--serif); font-size: 2.5rem; color: var(--blue);">50%</div>
+          <div style="font-family: var(--sans); font-size: 2.5rem; color: var(--blue);">50%</div>
           <div class="card-title">Engineering</div>
           <div class="card-body">2 hires: a systems engineer and a policy/rules engine lead</div>
         </div>
         <div class="card" style="text-align: center;">
-          <div style="font-family: var(--serif); font-size: 2.5rem; color: var(--green);">30%</div>
+          <div style="font-family: var(--sans); font-size: 2.5rem; color: var(--green);">30%</div>
           <div class="card-title">Growth</div>
           <div class="card-body">Dev outreach, design partners, community</div>
         </div>
         <div class="card" style="text-align: center;">
-          <div style="font-family: var(--serif); font-size: 2.5rem; color: var(--text-muted);">20%</div>
+          <div style="font-family: var(--sans); font-size: 2.5rem; color: var(--text-muted);">20%</div>
           <div class="card-title">Infrastructure</div>
           <div class="card-body">Operations, hosting, compliance tooling</div>
         </div>
@@ -1225,7 +1230,7 @@
       <div class="spacer-lg"></div>
       <div class="anim-up delay-4" style="display: inline-block; border: 1px solid var(--green); border-radius: 10px; padding: 20px 40px; background: var(--green-dim);">
         <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Milestone</div>
-        <div style="font-family: var(--serif); font-size: 1.6rem; color: var(--white);">$250K MRR within 18 months</div>
+        <div style="font-family: var(--sans); font-size: 1.6rem; color: var(--white);">$250K MRR within 18 months</div>
       </div>
     </div>
   </div>
@@ -1235,7 +1240,7 @@
     <div class="slide-inner">
       <div class="logo-mark anim-up">Luthien</div>
       <div class="spacer-md"></div>
-      <p class="subtitle anim-up delay-1" style="font-family: var(--serif); font-style: italic; font-size: clamp(1.2rem, 2.5vw, 1.7rem); color: var(--text-muted);">
+      <p class="subtitle anim-up delay-1" style="font-size: clamp(1.2rem, 2.5vw, 1.7rem); color: var(--text-muted);">
         Making it safe to run AI at full power
       </p>
       <div class="spacer-sm"></div>
