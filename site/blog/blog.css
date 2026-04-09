@@ -31,23 +31,6 @@ a:hover { color: #4AADAD; }
 
 .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
-/* ========== SKIP LINK ========== */
-.skip-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateY(-100%);
-  background: #3B9494;
-  color: #141216;
-  padding: 8px 16px;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600;
-  font-size: 0.875rem;
-  z-index: 200;
-  transition: transform 0.2s;
-}
-.skip-link:focus { transform: translateY(0); }
-
 /* ========== NAV ========== */
 .top-nav {
   position: fixed;

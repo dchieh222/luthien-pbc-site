@@ -50,8 +50,6 @@
     .top-nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(20, 18, 22, 1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid #28243A;
       padding: 0 3%; height: 58px;
       display: flex; align-items: center; justify-content: space-between;
@@ -104,9 +102,7 @@
         top: 58px;
         left: 0;
         right: 0;
-        background: rgba(20, 18, 22, 0.97);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(20, 18, 22, 1);
         border-bottom: 1px solid #28243A;
         flex-direction: column;
         padding: 16px 24px;
@@ -142,7 +138,7 @@
 
     /* PAGE HEADER */
     .page-header {
-      padding-top: 80px;
+      padding-top: 120px;
       padding-bottom: 32px;
       text-align: center;
     }
@@ -200,6 +196,8 @@
     .footer-brand { display: flex; align-items: center; gap: 8px; }
     .footer-wordmark { display: block; }
     .footer-year { color: #9891A8; font-size: 0.8rem; line-height: 1.7; }
+    .footer-tagline { font-family: 'Raleway', sans-serif; font-size: 0.75rem; font-style: italic; color: #B0A8BE; text-decoration: none; transition: color 0.2s; }
+    .footer-tagline:hover { color: #EDE5D8; }
     .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
     .footer-version { font-size: 0.7rem; color: #28243A; font-family: 'JetBrains Mono', monospace; }
     .footer-links { display: flex; gap: 24px; }
@@ -282,7 +280,7 @@
       <a href="blog.html" class="nav-link active">blog</a>
       <a href="index.html#apply" class="nav-setup">Apply for beta</a>
     </div>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect y="3" width="20" height="2" rx="1" fill="#EDE5D8"/><rect y="9" width="20" height="2" rx="1" fill="#EDE5D8"/><rect y="15" width="20" height="2" rx="1" fill="#EDE5D8"/></svg></button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect y="3" width="20" height="2" rx="1"/><rect y="9" width="20" height="2" rx="1"/><rect y="15" width="20" height="2" rx="1"/></svg></button>
   </nav>
 
   <main>
@@ -332,17 +330,15 @@
             <img src="v12/luthien-new.svg" alt="Luthien" style="height: 34px; width: auto; display: block;">
             <span class="footer-year">&middot; 2026</span>
           </div>
-          <a href="https://www.youtube.com/watch?v=YzjvBw96kas" target="_blank" rel="noopener"
-             style="font-family: 'Raleway', sans-serif; font-size: 0.75rem; font-style: italic; color: #D3D3D3; text-decoration: none; transition: color 0.2s;"
-             onmouseover="this.style.color='#EDE5D8'" onmouseout="this.style.color='#EDE5D8'">
+          <a href="https://www.youtube.com/watch?v=YzjvBw96kas" target="_blank" rel="noopener noreferrer" class="footer-tagline">
             Power is nothing without control.
           </a>
         </div>
         <div class="footer-right">
           <div class="footer-links">
-            <a href="https://github.com/LuthienResearch" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://linkedin.com/company/luthien-control" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://www.youtube.com/@LuthienControl" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://github.com/LuthienResearch" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/company/luthien-control" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.youtube.com/@LuthienControl" target="_blank" rel="noopener noreferrer">YouTube</a>
             <a href="mailto:contact@luthienresearch.org">Email</a>
           </div>
           <span class="footer-version">v12</span>
