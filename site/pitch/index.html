@@ -445,6 +445,15 @@
       gap: 12px;
     }
 
+    .founder-photo {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      margin-bottom: 4px;
+    }
+
     .founder-name {
       font-family: var(--sans);
       font-weight: 700;
@@ -851,11 +860,8 @@
       <div class="logo-mark anim-up">Luthien</div>
       <div class="spacer-md"></div>
       <p class="subtitle anim-up delay-1" style="font-size: clamp(1.2rem, 2.5vw, 1.7rem); color: var(--text-muted);">
-        Making it safe to run AI at full power
+        Making it safe to run AI at full speed
       </p>
-      <div class="round-badge anim-up delay-2">
-        Seed Round &middot; <span>$2M</span> &middot; SAFE at $15M post-money cap
-      </div>
     </div>
   </div>
 
@@ -1284,6 +1290,7 @@
       <div class="spacer-md"></div>
       <div class="grid-2 anim-up delay-2">
         <div class="founder-card">
+          <img src="https://avatars.githubusercontent.com/jaidhyani" alt="Jai Dhyani" class="founder-photo">
           <div class="founder-role">Co-CEO &middot; Product &amp; Engineering</div>
           <div class="founder-name">Jai Dhyani</div>
           <div class="founder-bio">
@@ -1294,6 +1301,7 @@
           </div>
         </div>
         <div class="founder-card">
+          <img src="https://avatars.githubusercontent.com/scottwofford" alt="Scott Wofford" class="founder-photo">
           <div class="founder-role">Co-CEO &middot; Growth &amp; Strategy</div>
           <div class="founder-name">Scott Wofford</div>
           <div class="founder-bio">
@@ -1337,7 +1345,7 @@
       <div class="grid-2 anim-up delay-3">
         <div class="card card-accent">
           <div class="card-title">Seldon Labs Follow-On</div>
-          <div class="card-body"><span class="white" style="font-weight: 600;">$500K</span> follow-on commitment at $15M post-money cap</div>
+          <div class="card-body"><span class="white" style="font-weight: 600;">$500K</span> follow-on commitment</div>
         </div>
         <div class="card">
           <div class="card-title" style="color: var(--text-dim);">AISTOF Status</div>
@@ -1352,7 +1360,6 @@
     <div class="slide-inner" style="text-align: center;">
       <div class="label anim-up">The Ask</div>
       <h1 class="headline headline-xl anim-up delay-1" style="color: var(--blue);">$2M Seed</h1>
-      <p class="subtitle anim-up delay-2">SAFE at $15M post-money cap</p>
       <div class="spacer-lg"></div>
       <div class="grid-3 anim-up delay-3">
         <div class="card" style="text-align: center;">
@@ -1385,7 +1392,7 @@
       <div class="logo-mark anim-up">Luthien</div>
       <div class="spacer-md"></div>
       <p class="subtitle anim-up delay-1" style="font-size: clamp(1.2rem, 2.5vw, 1.7rem); color: var(--text-muted);">
-        Making it safe to run AI at full power
+        Making it safe to run AI at full speed
       </p>
       <div class="spacer-sm"></div>
       <p class="anim-up delay-2" style="font-size: 1rem; color: var(--text-dim); max-width: 520px; text-align: center; line-height: 1.6;">
@@ -1567,6 +1574,22 @@
   document.addEventListener('fullscreenchange', () => {
     fsBtn.textContent = document.fullscreenElement ? 'ESC · Exit' : 'F11 · Fullscreen';
   });
+
+  // Deep-link: ?slide=N or #slide=N opens directly on slide N (1-indexed)
+  // Hash form is required for file:// URLs, which strip query strings via `open`.
+  let slideParam = parseInt(new URLSearchParams(location.search).get('slide'), 10);
+  if (!Number.isFinite(slideParam) && location.hash) {
+    const hashMatch = location.hash.match(/slide=(\d+)/);
+    if (hashMatch) slideParam = parseInt(hashMatch[1], 10);
+  }
+  if (Number.isFinite(slideParam) && slideParam >= 1 && slideParam <= total) {
+    const target = slideParam - 1;
+    if (target !== current) {
+      slides[current].classList.remove('active');
+      slides[target].classList.add('active');
+      current = target;
+    }
+  }
 
   updateUI();
 })();
