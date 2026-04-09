@@ -11,9 +11,13 @@
   <meta property="og:description" content="Open-source proxy that enforces rules on Claude Code. Catches context rot, ignored instructions, and suspicious behavior.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://luthien.cc/">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://luthien.cc/assets/images/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Luthien - AI Control for Claude Code">
   <meta name="twitter:description" content="Open-source proxy that enforces rules on Claude Code. Catches context rot, ignored instructions, and suspicious behavior.">
+  <meta name="twitter:image" content="https://luthien.cc/assets/images/og-image.svg">
 
   <meta name="theme-color" content="#141216">
 
@@ -57,7 +61,7 @@
     }
 
     .section-label {
-      font-family: 'Raleway', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: -0.02em;
@@ -230,7 +234,7 @@
 
     @media (max-width: 640px) {
       .nav-link { display: none; }
-      .nav-right { gap: 64px; }
+      .nav-right { gap: 12px; }
       .nav-setup { display: none; }
       .nav-gh { display: none; }
       .nav-hamburger { display: flex; align-items: center; }
@@ -293,7 +297,7 @@
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        gap: 64px;
+        gap: 16px;
         padding-bottom: 8px;
       }
       .card-grid > .card-wrapper {
@@ -829,13 +833,13 @@
     .term-flow .hl-pipe { color: #EDE5D8; }
     .term-flow .hl-desc { color: #EDE5D8; }
     .term-flow .hl-monitor { color: #C47B42; }
-    .term-flow .hl-block { color: #ef4444; }
+    .term-flow .hl-block { color: #C45050; }
     .term-flow .hl-change { color: #C47B42; }
-    .arch-latency { font-size: 0.68rem; color: #22c55e; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); padding: 0.15rem 0.55rem; border-radius: 20px; font-family: 'JetBrains Mono', monospace; animation: latency-pulse 2.8s ease-in-out infinite; }
+    .arch-latency { font-size: 0.68rem; color: #3B9494; background: rgba(59,148,148,0.1); border: 1px solid rgba(59,148,148,0.25); padding: 0.15rem 0.55rem; border-radius: 20px; font-family: 'JetBrains Mono', monospace; animation: latency-pulse 2.8s ease-in-out infinite; }
 
     @keyframes latency-pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.35); }
-      50% { box-shadow: 0 0 0 3px rgba(34,197,94,0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(59,148,148,0.35); }
+      50% { box-shadow: 0 0 0 3px rgba(59,148,148,0); }
     }
 
     .arch-judge-note {
@@ -899,7 +903,7 @@
       align-items: flex-end;
       gap: 8px;
     }
-    .footer-links { display: flex; gap: 64px; }
+    .footer-links { display: flex; gap: 24px; }
     .footer-links a { color: #EDE5D8; font-size: 0.85rem; line-height: 1.7; }
     .footer-links a:hover { color: #C8C0B4; }
 
@@ -934,7 +938,7 @@
     .testimonial-attribution {
       display: flex;
       align-items: center;
-      gap: 64px;
+      gap: 12px;
     }
     .testimonial-photo {
       width: 48px;
@@ -965,21 +969,27 @@
       font-size: 0.75rem; font-weight: 600; color: #3B9494; letter-spacing: 0.08em;
     }
 
-    /* ========== SETUP GRID ========== */
-    .setup-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px;
-      max-width: 720px; margin: 0 auto 40px;
+    /* ========== SETUP STEPS ========== */
+    .setup-steps {
+      display: flex; gap: 0; max-width: 720px; margin: 0 auto 40px;
+      border: 1px solid #28243A;
     }
     .setup-step {
-      display: flex; flex-direction: column; gap: 8px;
-      background: #181520; border: 1px solid #28243A; border-radius: 12px; padding: 20px;
+      flex: 1; padding: 24px 20px; border-right: 1px solid #28243A;
     }
+    .setup-step:last-child { border-right: none; }
     .setup-step-num {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #C47B42; font-weight: 700;
+      font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; color: #C47B42; font-weight: 700;
+      margin-bottom: 10px; line-height: 1;
     }
-    .setup-step-title { font-weight: 700; font-size: 1rem; color: #EDE5D8; }
-    .setup-step-desc { font-size: 0.85rem; color: #EDE5D8; line-height: 1.5; }
-    .setup-step-time { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #C47B42; line-height: 1.7; }
+    .setup-step-title { font-weight: 700; font-size: 0.95rem; color: #EDE5D8; margin-bottom: 6px; }
+    .setup-step-desc { font-size: 0.82rem; color: #B0A8BE; line-height: 1.5; margin-bottom: 8px; }
+    .setup-step-time { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #C47B42; }
+    @media (max-width: 640px) {
+      .setup-steps { flex-direction: column; }
+      .setup-step { border-right: none; border-bottom: 1px solid #28243A; }
+      .setup-step:last-child { border-bottom: none; }
+    }
 
     /* ========== FOOTER BOTTOM ========== */
     .footer-bottom {
@@ -1163,7 +1173,7 @@
       <h1>Claude Code builds.<br><span style="color: #C47B42;">You</span> stay in control.</h1>
       <p class="hero-oneliner">Open-source proxy that sits between Claude Code and the Anthropic API. Logs every request. Enforces your rules.</p>
 
-      <div class="cta-row" style="justify-content: center; gap: 64px; margin-top: 1.5rem;">
+      <div class="cta-row" style="justify-content: center; gap: 16px; margin-top: 1.5rem;">
         <button type="button" class="btn btn-primary" onclick="openApplyForm('applyBetaForm')" aria-controls="applyBetaForm" aria-expanded="false">
           Apply for beta
         </button>
@@ -1190,12 +1200,12 @@
       
       <div class="ux-grid">
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #ef4444; letter-spacing: 0.18em; margin-bottom: 12px;">without luthien</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #C45050; letter-spacing: 0.18em; margin-bottom: 12px;">without luthien</div>
           <img src="v12/terminal-without-luthien.svg" alt="Without Luthien: Claude Code ignores your CLAUDE.md rules and you correct it manually" style="width: 100%; border-radius: 8px; border: 1px solid #28243A;">
           <p class="demo-annotation">Claude ignores your CLAUDE.md rule and you correct it manually.</p>
         </div>
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #22c55e; letter-spacing: 0.18em; margin-bottom: 12px;">with luthien</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #3B9494; letter-spacing: 0.18em; margin-bottom: 12px;">with luthien</div>
           <img src="v12/terminal-with-luthien.svg" alt="With Luthien: Luthien catches the violation and auto-corrects" style="width: 100%; border-radius: 8px; border: 1px solid #28243A;">
           <p class="demo-annotation">Luthien catches the violation and auto-corrects. No human intervention needed.</p>
         </div>
@@ -1238,9 +1248,9 @@
     <div class="term-arch">
       <div class="term-flow">
         <div class="term-chrome">
-          <span class="term-chrome-dot" style="background:#ef4444;"></span>
-          <span class="term-chrome-dot" style="background:#f59e0b;"></span>
-          <span class="term-chrome-dot" style="background:#22c55e;"></span>
+          <span class="term-chrome-dot" style="background:#C45050;"></span>
+          <span class="term-chrome-dot" style="background:#C47B42;"></span>
+          <span class="term-chrome-dot" style="background:#3B9494;"></span>
           <span class="term-chrome-title">luthien-proxy — request pipeline</span>
         </div>
         <div class="term-flow-body"><pre role="img" aria-label="Architecture: You connect to Claude Code, which connects to Luthien (the proxy), which connects to the Anthropic API. Luthien logs every request and response in 5-15ms and enforces your configured rules: did it do what you asked, did it follow CLAUDE.md, did it do something suspicious.">&#x1F9D1;&#x200D;&#x1F4BB; <span class="hl-you">You</span> <span class="hl-arrow">&hArr;</span> &#x1F4BB; <span class="hl-you">Claude Code</span> <span class="hl-arrow">&hArr;</span> <span class="hl-luthien">Luthien</span> <span class="hl-arrow">&hArr;</span> &#x2601;&#xFE0F; <span class="hl-api">Anthropic API</span>
@@ -1291,28 +1301,28 @@
   <div class="container">
     <h2 style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #EDE5D8; letter-spacing: -0.01em; margin-bottom: 24px; text-align: center;">Up and running in minutes.</h2>
     
-    <div class="setup-grid">
+    <div class="setup-steps">
       <div class="setup-step">
-        <div class="setup-step-num">step 01</div>
+        <div class="setup-step-num">01</div>
         <div class="setup-step-title">Install</div>
-        <p class="setup-step-desc">Works with your existing Claude Code setup.</p>
+        <p class="setup-step-desc">Works with your existing Claude Code setup. 2 env vars.</p>
         <div class="setup-step-time">~2 mins</div>
       </div>
       <div class="setup-step">
-        <div class="setup-step-num">step 02</div>
-        <div class="setup-step-title">Configure your rules</div>
+        <div class="setup-step-num">02</div>
+        <div class="setup-step-title">Configure rules</div>
         <p class="setup-step-desc">Define what Claude is and isn't allowed to do.</p>
         <div class="setup-step-time">~5 mins</div>
       </div>
       <div class="setup-step">
-        <div class="setup-step-num">step 03</div>
+        <div class="setup-step-num">03</div>
         <div class="setup-step-title">Let Claude build</div>
         <p class="setup-step-desc">Luthien runs in the background. Your rules get enforced.</p>
-        <div class="setup-step-time">~from now on</div>
+        <div class="setup-step-time">from now on</div>
       </div>
     </div>
 
-    <div class="cta-row" style="justify-content: center; gap: 64px;">
+    <div class="cta-row" style="justify-content: center; gap: 16px;">
       <button type="button" class="btn btn-primary" onclick="openApplyForm('applyBetaFormBottom')" aria-controls="applyBetaFormBottom" aria-expanded="false">
         Apply for beta
       </button>
@@ -1681,6 +1691,7 @@
       if (!form) return;
       form.classList.add('open');
       form.setAttribute('aria-hidden', 'false');
+      form.setAttribute('tabindex', '-1');
       var btn = document.querySelector('button[aria-controls="' + formId + '"]');
       if (btn) btn.setAttribute('aria-expanded', 'true');
       // Wait for the max-height expand transition (~500ms) so the form has its
@@ -1689,6 +1700,7 @@
       // clicks the bottom CTA — it only scrolls the minimum needed.
       setTimeout(function () {
         form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        form.focus();
       }, 520);
     }
     // Auto-open the hero form when landing on the page with #apply (e.g. from nav on about/blog)
