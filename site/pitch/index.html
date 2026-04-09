@@ -488,42 +488,6 @@
       margin-top: 4px;
     }
 
-    /* ============ FUNDING BARS ============ */
-    .fund-bar {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .fund-bar-label {
-      font-size: 0.9rem;
-      color: var(--text);
-      min-width: 180px;
-      text-align: right;
-    }
-
-    .fund-bar-track {
-      flex: 1;
-      height: 28px;
-      background: var(--bg-elevated);
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .fund-bar-fill {
-      height: 100%;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--bg);
-    }
-
     /* ============ PROGRESS BAR ============ */
     .progress-bar {
       position: fixed;
@@ -840,8 +804,6 @@
         top: 4px;
         transform: none;
       }
-      .fund-bar { flex-direction: column; gap: 4px; }
-      .fund-bar-label { min-width: auto; text-align: left; }
     }
 
     @media (max-width: 600px) {
@@ -1620,46 +1582,6 @@
     </div>
   </div>
 
-  <!-- ======== SLIDE 12: PRIOR FUNDING ======== -->
-  <div class="slide" data-slide="11">
-    <div class="slide-inner">
-      <div class="label anim-up">Prior Funding</div>
-      <h1 class="headline headline-lg anim-up delay-1">$220K in pre-accelerator grants</h1>
-      <div class="spacer-lg"></div>
-      <div class="flex-col gap-md anim-up delay-2">
-        <div class="fund-bar">
-          <div class="fund-bar-label">AISTOF Seed Grant</div>
-          <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="width: 68%; background: var(--blue);">$150K</div>
-          </div>
-        </div>
-        <div class="fund-bar">
-          <div class="fund-bar-label">Seldon Labs (Apart Research)</div>
-          <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="width: 23%; background: var(--green);">$50K</div>
-          </div>
-        </div>
-        <div class="fund-bar">
-          <div class="fund-bar-label">Manifund + DonorBox + ACH</div>
-          <div class="fund-bar-track">
-            <div class="fund-bar-fill" style="width: 17%; background: var(--text-dim);">$38K</div>
-          </div>
-        </div>
-      </div>
-      <div class="spacer-lg"></div>
-      <div class="grid-2 anim-up delay-3">
-        <div class="card card-accent">
-          <div class="card-title">Seldon Labs Follow-On</div>
-          <div class="card-body"><span class="white" style="font-weight: 600;">$500K</span> follow-on commitment</div>
-        </div>
-        <div class="card">
-          <div class="card-title" style="color: var(--text-dim);">AISTOF Status</div>
-          <div class="card-body">Pending IRS approval for grant disbursement</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ======== SLIDE 13: THE ASK ======== -->
   <div class="slide" data-slide="12">
     <div class="slide-inner" style="text-align: center;">
@@ -1682,11 +1604,6 @@
           <div class="card-title">Infrastructure</div>
           <div class="card-body">Operations, hosting, compliance tooling</div>
         </div>
-      </div>
-      <div class="spacer-lg"></div>
-      <div class="anim-up delay-4" style="display: inline-block; border: 1px solid var(--green); border-radius: 3px; padding: 20px 40px; background: var(--green-dim);">
-        <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Milestone</div>
-        <div style="font-family: var(--sans); font-size: 1.6rem; color: var(--white);">$250K MRR within 18 months</div>
       </div>
     </div>
   </div>
