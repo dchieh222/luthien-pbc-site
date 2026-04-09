@@ -1208,7 +1208,7 @@
       <p class="hero-oneliner">Open-source proxy that sits between Claude Code and the Anthropic API. Logs every request. Enforces your rules.</p>
 
       <div class="cta-row" style="justify-content: center; gap: 12px; margin-top: 1.5rem;">
-        <button type="button" class="btn btn-primary" onclick="openApplyForm()" aria-controls="applyBetaForm" aria-expanded="false">
+        <button type="button" class="btn btn-primary" onclick="openApplyForm('applyBetaForm')" aria-controls="applyBetaForm" aria-expanded="false">
           Apply for beta
         </button>
       </div>
@@ -1355,12 +1355,17 @@
       </div>
     </div>
 
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-      <button type="button" class="btn btn-primary" onclick="openApplyForm()" aria-controls="applyBetaForm">
+    <div class="cta-row" style="justify-content: center; gap: 12px;">
+      <button type="button" class="btn btn-primary" onclick="openApplyForm('applyBetaFormBottom')" aria-controls="applyBetaFormBottom" aria-expanded="false">
         Apply for beta
       </button>
-      <p class="hero-cta-note">We'll help set Luthien up in your dev environment for you and your org.</p>
-      <span class="cli-hint" style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #71717a; text-align: center;">Private beta &middot; Linux &amp; macOS</span>
+    </div>
+    <p class="hero-cta-note">We'll help set Luthien up in your dev environment for you and your org.</p>
+
+    <div id="applyBetaFormBottom" class="apply-beta-form" aria-hidden="true">
+      <iframe data-tally-src="https://tally.so/embed/EkJl0N?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
+              loading="lazy" width="100%" height="400"
+              title="Apply for Luthien beta"></iframe>
     </div>
   </div>
 </section>
@@ -1775,21 +1780,22 @@
 
   <!-- Apply-for-beta inline form reveal -->
   <script>
-    function openApplyForm() {
-      var form = document.getElementById('applyBetaForm');
+    function openApplyForm(formId) {
+      formId = formId || 'applyBetaForm';
+      var form = document.getElementById(formId);
       if (!form) return;
       form.classList.add('open');
       form.setAttribute('aria-hidden', 'false');
-      var heroBtn = document.querySelector('.hero .cta-row button[aria-controls="applyBetaForm"]');
-      if (heroBtn) heroBtn.setAttribute('aria-expanded', 'true');
+      var btn = document.querySelector('button[aria-controls="' + formId + '"]');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
       setTimeout(function () {
         form.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 120);
     }
-    // Auto-open the form when landing on the page with #apply (e.g. from nav on about/blog)
+    // Auto-open the hero form when landing on the page with #apply (e.g. from nav on about/blog)
     if (window.location.hash === '#apply') {
       window.addEventListener('load', function () {
-        setTimeout(openApplyForm, 300);
+        setTimeout(function () { openApplyForm('applyBetaForm'); }, 300);
       });
     }
   </script>
