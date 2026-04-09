@@ -24,3 +24,14 @@ package-lock.json
 dist/
 .cache/
 /dev
+
+# Claude Code
+.claude/
+.agents/
+skills-lock.json
+
+# Playwright
+.playwright-mcp/
+
+# Screenshots
+pitch-screenshots/
