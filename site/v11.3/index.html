@@ -15,14 +15,14 @@
   <meta name="twitter:title" content="Luthien - AI Control for Claude Code">
   <meta name="twitter:description" content="Open-source proxy that enforces rules on Claude Code. Catches context rot, ignored instructions, and suspicious behavior.">
 
-  <meta name="theme-color" content="#141216">
+  <meta name="theme-color" content="#09090b">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2309090b'/%3E%3Ctext x='16' y='23' font-family='Inter,system-ui,sans-serif' font-size='20' font-weight='700' fill='%236b9fff' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Lora:wght@400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,17 +30,17 @@
     html { scroll-behavior: smooth; font-size: 17.6px; overflow-y: scroll; }
 
     body {
-      background: #141216;
-      color: #EDE5D8;
-      font-family: 'Lora', Georgia, serif;
+      background: #09090b;
+      color: #e4e4e7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
     h1, h2, h3 {
-      font-family: 'Raleway', sans-serif;
-      color: #EDE5D8;
+      font-family: 'Inter', sans-serif;
+      color: #fafafa;
       line-height: 1.2;
     }
 
@@ -48,8 +48,8 @@
       font-family: 'JetBrains Mono', 'Fira Code', monospace;
     }
 
-    a { color: #3B9494; text-decoration: none; }
-    a:hover { color: #4AADAD; }
+    a { color: #6b9fff; text-decoration: none; }
+    a:hover { color: #93b8ff; }
 
     .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
     .hero .container {
@@ -57,11 +57,11 @@
     }
 
     .section-label {
-      font-family: 'Raleway', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: #EDE5D8;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #a1a1aa;
       margin-bottom: 20px;
       max-width: 960px;
       margin-left: auto;
@@ -77,7 +77,7 @@
 
     hr.divider {
       border: none;
-      border-top: 1px solid #28243A;
+      border-top: 1px solid #27272a;
       margin: 0;
     }
 
@@ -95,8 +95,8 @@
       align-items: center;
       gap: 8px;
       padding: 10px 20px;
-      border-radius: 0;
-      font-family: 'Raleway', sans-serif;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       font-size: 0.875rem;
       text-decoration: none;
@@ -105,11 +105,11 @@
       border: none;
     }
 
-    .btn-primary { background: #3B9494; color: #141216; }
-    .btn-primary:hover { background: #2A8080; color: #141216; }
+    .btn-primary { background: #fafafa; color: #09090b; }
+    .btn-primary:hover { background: #d4d4d8; color: #09090b; }
 
-    .btn-secondary { background: transparent; color: #EDE5D8; border: 1px solid #3B9494; }
-    .btn-secondary:hover { border-color: #4AADAD; color: #4AADAD; }
+    .btn-secondary { background: transparent; color: #fafafa; border: 1px solid #3f3f46; }
+    .btn-secondary:hover { border-color: #6b9fff; color: #6b9fff; }
 
     .btn-group { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
 
@@ -127,7 +127,7 @@
 
     .hero h1 {
  font-size: clamp(2.2rem, 6vw, 4rem);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.025em;
   line-height: 1.1;
   margin-bottom: 16px;
@@ -135,7 +135,7 @@
 
 .hero-oneliner {
   font-size: clamp(1.1rem, 2vw, 1.4rem);
-  color: #EDE5D8;
+  color: #a1a1aa;
   margin-bottom: 24px;
   max-width: 640px;
   margin-left: auto;
@@ -151,12 +151,12 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(20, 18, 22, 0.97);
+      background: rgba(9, 9, 11, 0.97);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid #28243A;
-      padding: 0 3%;
-      height: 58px;
+      border-bottom: 1px solid #1a1a1e;
+      padding: 0 24px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -170,7 +170,12 @@
     }
 
     .nav-wordmark {
-      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #c8c8d0;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
     .nav-right {
@@ -180,40 +185,41 @@
     }
 
     .nav-link {
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
       font-weight: 500;
-      color: #7A7290;
+      color: #a1a1aa;
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .nav-link:hover { color: #EDE5D8; }
-    .nav-link.active { color: #EDE5D8; }
+    .nav-link:hover { color: #fafafa; }
+    .nav-link.active { color: #fafafa; }
 
     .nav-setup {
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
       font-weight: 600;
-      color: #EDE5D8;
+      color: #09090b;
+      background: #fafafa;
       text-decoration: none;
       padding: 5px 14px;
-      border: 1px solid #3B9494;
-      border-radius: 0;
+      border: 1px solid #fafafa;
+      border-radius: 6px;
       transition: all 0.15s;
       cursor: pointer;
     }
-    .nav-setup:hover { border-color: #4AADAD; color: #4AADAD; }
+    .nav-setup:hover { background: #e4e4e7; border-color: #e4e4e7; color: #09090b; }
 
     .nav-gh {
       display: flex;
-      background: #3B9494;
+      background: #fafafa;
       padding: 6px;
-      border-radius: 0;
+      border-radius: 6px;
       transition: background 0.2s;
     }
-    .nav-gh svg { fill: #141216; }
-    .nav-gh:hover { background: #2A8080; }
+    .nav-gh svg { fill: #09090b; }
+    .nav-gh:hover { background: #d4d4d8; }
 
     /* Hamburger menu button (mobile only) */
     .nav-hamburger {
@@ -224,8 +230,8 @@
       padding: 10px;
       margin: -10px;
     }
-    .nav-hamburger svg { fill: #EDE5D8; }
-    .nav-hamburger:hover svg { fill: #EDE5D8; }
+    .nav-hamburger svg { fill: #a1a1aa; }
+    .nav-hamburger:hover svg { fill: #fafafa; }
 
     @media (max-width: 640px) {
       .nav-link { display: none; }
@@ -237,13 +243,13 @@
       /* Mobile menu overlay */
       .nav-right.open {
         position: fixed;
-        top: 58px;
+        top: 48px;
         left: 0;
         right: 0;
-        background: rgba(20, 18, 22, 0.97);
+        background: rgba(9, 9, 11, 0.97);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid #28243A;
+        border-bottom: 1px solid #1a1a1e;
         flex-direction: column;
         padding: 16px 24px;
         gap: 0;
@@ -255,11 +261,11 @@
         padding: 12px 0;
         font-size: 1rem;
         width: 100%;
-        border-bottom: 1px solid #28243A;
+        border-bottom: 1px solid #1a1a1e;
       }
       .nav-right.open .nav-setup {
         border: none;
-        border-bottom: 1px solid #28243A;
+        border-bottom: 1px solid #1a1a1e;
         border-radius: 0;
         padding: 12px 0;
         text-align: left;
@@ -269,7 +275,7 @@
 
     /* ========== MULTI-CARD GRID ========== */
     .card-grid-section {
-      background: #141216;
+      background: #0c0c0f;
     }
 
     .card-grid {
@@ -310,8 +316,8 @@
 
     /* ========== QUOTE CARD BASE ========== */
     .quote-card {
-      background: #181520;
-      border: 1px solid #28243A;
+      background: #18181b;
+      border: 1px solid #27272a;
       border-radius: 8px;
       padding: 12px 14px;
       max-width: 100%;
@@ -325,15 +331,15 @@
 
     .quote-text {
       font-size: 0.95rem;
-      color: #EDE5D8;
+      color: #e4e4e7;
       line-height: 1.45;
       flex-grow: 1;
     }
 
     /* ---- Twitter/X card ---- */
     .quote-card.twitter {
-      background: #1A1729;
-      border: 1px solid #28243A;
+      background: #15202b;
+      border: 1px solid #2f3336;
       border-radius: 10px;
       padding: 12px 14px 20px;
       position: relative;
@@ -353,7 +359,7 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: #28243A;
+      background: #2f3336;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -533,28 +539,28 @@
       padding: 14px 16px;
       position: relative;
     }
-    .quote-card.blog .blog-open-quote { font-size: 2rem; line-height: 0.7; color: #EDE5D8; font-family: Georgia, 'Times New Roman', serif; margin-bottom: 6px; }
+    .quote-card.blog .blog-open-quote { font-size: 2rem; line-height: 0.7; color: #a1a1aa; font-family: Georgia, 'Times New Roman', serif; margin-bottom: 6px; }
     .quote-card.blog .quote-text {
       font-style: normal;
       font-weight: 400;
       font-size: 0.95rem;
       line-height: 1.45;
       font-family: Georgia, 'Times New Roman', serif;
-      color: #EDE5D8;
+      color: #e4e4e7;
     }
     .quote-card.blog .blog-footer {
       margin-top: 8px;
       padding-top: 6px;
       border-top: 1px solid #2c2c2e;
       font-size: 0.8rem;
-      color: #EDE5D8;
-      font-family: 'Raleway', sans-serif;
+      color: #a1a1aa;
+      font-family: 'Inter', sans-serif;
       display: flex;
       align-items: center;
       gap: 5px;
     }
     .quote-card.blog .blog-footer .blog-globe { font-size: 0.85rem; }
-    .quote-card.blog .blog-footer .blog-domain { color: #EDE5D8; font-weight: 500; }
+    .quote-card.blog .blog-footer .blog-domain { color: #a1a1aa; font-weight: 500; }
 
     /* ---- GitHub Issue card ---- */
     .quote-card.github {
@@ -592,9 +598,9 @@
       display: flex;
       align-items: center;
       gap: 3px;
-      color: #EDE5D8;
+      color: #a1a1aa;
       font-size: 0.65rem;
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Inter', sans-serif;
       letter-spacing: 0.02em;
     }
     .quote-card.blog .blog-badge svg { opacity: 0.4; width: 15px; height: 15px; }
@@ -662,10 +668,10 @@
     .filter-pill {
       padding: 10px 14px;
       border-radius: 20px;
-      border: 1px solid #28243A;
+      border: 1px solid #27272a;
       background: transparent;
-      color: #7A7290;
-      font-family: 'Raleway', sans-serif;
+      color: #a1a1aa;
+      font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       font-weight: 500;
       cursor: pointer;
@@ -675,18 +681,18 @@
     }
 
     .filter-pill:hover {
-      border-color: #28243A;
-      color: #7A7290;
+      border-color: #3f3f46;
+      color: #a1a1aa;
     }
 
     .filter-pill.active {
-      border-color: var(--pill-color, #3B9494);
-      color: var(--pill-color, #3B9494);
-      background: var(--pill-bg, rgba(59, 148, 148, 0.1));
+      border-color: var(--pill-color, #6b9fff);
+      color: var(--pill-color, #6b9fff);
+      background: var(--pill-bg, rgba(107, 159, 255, 0.1));
     }
 
     .filter-pill[data-filter="all"].active {
-      --pill-color: #EDE5D8;
+      --pill-color: #fafafa;
       --pill-bg: rgba(250, 250, 250, 0.08);
     }
     .filter-pill[data-filter="deleted"].active {
@@ -698,8 +704,8 @@
       --pill-bg: rgba(245, 158, 11, 0.1);
     }
     .filter-pill[data-filter="hallucinated"].active {
-      --pill-color: #3B9494;
-      --pill-bg: rgba(59, 148, 148, 0.1);
+      --pill-color: #6b9fff;
+      --pill-bg: rgba(107, 159, 255, 0.1);
     }
     .filter-pill[data-filter="security"].active {
       --pill-color: #34d399;
@@ -742,9 +748,9 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: 1px solid #28243A;
+      border: 1px solid #27272a;
       background: transparent;
-      color: #EDE5D8;
+      color: #a1a1aa;
       font-size: 1rem;
       cursor: pointer;
       display: flex;
@@ -755,8 +761,8 @@
     }
 
     .card-nav-btn:hover:not(:disabled) {
-      border-color: #3B9494;
-      color: #3B9494;
+      border-color: #6b9fff;
+      color: #6b9fff;
     }
 
     .card-nav-btn:disabled {
@@ -767,7 +773,7 @@
     .card-nav-count {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.7rem;
-      color: #EDE5D8;
+      color: #a1a1aa;
       white-space: nowrap;
     }
 
@@ -786,36 +792,36 @@
     .demo-annotation {
       margin-top: 10px;
       font-size: 0.82rem;
-      color: #EDE5D8;
+      color: #a1a1aa;
       line-height: 1.5;
     }
 
     .term-arch { max-width: 880px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; }
-    .term-flow { background: #111; border: 1px solid #28243A; border-radius: 10px; overflow: hidden; }
+    .term-flow { background: #111; border: 1px solid #27272a; border-radius: 10px; overflow: hidden; }
     .term-chrome {
       display: flex;
       align-items: center;
       gap: 7px;
       padding: 10px 16px;
-      background: #141216;
-      border-bottom: 1px solid #28243A;
+      background: #18181b;
+      border-bottom: 1px solid #27272a;
     }
     .term-chrome-dot { width: 11px; height: 11px; border-radius: 50%; }
     .term-chrome-title {
       margin-left: auto;
       font-size: 0.68rem;
-      color: #EDE5D8;
+      color: #3f3f46;
       letter-spacing: 0.02em;
     }
     .term-flow-body { padding: 1.5rem 1.75rem; overflow-x: auto; display: flex; justify-content: center; }
-    .term-flow pre { margin: 0; font-size: 0.9rem; line-height: 1.7; color: #EDE5D8; white-space: pre; }
-    .term-flow .hl-you { color: #EDE5D8; }
-    .term-flow .hl-luthien { color: #3B9494; font-weight: 700; }
-    .term-flow .hl-api { color: #EDE5D8; }
-    .term-flow .hl-arrow { color: #EDE5D8; }
-    .term-flow .hl-pipe { color: #EDE5D8; }
-    .term-flow .hl-desc { color: #EDE5D8; }
-    .term-flow .hl-monitor { color: #3B9494; }
+    .term-flow pre { margin: 0; font-size: 0.9rem; line-height: 1.7; color: #a1a1aa; white-space: pre; }
+    .term-flow .hl-you { color: #a1a1aa; }
+    .term-flow .hl-luthien { color: #6b9fff; font-weight: 700; }
+    .term-flow .hl-api { color: #a1a1aa; }
+    .term-flow .hl-arrow { color: #71717a; }
+    .term-flow .hl-pipe { color: #71717a; }
+    .term-flow .hl-desc { color: #a1a1aa; }
+    .term-flow .hl-monitor { color: #6b9fff; }
     .term-flow .hl-block { color: #ef4444; }
     .term-flow .hl-change { color: #f59e0b; }
     .arch-latency { font-size: 0.68rem; color: #22c55e; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); padding: 0.15rem 0.55rem; border-radius: 20px; font-family: 'JetBrains Mono', monospace; animation: latency-pulse 2.8s ease-in-out infinite; }
@@ -828,11 +834,11 @@
     .arch-judge-note {
       margin-top: 16px;
       font-size: 0.9rem;
-      color: #EDE5D8;
+      color: #a1a1aa;
       line-height: 1.65;
       max-width: 700px;
       text-align: left;
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
 
     @media (max-width: 600px) {
@@ -858,27 +864,26 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      background: #0E0C16;
-      border: 1px solid #28243A;
-      border-left: 2px solid #3B9494;
-      border-radius: 0;
+      background: #111113;
+      border: 1px solid #3f3f46;
+      border-radius: 8px;
       padding: 15px 22px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 1rem;
-      color: #EDE5D8;
+      color: #e4e4e7;
       cursor: pointer;
       transition: border-color 0.2s, background 0.3s, box-shadow 0.2s;
       white-space: nowrap;
-      box-shadow: 0 0 0 0px rgba(59, 148, 148, 0);
+      box-shadow: 0 0 0 0px rgba(107, 159, 255, 0);
     }
     .cli-install:hover {
-      border-color: #3B9494;
-      box-shadow: 0 0 0 3px rgba(59, 148, 148, 0.08);
+      border-color: #6b9fff;
+      box-shadow: 0 0 0 3px rgba(107, 159, 255, 0.08);
     }
     .cli-install:active { transform: scale(0.99); }
-    .cli-prompt { color: #3B9494; user-select: none; font-weight: 700; }
-    .cli-copy { color: #EDE5D8; margin-left: 16px; flex-shrink: 0; transition: color 0.2s; }
-    .cli-install:hover .cli-copy { color: #EDE5D8; }
+    .cli-prompt { color: #6b9fff; user-select: none; font-weight: 700; }
+    .cli-copy { color: #52525b; margin-left: 16px; flex-shrink: 0; transition: color 0.2s; }
+    .cli-install:hover .cli-copy { color: #a1a1aa; }
 
     @media (max-width: 480px) {
       .cta-row { flex-direction: column; align-items: center; }
@@ -889,7 +894,7 @@
 
     /* ========== FOOTER ========== */
     footer {
-      border-top: 1px solid #28243A;
+      border-top: 1px solid #1a1a1e;
       padding: 32px 0;
       margin-top: 48px;
     }
@@ -904,9 +909,14 @@
       gap: 8px;
     }
     .footer-wordmark {
-      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #c8c8d0;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
-    .footer-year { font-family: 'Raleway', sans-serif; color: #EDE5D8; font-size: 0.8rem; line-height: 1.7; }
+    .footer-year { color: #71717a; font-size: 0.8rem; line-height: 1.7; }
     .footer-right {
       display: flex;
       flex-direction: column;
@@ -914,8 +924,8 @@
       gap: 8px;
     }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: #EDE5D8; font-size: 0.85rem; line-height: 1.7; }
-    .footer-links a:hover { color: #C8C0B4; }
+    .footer-links a { color: #a1a1aa; font-size: 0.85rem; line-height: 1.7; }
+    .footer-links a:hover { color: #d4d4d8; }
 
     @media (max-width: 640px) {
       .footer-inner {
@@ -934,14 +944,14 @@
     .testimonial-card {
       max-width: 640px;
       margin: 0 auto;
-      border-left: 3px solid #3B9494;
+      border-left: 3px solid #6b9fff;
       padding: 24px 28px;
-      background: #181520;
+      background: #18181b;
       border-radius: 0 8px 8px 0;
     }
     .testimonial-text {
       font-size: 1rem;
-      color: #EDE5D8;
+      color: #e4e4e7;
       line-height: 1.6;
       font-style: italic;
       margin-bottom: 20px;
@@ -959,25 +969,25 @@
     }
     .testimonial-name {
       font-size: 0.9rem;
-      color: #EDE5D8;
+      color: #fafafa;
       font-weight: 600;
     }
     .testimonial-title {
       font-size: 0.8rem;
-      color: #EDE5D8;
+      color: #a1a1aa;
     }
 
     /* ========== BADGE ========== */
     .badge-beta {
       display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(59, 148, 148, 0.1); border: 1px solid rgba(59, 148, 148, 0.3);
+      background: rgba(107, 159, 255, 0.1); border: 1px solid rgba(107, 159, 255, 0.3);
       border-radius: 20px; padding: 4px 12px; margin-bottom: 20px;
     }
     .badge-beta .badge-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: #3B9494; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%; background: #6b9fff; display: inline-block;
     }
     .badge-beta .badge-text {
-      font-size: 0.75rem; font-weight: 600; color: #3B9494; letter-spacing: 0.08em;
+      font-size: 0.75rem; font-weight: 600; color: #6b9fff; letter-spacing: 0.08em;
     }
 
     /* ========== SETUP GRID ========== */
@@ -987,21 +997,21 @@
     }
     .setup-step {
       display: flex; flex-direction: column; gap: 8px;
-      background: #181520; border: 1px solid #28243A; border-radius: 12px; padding: 20px;
+      background: #18181b; border: 1px solid #27272a; border-radius: 12px; padding: 20px;
     }
     .setup-step-num {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #3B9494; font-weight: 700;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b9fff; font-weight: 700;
     }
-    .setup-step-title { font-weight: 700; font-size: 1rem; color: #EDE5D8; }
-    .setup-step-desc { font-size: 0.85rem; color: #EDE5D8; line-height: 1.5; }
-    .setup-step-time { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #EDE5D8; line-height: 1.7; }
+    .setup-step-title { font-weight: 700; font-size: 1rem; color: #fafafa; }
+    .setup-step-desc { font-size: 0.85rem; color: #a1a1aa; line-height: 1.5; }
+    .setup-step-time { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #71717a; line-height: 1.7; }
 
     /* ========== FOOTER BOTTOM ========== */
     .footer-bottom {
       display: flex; justify-content: space-between; align-items: center; margin-top: 12px;
     }
     .footer-version {
-      font-size: 0.7rem; color: #28243A; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: #3f3f46; font-family: 'JetBrains Mono', monospace;
     }
 
     /* ========== HERO ENTRANCE ANIMATION ========== */
@@ -1024,16 +1034,6 @@
     .hero .cta-row {
       opacity: 0;
       animation: heroFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-    }
-
-    .quote-card[data-url] {
-      cursor: pointer;
-    }
-
-    .quote-card[data-url]:active {
-      transform: translateY(0);
-      box-shadow: none;
-      opacity: 0.85;
     }
 
     /* ========== APPLY FOR BETA INLINE FORM ========== */
@@ -1080,9 +1080,9 @@
 
     /* ========== CLI INSTALL COPY FEEDBACK ========== */
     @keyframes cli-copy-flash {
-      0%   { background: #0E0C16; }
+      0%   { background: #111113; }
       25%  { background: rgba(34, 197, 94, 0.09); }
-      100% { background: #0E0C16; }
+      100% { background: #111113; }
     }
     .cli-install.copied {
       border-color: #22c55e;
@@ -1103,6 +1103,16 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
+    .quote-card[data-url] {
+      cursor: pointer;
+    }
+
+    .quote-card[data-url]:active {
+      transform: translateY(0);
+      box-shadow: none;
+      opacity: 0.85;
+    }
+
     /* ========== BUTTON PRESS EFFECT ========== */
     .btn {
       transition: all 0.2s, transform 0.1s;
@@ -1113,10 +1123,10 @@
 
     /* ========== NAV LOGO HOVER ========== */
     .nav-wordmark {
-      transition: opacity 0.2s;
+      transition: color 0.2s;
     }
     .nav-left:hover .nav-wordmark {
-      opacity: 0.8;
+      color: #fafafa;
     }
 
     /* ========== FOOTER LINK UNDERLINE ANIMATION ========== */
@@ -1130,7 +1140,7 @@
       bottom: 0;
       width: 100%;
       height: 1px;
-      background: #C8C0B4;
+      background: #d4d4d8;
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.2s ease;
@@ -1141,7 +1151,7 @@
 
     /* ========== FOCUS VISIBLE ========== */
     :focus-visible {
-      outline: 2px solid #3B9494;
+      outline: 2px solid #6b9fff;
       outline-offset: 2px;
     }
     .btn:focus-visible,
@@ -1152,7 +1162,7 @@
     .nav-setup:focus-visible,
     .nav-gh:focus-visible,
     .nav-hamburger:focus-visible {
-      outline: 2px solid #3B9494;
+      outline: 2px solid #6b9fff;
       outline-offset: 2px;
       border-radius: 4px;
     }
@@ -1177,7 +1187,7 @@
   <!-- TOP NAV -->
   <nav class="top-nav">
     <a href="index.html" class="nav-left">
-      <img src="v12/luthlogo.svg" alt="Luthien" class="nav-wordmark" style="height: 38px; width: auto; display: block;">
+      <span class="nav-wordmark">Luthien</span>
     </a>
     <div class="nav-right" id="navRight">
       <a href="index.html" class="nav-link active">home</a>
@@ -1185,7 +1195,7 @@
       <a href="blog.html" class="nav-link">blog</a>
       <a href="#apply" class="nav-setup" onclick="event.preventDefault(); openApplyForm();">Apply for beta</a>
     </div>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect y="3" width="20" height="2" rx="1" fill="#EDE5D8"/><rect y="9" width="20" height="2" rx="1" fill="#EDE5D8"/><rect y="15" width="20" height="2" rx="1" fill="#EDE5D8"/></svg></button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect y="3" width="20" height="2" rx="1" fill="#a1a1aa"/><rect y="9" width="20" height="2" rx="1" fill="#a1a1aa"/><rect y="15" width="20" height="2" rx="1" fill="#a1a1aa"/></svg></button>
   </nav>
 
   <main>
@@ -1212,7 +1222,6 @@
       </div>
     </div>
   </div>
-
 </section>
  
 
@@ -1225,12 +1234,12 @@
       <div class="ux-grid">
         <div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #ef4444; letter-spacing: 0.18em; margin-bottom: 12px;">without luthien</div>
-          <img src="v12/terminal-without-luthien.svg" alt="Without Luthien: Claude Code ignores your CLAUDE.md rules and you correct it manually" style="width: 100%; border-radius: 8px; border: 1px solid #28243A;">
+          <img src="terminal-without-luthien.svg" alt="Without Luthien: Claude Code ignores your CLAUDE.md rules and you correct it manually" style="width: 100%; border-radius: 8px; border: 1px solid #27272a;">
           <p class="demo-annotation">Claude ignores your CLAUDE.md rule and you correct it manually.</p>
         </div>
         <div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; color: #22c55e; letter-spacing: 0.18em; margin-bottom: 12px;">with luthien</div>
-          <img src="v12/terminal-with-luthien.svg" alt="With Luthien: Luthien catches the violation and auto-corrects" style="width: 100%; border-radius: 8px; border: 1px solid #28243A;">
+          <img src="terminal-with-luthien.svg" alt="With Luthien: Luthien catches the violation and auto-corrects" style="width: 100%; border-radius: 8px; border: 1px solid #27272a;">
           <p class="demo-annotation">Luthien catches the violation and auto-corrects. No human intervention needed.</p>
         </div>
       </div>
@@ -1244,7 +1253,7 @@
   <section class="card-grid-section section-reveal" id="problem" style="padding-top: 32px; padding-bottom: 32px;">
     <div class="section-label">problem</div>
     <div class="container">
-      <h2 style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #EDE5D8; letter-spacing: -0.01em; margin-bottom: 20px; text-align: left;">Claude Code does weird and lazy stuff sometimes.</h2>
+      <h2 style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #fafafa; letter-spacing: -0.01em; margin-bottom: 20px; text-align: left;">Claude Code does weird and lazy stuff sometimes.</h2>
 
       <!-- Filter pills -->
       <div class="filter-bar" id="filterBar"></div>
@@ -1289,7 +1298,7 @@
       </div>
       <p class="arch-judge-note">Luthien can call a separate model to check whether each response follows your rules. Runs alongside normal requests, adding almost no delay. When Claude Code compacts or starts a new session, Luthien still remembers. Your rules stay enforced from first prompt to last.</p>
       <p class="arch-judge-note" style="margin-top: 0.5rem;">Uses your existing Anthropic subscription via OAuth. Luthien never sees your API key and there are no extra charges.</p>
-      <a href="https://github.com/LuthienResearch/luthien-proxy?tab=readme-ov-file#what-can-it-do" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #3B9494;">
+      <a href="https://github.com/LuthienResearch/luthien-proxy?tab=readme-ov-file#what-can-it-do" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b9fff;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         How to set up a custom policy
       </a>
@@ -1300,7 +1309,7 @@
 <hr class="divider">
 
 <!-- EARLY FEEDBACK -->
-  <section id="quotes" class="section-reveal" style="padding-top: 32px; padding-bottom: 32px;">
+  <section id="quotes" class="section-reveal" style="padding-top: 32px; padding-bottom: 32px; background: #0c0c0f;">
     <div class="section-label">early feedback</div>
     <div class="container">
       <div class="testimonial-card">
@@ -1323,7 +1332,7 @@
 <section id="setup" class="section-reveal" style="padding-top: 32px; padding-bottom: 40px;">
   <div class="section-label">get started</div>
   <div class="container">
-    <h2 style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #EDE5D8; letter-spacing: -0.01em; margin-bottom: 24px; text-align: center;">Up and running in minutes.</h2>
+    <h2 style="font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 700; color: #fafafa; letter-spacing: -0.01em; margin-bottom: 24px; text-align: center;">Up and running in minutes.</h2>
     
     <div class="setup-grid">
       <div class="setup-step">
@@ -1369,12 +1378,12 @@
       <div class="footer-inner">
         <div class="footer-brand" style="flex-direction: column; align-items: flex-start; gap: 6px;">
           <div style="display: flex; align-items: center; gap: 8px;">
-            <img src="v12/luthlogo.svg" alt="Luthien" class="footer-wordmark" style="height: 34px; width: auto; display: block;">
+            <span class="footer-wordmark">Luthien</span>
             <span class="footer-year">&middot; 2026</span>
           </div>
           <a href="https://www.youtube.com/watch?v=YzjvBw96kas" target="_blank" rel="noopener"
-             style="font-family: 'Raleway', sans-serif; font-size: 0.75rem; font-style: italic; color: #D3D3D3; text-decoration: none; transition: color 0.2s;"
-             onmouseover="this.style.color='#EDE5D8'" onmouseout="this.style.color='#EDE5D8'">
+             style="font-family: 'Inter', sans-serif; font-size: 0.75rem; font-style: italic; color: #D3D3D3; text-decoration: none; transition: color 0.2s;"
+             onmouseover="this.style.color='#fafafa'" onmouseout="this.style.color='#e4e4e7'">
             Power is nothing without control.
           </a>
         </div>
@@ -1385,7 +1394,7 @@
             <a href="https://www.youtube.com/@LuthienControl" target="_blank" rel="noopener">YouTube</a>
             <a href="mailto:contact@luthienresearch.org">Email</a>
           </div>
-          <span class="footer-version">v12</span>
+          <span class="footer-version">v11.3</span>
         </div>
       </div>
     </div>
@@ -1579,7 +1588,7 @@
           case "blog":
             var blogDomain = q.sourceUrl ? new URL(q.sourceUrl).hostname.replace('www.', '') : q.source;
             return '<div class="quote-card blog">' +
-              '<span class="blog-badge"><svg width="16" height="10" viewBox="0 0 1043.63 592.71" fill="#EDE5D8"><path d="M588.67 296.36c0 163.67-131.78 296.35-294.33 296.35S0 460 0 296.36 131.78 0 294.34 0s294.33 132.69 294.33 296.36"/><path d="M911.56 296.36c0 154.06-65.89 278.86-147.17 278.86s-147.17-124.8-147.17-278.86S683.11 17.5 764.39 17.5s147.17 124.8 147.17 278.86"/><path d="M1043.63 296.36c0 138-23.17 249.94-51.76 249.94s-51.75-111.91-51.75-249.94 23.17-249.94 51.75-249.94 51.76 111.9 51.76 249.94"/></svg></span>' +
+              '<span class="blog-badge"><svg width="16" height="10" viewBox="0 0 1043.63 592.71" fill="#71717a"><path d="M588.67 296.36c0 163.67-131.78 296.35-294.33 296.35S0 460 0 296.36 131.78 0 294.34 0s294.33 132.69 294.33 296.36"/><path d="M911.56 296.36c0 154.06-65.89 278.86-147.17 278.86s-147.17-124.8-147.17-278.86S683.11 17.5 764.39 17.5s147.17 124.8 147.17 278.86"/><path d="M1043.63 296.36c0 138-23.17 249.94-51.76 249.94s-51.75-111.91-51.75-249.94 23.17-249.94 51.75-249.94 51.76 111.9 51.76 249.94"/></svg></span>' +
               '<div class="blog-open-quote">\u201C</div>' +
               '<p class="quote-text">' + plainText + '</p>' +
               '<div class="blog-footer">' +
@@ -1599,7 +1608,6 @@
         wrapper.className = "card-wrapper";
         wrapper.setAttribute("data-cats", q.cats.join(" "));
         wrapper.innerHTML = buildCardHTML(q);
-        grid.appendChild(wrapper);
         if (q.sourceUrl) {
           var card = wrapper.querySelector(".quote-card");
           card.setAttribute("data-url", q.sourceUrl);
@@ -1609,6 +1617,7 @@
             window.open(q.sourceUrl, "_blank", "noopener,noreferrer");
           });
         }
+        grid.appendChild(wrapper);
       });
 
       // === FILTER + PAGINATION LOGIC ===
