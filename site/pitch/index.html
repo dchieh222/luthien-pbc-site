@@ -510,6 +510,7 @@
     }
     .logo-row img { height: 22px; }
 
+
     /* ============ PROGRESS BAR ============ */
     .progress-bar {
       position: fixed;
@@ -682,6 +683,17 @@
 
     .citations-visible .citation {
       display: inline-block;
+    }
+
+    .citation a {
+      color: var(--text-dim);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(122, 114, 144, 0.3);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .citation a:hover {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
     }
 
     .org-client {
@@ -1230,6 +1242,7 @@
             <img src="../assets/images/logos/meta.jpg" alt="Meta" style="height: 24px;">
             <img src="../assets/images/logos/mats.svg" alt="MATS" style="height: 24px;">
           </div>
+          <div class="citation"><a href="https://github.com/jaidhyani/resume/blob/master/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a> · <a href="https://arxiv.org/abs/2411.15114" target="_blank" rel="noopener noreferrer">RE-Bench paper</a> · <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" rel="noopener noreferrer">The Chart (METR)</a></div>
         </div>
         <div class="founder-card">
           <img src="https://avatars.githubusercontent.com/scottwofford" alt="Scott Wofford" class="founder-photo">
@@ -1244,6 +1257,7 @@
             <img src="../assets/images/logos/darden.jpg" alt="Darden" style="height: 36px;">
             <img src="../assets/images/logos/fulbright.webp" alt="Fulbright" style="height: 24px;">
           </div>
+          <div class="citation"><a href="https://www.dropbox.com/scl/fi/vy1tm3b0dn75kd0fsaob2/Scott_Wofford_Resume.pdf?rlkey=p5ezz1g1giau1y8z3bgi4pjar&st=t8rl7hj4&dl=0" target="_blank" rel="noopener noreferrer">Resume</a></div>
         </div>
       </div>
     </div>
@@ -1497,21 +1511,25 @@
   <div class="slide" data-slide="7">
     <div class="slide-inner">
       <div class="label anim-up">Defensibility</div>
-      <h1 class="headline headline-lg anim-up delay-1">"Won't Anthropic Build This?"</h1>
+      <h1 class="headline headline-lg anim-up delay-1">"Won't Anthropic Build/Fix This?"</h1>
       <div class="spacer-md"></div>
       <div class="flex-col gap-md anim-up delay-2">
         <div class="card">
-          <div class="card-title"><span class="blue">1.</span>&ensp;Different problems</div>
-          <div class="card-body">Auto mode is an <em>input</em> gate. It checks what the agent wants to do. But the top user complaints are <em>output</em> problems: lying, context rot, test cheating, false completion claims. Luthien monitors what the agent actually produces.</div>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="blue">2.</span>&ensp;Fragmenting market</div>
-          <div class="card-body">OpenCode (15K+ stars), Aider (30K+), Codex, OpenClaw. The coding agent market is fragmenting fast. Anthropic won't build management tooling for competitors' clients. Luthien is provider-agnostic.</div>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="blue">3.</span>&ensp;Anthropic agrees</div>
-          <div class="card-body">Anthropic researcher, April 2026: <em>"The long-term solution probably looks more like something proxy-side"</em> and <em>"the space for control protocols is quite big."</em></div>
+          <div class="card-title"><span class="blue">1.</span>&ensp;They told us our approach is the long-term solution</div>
+          <div class="card-body"><em>"The long-term solution probably looks more like something proxy-side"</em> — <em>"the space for control protocols is quite big."</em></div>
           <div class="citation">Fabien Roger (Anthropic), conversation Apr 1 2026</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="blue">2.</span>&ensp;Doesn't make sense for labs to build provider-agnostic tooling</div>
+          <div class="card-body">The coding agent market is fragmenting fast — OpenCode, Codex, Cursor, OpenClaw. Anthropic won't build management tooling for competitors' clients.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="blue">3.</span>&ensp;We help drive Claude Code enterprise adoption</div>
+          <div class="card-body">Luthien gives enterprises the controls they need to approve Claude Code. We make Anthropic's product more sellable — we're aligned, not competing.</div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="blue">4.</span>&ensp;If they do — great, swiss cheese</div>
+          <div class="card-body">More layers of safety is the goal. And we'll focus on Codex, Cursor, OpenCode, OpenClaw, and everything else they won't build for.</div>
         </div>
       </div>
       <div class="spacer-md"></div>
