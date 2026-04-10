@@ -52,6 +52,8 @@
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 16px;
       position: relative;
+      min-height: 280px;
+      align-content: start;
     }
 
     /* Mobile: horizontal scroll with snap */
@@ -336,7 +338,7 @@
       background: #0d1117;
       border: 1px solid #30363d;
       border-radius: 5px;
-      padding: 12px 14px;
+      padding: 12px 36px 12px 14px;
     }
     .quote-card .platform-logo {
       position: absolute;
@@ -546,6 +548,22 @@
       white-space: nowrap;
     }
 
+    @media (max-width: 500px) {
+      body { padding: 12px; }
+      .container { padding: 0 8px; }
+      .filter-bar {
+        margin-left: -12px;
+        margin-right: -12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+      .filter-pill { padding: 6px 10px; font-size: 0.68rem; }
+      .card-grid > .card-wrapper { flex: 0 0 80vw; }
+      .card-grid-footer { margin-top: 6px; }
+      .card-nav-btn { width: 32px; height: 32px; }
+    }
   </style>
 </head>
 <body>
@@ -894,6 +912,10 @@
       filterBar.addEventListener("click", startAutoRotate);
       prevBtn.addEventListener("click", startAutoRotate);
       nextBtn.addEventListener("click", startAutoRotate);
+      // Reset on touch/scroll interaction (mobile swipe)
+      cardGrid.addEventListener("touchstart", function() { stopAutoRotate(); }, { passive: true });
+      cardGrid.addEventListener("touchend", function() { startAutoRotate(); }, { passive: true });
+      cardGrid.addEventListener("scroll", function() { stopAutoRotate(); clearTimeout(cardGrid._scrollRestart); cardGrid._scrollRestart = setTimeout(startAutoRotate, pillInterval); }, { passive: true });
       // Kick it off
       startAutoRotate();
     })();

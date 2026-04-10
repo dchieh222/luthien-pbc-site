@@ -6,7 +6,7 @@
   <title>Luthien — Investor Deck</title>
   <meta name="robots" content="noindex, nofollow">
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141216'/%3E%3Ctext x='16' y='23' font-family='Raleway,system-ui,sans-serif' font-size='20' font-weight='600' fill='%233B9494' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,7 +81,7 @@
       transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
                   transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       pointer-events: none;
-      overflow-y: auto;
+      overflow-y: hidden;
     }
 
     .slide.active {
@@ -246,6 +246,10 @@
       background: var(--blue-glow);
       border-radius: 0;
     }
+    .quote.quote-amber {
+      border-left-color: var(--amber);
+      background: rgba(196, 123, 66, 0.10);
+    }
 
     .quote-attr {
       font-family: var(--sans);
@@ -334,14 +338,14 @@
       display: grid;
       grid-template-columns: 160px 1fr 1fr;
       gap: 0;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--text-dim);
       align-items: stretch;
     }
 
     .compare-row:last-child { border-bottom: none; }
 
     .compare-row.header {
-      border-bottom: 2px solid var(--border);
+      border-bottom: 2px solid var(--text-dim);
     }
 
     .compare-cell {
@@ -724,11 +728,16 @@
     }
 
     /* ============ FULLSCREEN BUTTON ============ */
-    .fs-btn {
+    .top-controls {
       position: fixed;
       top: 20px;
       right: 28px;
       z-index: 100;
+      display: flex;
+      gap: 8px;
+    }
+
+    .fs-btn, .cite-btn {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 6px;
@@ -741,31 +750,7 @@
       letter-spacing: 0.05em;
     }
 
-    .fs-btn:hover {
-      background: var(--bg-elevated);
-      color: var(--text);
-      border-color: var(--text-dim);
-    }
-
-    /* ============ CITATION TOGGLE ============ */
-    .cite-btn {
-      position: fixed;
-      top: 20px;
-      right: 160px;
-      z-index: 100;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-dim);
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      padding: 6px 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-      letter-spacing: 0.05em;
-    }
-
-    .cite-btn:hover {
+    .fs-btn:hover, .cite-btn:hover {
       background: var(--bg-elevated);
       color: var(--text);
       border-color: var(--text-dim);
@@ -832,6 +817,7 @@
       align-items: center;
       gap: 8px;
       justify-content: center;
+      width: 160px;
     }
 
     .arch-connector {
@@ -840,16 +826,23 @@
       background: var(--border);
       position: relative;
       flex-shrink: 0;
+      margin: 0 8px;
     }
 
     .arch-connector::after {
       content: '';
       position: absolute;
-      right: -1px;
+      right: -6px;
       top: -3px;
+      width: 0;
+      height: 0;
       border: 4px solid transparent;
       border-left: 5px solid var(--border);
     }
+    .arch-connector.accent { background: var(--blue); }
+    .arch-connector.accent::after { border-left-color: var(--blue); }
+    .arch-connector.accent-amber { background: var(--amber); }
+    .arch-connector.accent-amber::after { border-left-color: var(--amber); }
 
     /* ============ SLIDE-IN ANIMATIONS ============ */
     .anim-up {
@@ -960,9 +953,16 @@
         border-right: 5px solid transparent;
         border-top: 6px solid var(--border);
       }
-      .compare-row { grid-template-columns: 1fr; gap: 4px; }
+      .compare-row { grid-template-columns: 1fr; gap: 0; padding: 12px 0; }
       .compare-row.header { display: none; }
       .compare-cell { padding: 8px 16px; }
+      .compare-cell.name { font-size: 1rem; margin-bottom: 4px; }
+      .compare-cell.luthien { border-radius: 3px; margin: 4px 8px 0; }
+      .compare-cell.luthien::before {
+        content: 'Luthien: ';
+        font-weight: 700;
+        color: var(--blue);
+      }
       .timeline { flex-direction: column; gap: 24px; }
       .timeline::before {
         width: 2px;
@@ -985,11 +985,74 @@
     }
 
     @media (max-width: 600px) {
-      .slide { padding: 32px 20px; }
+      .slide { padding: 32px 20px; overflow-y: auto; justify-content: flex-start; padding-top: 60px; }
+      .slide.title-slide { justify-content: center; padding-top: 32px; }
+      .headline-lg { font-size: 1.5rem; margin-bottom: 8px; }
+      .subtitle { margin-bottom: 8px; }
+      .grid-2 { grid-template-columns: 1fr; }
       .card { padding: 20px; }
-      .founder-card { padding: 24px; }
+      .founder-card { padding: 16px; }
+      .founder-photo { width: 80px; height: 80px; }
+      .spacer-md { height: 24px; }
+      .spacer-lg { height: 32px; }
       .controls { right: 16px; bottom: 14px; }
-      .fs-btn { right: 16px; top: 14px; }
+      .top-controls { right: 16px; top: 14px; }
+      .fs-btn { display: none; }
+      iframe { height: 420px !important; }
+      /* How It Works - hide desktop diagram, show mobile version */
+      [data-slide="3"] .anim-up.delay-2,
+      [data-slide="3"] .anim-up.delay-3,
+      [data-slide="3"] .spacer-lg { display: none; }
+      [data-slide="3"] .arch-mobile { display: block !important; }
+      [data-slide="3"] .slide-inner > div[style*="border-top"] { display: none; }
+      .nav-arrow { display: none !important; }
+      /* GTM table - card layout on mobile */
+      .compare-row[style*="180px"] {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        padding: 14px 12px;
+        margin-bottom: 8px;
+        background: var(--bg-elevated);
+        border-radius: 3px;
+        border-bottom: none !important;
+      }
+      .compare-row.header[style*="180px"] { display: none !important; }
+      .compare-row[style*="180px"] .compare-cell { padding: 6px 0; font-size: 0.82rem; }
+      .compare-row[style*="180px"] .compare-cell.name { padding-bottom: 10px; border-bottom: 1px solid var(--border); margin-bottom: 6px; }
+      .compare-row[style*="180px"] .compare-cell:nth-child(2)::before {
+        content: 'Who: ';
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .compare-row[style*="180px"] .compare-cell:nth-child(3)::before {
+        content: 'Signal: ';
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .compare-row[style*="180px"] .compare-cell:nth-child(4) {
+        font-size: 1rem;
+        color: var(--white);
+        margin-top: 4px;
+      }
+      .compare-row[style*="180px"] .compare-cell:nth-child(4)::before {
+        content: 'Deal size: ';
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
     }
 
     /* ========== QUOTE CARDS (imported from landing page for slide 2 variants) ========== */
@@ -1348,7 +1411,7 @@
           <div class="bio-detail">coding agent time horizon tracking "The Chart"</div>
           <div class="logo-row">
             <img src="../assets/images/logos/aws-light.svg" alt="AWS" style="height: 24px;">
-            <img src="../assets/images/logos/meta.jpg" alt="Meta" style="height: 24px;">
+            <img src="../assets/images/logos/Meta_lockup_negative primary_white_RGB.svg" alt="Meta" style="width: 100px; height: auto;">
             <img src="../assets/images/logos/mats.svg" alt="MATS" style="height: 24px;">
           </div>
           <div class="citation"><a href="https://github.com/jaidhyani/resume/blob/master/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a> · <a href="https://arxiv.org/abs/2411.15114" target="_blank" rel="noopener noreferrer">RE-Bench paper</a> · <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" rel="noopener noreferrer">The Chart (METR)</a></div>
@@ -1363,7 +1426,7 @@
           <div class="bio-dollars">Drove: <span class="big">$6.8B</span> <span class="context">Sales,</span> <span class="big">$4.5B</span> <span class="context">in profit.</span></div>
           <div class="logo-row">
             <img src="../assets/images/logos/amazon-light.svg" alt="Amazon" style="height: 22px;">
-            <img src="../assets/images/logos/darden.jpg" alt="Darden" style="height: 36px;">
+            <img src="../assets/images/logos/uvadarden.svg" alt="UVA Darden" style="height: 36px;">
             <img src="../assets/images/logos/fulbright.webp" alt="Fulbright" style="height: 24px;">
           </div>
           <div class="citation"><a href="https://www.dropbox.com/scl/fi/vy1tm3b0dn75kd0fsaob2/Scott_Wofford_Resume.pdf?rlkey=p5ezz1g1giau1y8z3bgi4pjar&st=t8rl7hj4&dl=0" target="_blank" rel="noopener noreferrer">Resume</a></div>
@@ -1382,7 +1445,7 @@
       <p class="anim-up delay-2" style="text-align: center; font-size: 1.35rem; color: var(--white); font-weight: 700; margin-bottom: 18px; line-height: 1.3;">
         <span style="color: #C45050;">93%</span> of permission prompts get auto-accepted.
       </p>
-      <iframe src="problem-widget.html#mode=pill&pillInterval=3000" style="width: 100%; height: 440px; border: 1px solid var(--border); border-radius: 3px; background: #141216;"></iframe>
+      <iframe src="problem-widget.html#mode=pill&pillInterval=5000" scrolling="no" style="width: 100%; height: 440px; border: 1px solid var(--border); border-radius: 3px; background: #141216; overflow: hidden;"></iframe>
     </div>
   </div>
   <!-- ======== SLIDE 4: HOW IT WORKS (PROXY ARCHITECTURE) ======== -->
@@ -1392,24 +1455,69 @@
       <h1 class="headline headline-lg anim-up delay-1" style="text-align: left;">A proxy between LLM APIs<br>and your dev environment</h1>
       <div class="spacer-sm"></div>
       <p class="subtitle anim-up delay-1" style="text-align: left;">Log every request &amp; response. Enforce custom rules.</p>
+
+      <!-- Mobile architecture diagram (hidden on desktop) -->
+      <div class="arch-mobile" style="display: none; margin-top: 24px;">
+        <!-- DEV flow -->
+        <div style="font-family: var(--mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px;">Dev</div>
+        <div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 6px;">
+          <div class="arch-box" style="width: auto;">&#x1F9D1;&#x200D;&#x1F4BB; User</div>
+          <div style="color: var(--blue); font-size: 1.2rem;">→</div>
+          <div class="arch-box" style="width: auto;">Claude Code</div>
+        </div>
+        <div style="text-align: right; color: var(--blue); font-size: 1.2rem; padding-right: 25%;">↓</div>
+        <div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 6px;">
+          <div class="arch-box" style="width: auto;">Anthropic API</div>
+          <div style="color: var(--blue); font-size: 1.2rem; margin-top: 10px;">←</div>
+          <div>
+            <div class="arch-box" style="width: auto; border-color: var(--blue); background: linear-gradient(135deg, rgba(59,148,148,0.15), transparent); color: var(--blue); font-weight: 700;">Luthien</div>
+            <div style="font-family: var(--mono); font-size: 0.68rem; color: var(--text-dim); margin-top: 4px; text-align: center;">did it do what I asked?</div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div style="border-top: 1px solid var(--border); margin: 16px 0;"></div>
+
+        <!-- ORG flow -->
+        <div style="font-family: var(--mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 8px;">Org</div>
+        <div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 6px;">
+          <div class="arch-box" style="width: auto;">&#x1F465; All Users</div>
+          <div style="color: var(--amber); font-size: 1.2rem;">→</div>
+          <div class="arch-box" style="width: auto;">Any AI Client</div>
+        </div>
+        <div style="text-align: right; color: var(--amber); font-size: 1.2rem; padding-right: 25%;">↓</div>
+        <div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 6px;">
+          <div class="arch-box" style="width: auto;">Any AI Provider</div>
+          <div style="color: var(--amber); font-size: 1.2rem; margin-top: 10px;">←</div>
+          <div>
+            <div class="arch-box" style="width: auto; border-color: var(--blue); background: linear-gradient(135deg, rgba(59,148,148,0.15), transparent); color: var(--blue); font-weight: 700;">Luthien</div>
+            <div style="font-family: var(--mono); font-size: 0.68rem; color: var(--text-dim); margin-top: 4px; text-align: center;">follow company/team policy</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 16px;">
+          <span style="font-size: 0.68rem; color: var(--blue); background: rgba(59,148,148,0.1); border: 1px solid rgba(59,148,148,0.25); padding: 0.15rem 0.55rem; border-radius: 20px; font-family: var(--mono);">adds ~5-15ms</span>
+        </div>
+      </div>
+
       <div class="spacer-lg"></div>
 
       <!-- DEV row -->
-      <div class="anim-up delay-2" style="margin-bottom: 40px;">
+      <div class="anim-up delay-2" style="margin-bottom: 20px;">
         <div style="display: flex; align-items: flex-start; justify-content: center; gap: 0;">
           <div style="font-family: var(--mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); width: 56px; flex-shrink: 0; text-align: right; padding-right: 16px; padding-top: 14px;">Dev</div>
           <div class="arch-box">&#x1F9D1;&#x200D;&#x1F4BB; User</div>
-          <div class="arch-connector" style="background: var(--blue); margin-top: 18px;"></div>
+          <div class="arch-connector accent" style="margin-top: 18px;"></div>
           <div class="arch-box">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><g stroke="#D97757" stroke-width="1.6" stroke-linecap="round"><line x1="12" y1="12" x2="12" y2="2"/><line x1="12" y1="12" x2="19.1" y2="4.9"/><line x1="12" y1="12" x2="22" y2="12"/><line x1="12" y1="12" x2="17.5" y2="19.5"/><line x1="12" y1="12" x2="12" y2="22"/><line x1="12" y1="12" x2="4.9" y2="19.1"/><line x1="12" y1="12" x2="2" y2="12"/><line x1="12" y1="12" x2="4.9" y2="4.9"/><line x1="12" y1="12" x2="7" y2="3"/><line x1="12" y1="12" x2="21" y2="7"/><line x1="12" y1="12" x2="17" y2="21"/><line x1="12" y1="12" x2="3" y2="17"/></g></svg>
             Claude Code
           </div>
-          <div class="arch-connector" style="background: var(--blue); margin-top: 18px;"></div>
-          <div style="display: flex; flex-direction: column; align-items: center;">
-            <div class="arch-box" style="border-color: var(--blue); background: linear-gradient(135deg, rgba(59,148,148,0.15), transparent); color: var(--blue); font-weight: 700;">Luthien</div>
+          <div class="arch-connector accent" style="margin-top: 18px; width: 48px;"></div>
+          <div style="display: flex; flex-direction: column; align-items: center; width: 160px;">
+            <div class="arch-box" style="border-color: var(--blue); background: linear-gradient(135deg, rgba(59,148,148,0.15), transparent); color: var(--blue); font-weight: 700; width: 100%;">Luthien</div>
             <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); margin-top: 8px;">did it do what I asked?</div>
           </div>
-          <div class="arch-connector" style="background: var(--blue); margin-top: 18px;"></div>
+          <div class="arch-connector accent" style="margin-top: 18px; width: 48px;"></div>
           <div class="arch-box">
             <svg width="16" height="16" viewBox="0 7 46 32" fill="none"><path d="M32.73 7h-6.945L38.45 39h6.945L32.73 7ZM12.665 7 0 39h7.082l2.59-6.72h13.25l2.59 6.72h7.082L19.929 7h-7.264Zm-.702 19.337 4.334-11.246 4.334 11.246h-8.668Z" fill="#D4A574"/></svg>
             Anthropic API
@@ -1425,22 +1533,22 @@
         <div style="display: flex; align-items: flex-start; justify-content: center; gap: 0;">
           <div style="font-family: var(--mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); width: 56px; flex-shrink: 0; text-align: right; padding-right: 16px; padding-top: 14px;">Org</div>
           <div class="arch-box">&#x1F465; All Users</div>
-          <div class="arch-connector" style="margin-top: 18px;"></div>
+          <div class="arch-connector accent-amber" style="margin-top: 18px;"></div>
           <div class="arch-box">Any AI Client</div>
-          <div class="arch-connector" style="margin-top: 18px;"></div>
-          <div style="display: flex; flex-direction: column; align-items: center;">
-            <div class="arch-box" style="border-color: var(--blue); background: linear-gradient(135deg, rgba(59,148,148,0.15), transparent); color: var(--blue); font-weight: 700;">Luthien</div>
+          <div class="arch-connector accent-amber" style="margin-top: 18px; width: 48px;"></div>
+          <div style="display: flex; flex-direction: column; align-items: center; width: 160px;">
+            <div class="arch-box" style="border-color: var(--blue); background: linear-gradient(135deg, rgba(59,148,148,0.15), transparent); color: var(--blue); font-weight: 700; width: 100%;">Luthien</div>
             <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); margin-top: 8px;">follow company/team policy</div>
           </div>
-          <div class="arch-connector" style="margin-top: 18px;"></div>
+          <div class="arch-connector accent-amber" style="margin-top: 18px; width: 48px;"></div>
           <div class="arch-box">Any AI Provider</div>
         </div>
       </div>
 
       <div class="spacer-lg"></div>
-      <p class="anim-up delay-3" style="font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim);">
-        adds ~5-15ms
-      </p>
+      <div class="anim-up delay-3" style="text-align: center;">
+        <span style="font-size: 0.68rem; color: var(--blue); background: rgba(59,148,148,0.1); border: 1px solid rgba(59,148,148,0.25); padding: 0.15rem 0.55rem; border-radius: 20px; font-family: var(--mono);">adds ~5-15ms</span>
+      </div>
     </div>
   </div>
 
@@ -1448,7 +1556,7 @@
   <div class="slide" data-slide="4">
     <div class="slide-inner">
       <div class="label anim-up">Why Luthien</div>
-      <h1 class="headline headline-lg anim-up delay-1">The Control Layer Orgs Need</h1>
+      <h1 class="headline headline-lg anim-up delay-1">The control layer orgs need</h1>
       <div class="spacer-md"></div>
       <div class="grid-3 anim-up delay-2">
         <div class="card">
@@ -1487,7 +1595,7 @@
   <div class="slide" data-slide="5">
     <div class="slide-inner">
       <div class="label anim-up">Competitive Landscape</div>
-      <h1 class="headline headline-lg anim-up delay-1">Why Not Alternatives?</h1>
+      <h1 class="headline headline-lg anim-up delay-1">Why not alternatives?</h1>
       <div class="spacer-md"></div>
       <div class="anim-up delay-2" style="border: 1px solid var(--border); border-radius: 3px; overflow: hidden;">
         <div class="compare-row header">
@@ -1522,7 +1630,7 @@
   <div class="slide" data-slide="6">
     <div class="slide-inner">
       <div class="label anim-up">Defensibility</div>
-      <h1 class="headline headline-lg anim-up delay-1">"Won't Anthropic Build This?"</h1>
+      <h1 class="headline headline-lg anim-up delay-1">"Won't Anthropic build this?"</h1>
       <div class="spacer-md"></div>
       <div class="flex-col gap-md anim-up delay-2">
         <div class="card">
@@ -1632,13 +1740,13 @@
           </div>
           <div class="compare-cell">CISOs &amp; procurement join the buying table. Same playbook cybersecurity ran.</div>
           <div class="compare-cell">EU AI Act enforcement lands <strong class="white">Aug 2, 2026</strong>.<br>Luthien addresses <span style="font-family: var(--sans); font-weight: 800; font-size: 1.3rem; color: var(--white);">7 of 8</span> mandatory requirements.</div>
-          <div class="compare-cell" style="color: var(--amber); font-family: var(--sans); font-weight: 800; font-size: 1.5rem;">Mandatory</div>
+          <div class="compare-cell" style="color: var(--blue); font-family: var(--sans); font-weight: 800; font-size: 1.5rem;">Mandatory</div>
         </div>
 
       </div>
       <div class="spacer-md"></div>
       <p class="anim-up delay-3" style="font-family: var(--mono); font-size: 0.95rem; color: var(--text-dim); text-align: center;">
-        AI control &amp; compliance that <span class="blue">developers love</span>.
+        AI control &amp; compliance that <span class="amber">developers love</span>.
       </p>
     </div>
   </div>
@@ -1820,11 +1928,11 @@
 <button class="nav-arrow left hidden" id="navLeft" aria-label="Previous slide">&#8249;</button>
 <button class="nav-arrow right" id="navRight" aria-label="Next slide">&#8250;</button>
 
-<!-- Citation toggle -->
-<button class="cite-btn" id="citeBtn" title="Toggle citations">Sources</button>
-
-<!-- Fullscreen button -->
-<button class="fs-btn" id="fsBtn" title="Toggle fullscreen">F11 &middot; Fullscreen</button>
+<!-- Top-right controls -->
+<div class="top-controls">
+  <button class="cite-btn" id="citeBtn" title="Toggle citations">Sources</button>
+  <button class="fs-btn" id="fsBtn" title="Toggle fullscreen">F11 &middot; Fullscreen</button>
+</div>
 
 <script>
 /* Dynamic LOI day count — first LOI signed Wed Apr 9, 2026 */
