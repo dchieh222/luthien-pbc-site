@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luthien: Investor Deck</title>
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 
   <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
 
@@ -929,6 +932,248 @@
       opacity: 0.85;
     }
 
+    /* ============ ASK SLIDE: F3 V3 (spotlight + gradient center divider + 8 faces) ============ */
+    .ask-f3 {
+      display: grid;
+      grid-template-columns: 0.8fr 2px 1.2fr;
+      gap: 40px;
+      align-items: center;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .ask-f3-spotlight {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 14px 0;
+    }
+    .ask-f3-spotlight-photo-link {
+      display: block;
+      text-decoration: none;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .ask-f3-spotlight-photo-link:hover { transform: translateY(-2px); }
+    .ask-f3-spotlight-name-link {
+      color: inherit;
+      text-decoration: none;
+    }
+    .ask-f3-spotlight-name-link:hover { color: var(--blue); }
+    .ask-f3-r2-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      padding: 2px 4px;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .ask-f3-r2-link:hover {
+      background: rgba(59, 148, 148, 0.12);
+    }
+    .ask-f3-spotlight-photo {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+    }
+    .ask-f3-spotlight-text { min-width: 0; text-align: left; }
+    .ask-f3-spotlight-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--blue);
+      letter-spacing: 0.03em;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .ask-f3-spotlight-name {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .ask-f3-spotlight-title {
+      font-family: var(--body);
+      font-size: 0.95rem;
+      color: var(--white);
+      line-height: 1.4;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .ask-f3-inline-logo {
+      height: 15px;
+      width: auto;
+      vertical-align: middle;
+    }
+    .ask-f3-spotlight-meta {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      letter-spacing: 0.03em;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .ask-f3-yc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      padding: 2px 6px 2px 4px;
+      border-radius: 2px;
+      background: rgba(255, 102, 0, 0.1);
+      border: 1px solid rgba(255, 102, 0, 0.4);
+      color: #FF6600;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+    .ask-f3-yc-badge:hover {
+      background: rgba(255, 102, 0, 0.2);
+    }
+    .ask-f3-yc-mark {
+      height: 12px;
+      width: 12px;
+      display: block;
+    }
+    .ask-f3-spotlight-meta-link {
+      color: var(--text-dim);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(154, 146, 174, 0.25);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .ask-f3-spotlight-meta-link:hover {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+    }
+    .ask-f3-spotlight-prior {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .ask-f3-spotlight-prior-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+    .ask-f3-spotlight-prior-logo {
+      height: 15px;
+      width: auto;
+      max-width: 70px;
+      object-fit: contain;
+    }
+    .ask-f3-spotlight-prior-logo.invert {
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+    }
+
+    /* V3 gradient divider: dim at top/bottom, full verdigris in the middle */
+    .ask-f3-divider {
+      width: 2px;
+      height: 160px;
+      margin: 0 auto;
+      background: linear-gradient(
+        to bottom,
+        rgba(59, 148, 148, 0.08),
+        var(--blue),
+        rgba(59, 148, 148, 0.08)
+      );
+    }
+
+    .ask-f3-also { text-align: left; padding-left: 4px; }
+    .ask-f3-also-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.03em;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .ask-f3-faces {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr) 1.8fr;
+      gap: 10px;
+      align-items: start;
+    }
+    .ask-f3-face-logos.ask-f3-face-logos-nowrap {
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      justify-content: center;
+    }
+    .ask-f3-face-logos.ask-f3-face-logos-stacked {
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+    .ask-f3-face-cred-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .ask-f3-face {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform 0.2s;
+      min-width: 0;
+    }
+    .ask-f3-face:hover { transform: translateY(-2px); }
+    .ask-f3-face > img:first-child {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      display: block;
+    }
+    .ask-f3-face-logos {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      min-height: 14px;
+      max-width: 100%;
+      text-align: center;
+    }
+    .ask-f3-face-logo {
+      height: 14px;
+      width: auto;
+      max-width: 48px;
+      object-fit: contain;
+    }
+    .ask-f3-face-logo.invert {
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+    .ask-f3-face-cred {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-align: center;
+    }
+
     /* ============ SLIDE FOOTNOTES (bottom-left, revealed by Footnotes toggle) ============ */
     /* Per-slide footnote container. Pinned to the bottom-left of the slide,
        revealed when the user toggles the Footnotes button. Scott's preference
@@ -1697,7 +1942,7 @@
 <div class="deck" id="deck">
 
   <!-- ======== SLIDE 1: TITLE ======== -->
-  <div class="slide title-slide active" data-slide="0">
+  <div class="slide title-slide active" data-slide="0" data-slide-name="title">
     <div class="slide-inner">
       <div class="logo-mark anim-up">Luthien</div>
       <div class="spacer-md"></div>
@@ -1708,7 +1953,7 @@
   </div>
 
   <!-- ======== SLIDE 2: TEAM ======== -->
-  <div class="slide" data-slide="1">
+  <div class="slide" data-slide="1" data-slide-name="team">
     <div class="slide-inner">
       <div class="label anim-up">The Team</div>
       <div class="spacer-md"></div>
@@ -1751,7 +1996,7 @@
   </div>
 
   <!-- ======== SLIDE 3: THE PROBLEM  -  DEVELOPER FRUSTRATION ======== -->
-  <div class="slide" data-slide="2">
+  <div class="slide" data-slide="2" data-slide-name="problem-dev">
     <div class="slide-inner">
       <div class="label anim-up">The Problem: Developer</div>
       <h1 class="headline headline-lg anim-up delay-1" style="white-space: nowrap;">Claude Code's Squandered Potential</h1>
@@ -1766,7 +2011,7 @@
   </div>
 
   <!-- ======== SLIDE 4: THE PROBLEM  -  CTO LOST POTENTIAL + SECURITY RISK ======== -->
-  <div class="slide" data-slide="3">
+  <div class="slide" data-slide="3" data-slide-name="problem-cto">
     <div class="slide-inner">
       <div class="label anim-up">The Problem: CTO</div>
       <h1 class="headline headline-lg anim-up delay-1" style="max-width: 1000px;">Lost revenue. Unacceptable security risk.</h1>
@@ -1788,7 +2033,7 @@
   </div>
 
   <!-- ======== SLIDE 5: HOW IT WORKS (PROXY ARCHITECTURE) ======== -->
-  <div class="slide" data-slide="3">
+  <div class="slide" data-slide="3" data-slide-name="how-it-works">
     <div class="slide-inner" style="text-align: center;">
       <div class="label anim-up" style="text-align: left;">How It Works</div>
       <h1 class="headline headline-lg anim-up delay-1" style="text-align: left;">A proxy between LLM APIs<br>and your dev environment</h1>
@@ -1892,7 +2137,7 @@
   </div>
 
   <!-- ======== SLIDE 6: COMPETITIVE (FEATURE × COMPETITOR MATRIX) ======== -->
-  <div class="slide" data-slide="5">
+  <div class="slide" data-slide="5" data-slide-name="competitive">
     <div class="slide-inner">
       <div class="label anim-up">Competitive Landscape</div>
       <h1 class="headline headline-lg anim-up delay-1">Features vs. alternatives</h1>
@@ -1963,7 +2208,7 @@
   </div>
 
   <!-- ======== SLIDE 7: MOAT ======== -->
-  <div class="slide" data-slide="6">
+  <div class="slide" data-slide="6" data-slide-name="defensibility">
     <div class="slide-inner">
       <div class="label anim-up">Defensibility</div>
       <h1 class="headline headline-lg anim-up delay-1">Won't Anthropic build this?</h1>
@@ -1990,7 +2235,7 @@
   </div>
 
   <!-- ======== SLIDE 8: MARKET ======== -->
-  <div class="slide" data-slide="7">
+  <div class="slide" data-slide="7" data-slide-name="market">
     <div class="slide-inner">
       <div class="label anim-up">Market</div>
       <h1 class="headline headline-lg anim-up delay-1">The market is exploding</h1>
@@ -2038,7 +2283,7 @@
   </div>
 
   <!-- ======== SLIDE 10a: DISTRIBUTION (Auth0 playbook) ======== -->
-  <div class="slide" data-slide="8">
+  <div class="slide" data-slide="8" data-slide-name="distribution">
     <div class="slide-inner">
       <div class="label anim-up">Distribution</div>
       <h1 class="headline headline-lg anim-up delay-1">The same playbook built Auth0.</h1>
@@ -2070,7 +2315,7 @@
   </div>
 
   <!-- ======== SLIDE 10: GTM STRATEGY ======== -->
-  <div class="slide" data-slide="9">
+  <div class="slide" data-slide="9" data-slide-name="gtm">
     <div class="slide-inner">
       <div class="label anim-up">Go-to-market Strategy</div>
       <h1 class="headline headline-lg anim-up delay-1" style="white-space: nowrap; font-size: clamp(1.6rem, 3.8vw, 2.8rem);">Target startup CTOs and Principal Engineers</h1>
@@ -2119,7 +2364,7 @@
   </div>
 
   <!-- ======== SLIDE 11: TRACTION ======== -->
-  <div class="slide" data-slide="10">
+  <div class="slide" data-slide="10" data-slide-name="traction">
     <div class="slide-inner">
       <div class="label anim-up">Traction</div>
       <h1 class="headline headline-lg anim-up delay-1">Selling this is easy</h1>
@@ -2186,7 +2431,7 @@
   </div>
 
   <!-- ======== SLIDE 11b: USERS REALLY WANT THIS (QUOTES) ======== -->
-  <div class="slide" data-slide="10">
+  <div class="slide" data-slide="10" data-slide-name="quotes">
     <div class="slide-inner">
       <div class="label anim-up">Traction</div>
       <h1 class="headline headline-lg anim-up delay-1">Users really want this</h1>
@@ -2229,104 +2474,107 @@
     </div>
   </div>
 
-  <!-- ======== SLIDE 12: ANGELS (minimalist, grouped by commit date) ======== -->
-  <div class="slide" data-slide="11">
-    <div class="slide-inner" style="text-align: center;">
-      <div class="label anim-up">Angels</div>
-      <h1 class="headline headline-lg anim-up delay-1">Angels</h1>
-      <div class="spacer-lg"></div>
-
-      <!-- 2025 row: Guillermo -->
-      <div class="anim-up delay-2 angels-row">
-        <div class="angels-date">2025</div>
-        <div class="angels-faces">
-          <a href="https://www.linkedin.com/in/gbravo11/" target="_blank" rel="noopener noreferrer" class="angel-face">
-            <img src="../assets/images/photo-gbravo11.png" alt="Guillermo Bravo">
-            <div class="angel-name">Guillermo Bravo</div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Friday Apr 10 row: Tom, Chris, Beth Anne, Will, Arjun -->
-      <div class="anim-up delay-2 angels-row">
-        <div class="angels-date">Fri Apr 10</div>
-        <div class="angels-faces">
-          <a href="https://www.linkedin.com/in/tom-divinnie-07964323/" target="_blank" rel="noopener noreferrer" class="angel-face">
-            <img src="../assets/images/photo-tom-divinnie.png" alt="Tom DiVinnie">
-            <div class="angel-name">Tom DiVinnie</div>
-          </a>
-          <a href="https://www.linkedin.com/in/chris-porter-25ab068b/" target="_blank" rel="noopener noreferrer" class="angel-face">
-            <img src="../assets/images/photo-chris-porter.png" alt="Chris Porter">
-            <div class="angel-name">Chris Porter</div>
-            <img src="../assets/images/logos/amazon-light.svg" alt="Amazon" class="angel-logo">
-          </a>
-          <a href="https://www.linkedin.com/in/beth-anne-porter-5a491132/" target="_blank" rel="noopener noreferrer" class="angel-face">
-            <img src="../assets/images/photo-beth-anne-porter.jpeg" alt="Beth Anne Porter">
-            <div class="angel-name">Beth Anne Porter</div>
-            <img src="../assets/images/logos/amazon-light.svg" alt="Amazon" class="angel-logo">
-          </a>
-          <a href="https://www.linkedin.com/in/will-reuter-86741415/" target="_blank" rel="noopener noreferrer" class="angel-face">
-            <img src="../assets/images/photo-will-reuter.png" alt="Will Reuter">
-            <div class="angel-name">Will Reuter</div>
-          </a>
-          <div class="angel-face">
-            <div class="angel-face-initials">AM</div>
-            <div class="angel-name">Arjun Mishra</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Saturday Apr 11 row: Luis, Laura, Saranya -->
-      <div class="anim-up delay-3 angels-row">
-        <div class="angels-date">Sat Apr 11</div>
-        <div class="angels-faces">
-          <a href="https://www.linkedin.com/in/luisalbertocaballero/" target="_blank" rel="noopener noreferrer" class="angel-face">
-            <img src="../assets/images/photo-luis-caballero.png" alt="Luis Caballero">
-            <div class="angel-name">Luis Caballero</div>
-            <img src="../assets/images/logos/amazon-light.svg" alt="Amazon" class="angel-logo">
-          </a>
-          <a href="https://www.linkedin.com/in/espinlaura/" target="_blank" rel="noopener noreferrer" class="angel-face">
-            <img src="../assets/images/photo-laura-espin.png" alt="Laura Espin">
-            <div class="angel-name">Laura Espin</div>
-          </a>
-          <a href="https://www.linkedin.com/in/saranya-selvamani/" target="_blank" rel="noopener noreferrer" class="angel-face">
-            <img src="../assets/images/photo-saranya-selvamani.png" alt="Saranya Selvamani">
-            <div class="angel-name">Saranya Selvamani</div>
-            <img src="../assets/images/logos/amazon-light.svg" alt="Amazon" class="angel-logo">
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======== SLIDE 12: THE ASK ======== -->
-  <div class="slide" data-slide="11">
+  <!-- ======== SLIDE 12: THE ASK (F3 V3 gradient divider, lowercase, logos pruned) ======== -->
+  <div class="slide" data-slide="11" data-slide-name="ask">
     <div class="slide-inner" style="text-align: center;">
       <div class="label anim-up">The Ask</div>
       <h1 class="headline headline-xl anim-up delay-1" style="color: var(--blue);">$2M Pre-Seed</h1>
-      <div class="spacer-lg"></div>
-      <div class="grid-3 anim-up delay-3">
-        <div class="card" style="text-align: center;">
-          <div style="font-family: var(--sans); font-size: 2.5rem; color: var(--blue);">50%</div>
-          <div class="card-title">Engineering</div>
-          <div class="card-body">2 hires: a systems engineer and a policy/rules engine lead</div>
+      <div class="spacer-md"></div>
+
+      <div class="ask-f3 anim-up delay-2">
+        <div class="ask-f3-spotlight">
+          <a class="ask-f3-spotlight-photo-link" href="https://www.linkedin.com/in/gbravo11/" target="_blank" rel="noopener noreferrer">
+            <img class="ask-f3-spotlight-photo" src="../assets/images/photo-gbravo11.png" alt="Guillermo Bravo">
+          </a>
+          <div class="ask-f3-spotlight-text">
+            <div class="ask-f3-spotlight-label">first angel</div>
+            <div class="ask-f3-spotlight-name">
+              <a href="https://www.linkedin.com/in/gbravo11/" target="_blank" rel="noopener noreferrer" class="ask-f3-spotlight-name-link">Guillermo Bravo</a>
+            </div>
+            <div class="ask-f3-spotlight-title">CPO at
+              <a href="https://r2.co/" target="_blank" rel="noopener noreferrer" class="ask-f3-r2-link">
+                <img src="../assets/images/logos/r2-light.svg" alt="R2" class="ask-f3-inline-logo">
+              </a>
+            </div>
+            <div class="ask-f3-spotlight-meta">
+              <a href="https://www.ycombinator.com/companies/r2" target="_blank" rel="noopener noreferrer" class="ask-f3-yc-badge">
+                <img src="../assets/images/logos/ycombinator-orange.svg" alt="Y Combinator" class="ask-f3-yc-mark">
+                <span>YC W21</span>
+              </a>
+              <a href="https://www.businesswire.com/news/home/20251029918704/en/R2-Joins-Ant-International-to-Expand-Credit-Access-for-SMEs-in-LATAM" target="_blank" rel="noopener noreferrer" class="ask-f3-spotlight-meta-link">Oct 2025: Ant Int'l strategic investment</a>
+            </div>
+            <div class="ask-f3-spotlight-prior">
+              <img class="ask-f3-spotlight-prior-logo invert" src="../assets/images/logos/amazon-light.svg" alt="Amazon">
+              <img class="ask-f3-spotlight-prior-logo invert" src="../assets/images/logos/jpmorgan-brown.svg" alt="J.P. Morgan">
+            </div>
+          </div>
         </div>
-        <div class="card" style="text-align: center;">
-          <div style="font-family: var(--sans); font-size: 2.5rem; color: var(--green);">30%</div>
-          <div class="card-title">Growth</div>
-          <div class="card-body">Dev outreach, design partners, community</div>
-        </div>
-        <div class="card" style="text-align: center;">
-          <div style="font-family: var(--sans); font-size: 2.5rem; color: var(--text-muted);">20%</div>
-          <div class="card-title">Infrastructure</div>
-          <div class="card-body">Operations, hosting, compliance tooling</div>
+
+        <div class="ask-f3-divider"></div>
+
+        <div class="ask-f3-also">
+          <div class="ask-f3-also-label">plus 8 more <span id="askWindow">in the last 48 hours</span></div>
+          <div class="ask-f3-faces">
+            <a class="ask-f3-face" href="https://www.linkedin.com/in/tom-divinnie-07964323/" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/photo-tom-divinnie.png" alt="Tom DiVinnie">
+              <div class="ask-f3-face-logos">
+                <span class="ask-f3-face-cred">CDO @</span>
+                <img class="ask-f3-face-logo" src="../assets/images/logos/habitathealth-mark.png" alt="Habitat Health">
+              </div>
+            </a>
+            <a class="ask-f3-face" href="https://www.linkedin.com/in/chris-porter-25ab068b/" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/photo-chris-porter.png" alt="Chris Porter">
+              <div class="ask-f3-face-logos">
+                <img class="ask-f3-face-logo invert" src="../assets/images/logos/amazon-light.svg" alt="Amazon">
+              </div>
+            </a>
+            <a class="ask-f3-face" href="https://www.linkedin.com/in/beth-anne-porter-5a491132/" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/photo-beth-anne-porter.jpeg" alt="Beth Anne Porter">
+              <div class="ask-f3-face-logos">
+                <img class="ask-f3-face-logo invert" src="../assets/images/logos/amazon-light.svg" alt="Amazon">
+              </div>
+            </a>
+            <a class="ask-f3-face" href="https://www.linkedin.com/in/will-reuter-86741415/" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/photo-will-reuter.png" alt="Will Reuter">
+              <div class="ask-f3-face-logos">
+                <img class="ask-f3-face-logo invert" src="../assets/images/logos/amazon-light.svg" alt="Amazon">
+              </div>
+            </a>
+            <a class="ask-f3-face" href="https://www.linkedin.com/in/arjunmishra0491/" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/photo-arjun-mishra.png" alt="Arjun Mishra">
+              <div class="ask-f3-face-logos">
+                <img class="ask-f3-face-logo invert" src="../assets/images/logos/amazon-light.svg" alt="Amazon">
+              </div>
+            </a>
+            <a class="ask-f3-face" href="https://www.linkedin.com/in/luisalbertocaballero/" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/photo-luis-caballero.png" alt="Luis Caballero">
+              <div class="ask-f3-face-logos">
+                <img class="ask-f3-face-logo invert" src="../assets/images/logos/amazon-light.svg" alt="Amazon">
+                <img class="ask-f3-face-logo" src="../assets/images/logos/hellofresh-light.svg" alt="HelloFresh">
+              </div>
+            </a>
+            <a class="ask-f3-face" href="https://www.linkedin.com/in/saranya-selvamani/" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/photo-saranya-selvamani.png" alt="Saranya Selvamani">
+              <div class="ask-f3-face-logos ask-f3-face-logos-stacked">
+                <span class="ask-f3-face-cred">Founder</span>
+                <span class="ask-f3-face-cred-row">@ <img class="ask-f3-face-logo" src="../assets/images/logos/sproutron-ai.png" alt="Sproutron AI"></span>
+              </div>
+            </a>
+            <a class="ask-f3-face" href="https://www.linkedin.com/in/espinlaura/" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/photo-laura-espin.png" alt="Laura Espin">
+              <div class="ask-f3-face-logos ask-f3-face-logos-stacked">
+                <span class="ask-f3-face-cred">Sr Dir Growth</span>
+                <span class="ask-f3-face-cred-row">@ <img class="ask-f3-face-logo" src="../assets/images/logos/eventbrite.png" alt="Eventbrite"></span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- ======== SLIDE 13: CLOSE ======== -->
-  <div class="slide title-slide" data-slide="12">
+  <div class="slide title-slide" data-slide="12" data-slide-name="close">
     <div class="slide-inner">
       <div class="logo-mark anim-up">Luthien</div>
       <div class="spacer-md"></div>
@@ -2336,7 +2584,7 @@
       <div class="spacer-lg"></div>
 
       <div class="close-actions anim-up delay-3">
-        <a href="https://docsend.com/view/s/hpf4szbc5u2cqu4v" class="memo-card" target="_blank">
+        <a href="https://docsend.com/view/hpf4szbc5u2cqu4v/d/f9my3hig8mn9qfwu" class="memo-card" target="_blank">
           <div class="mini-cover">
             <div class="mini-cover-title">Luthien Research</div>
             <div class="mini-cover-line"></div>
@@ -2372,7 +2620,7 @@
 
 <!-- Controls -->
 <div class="controls">
-  <span class="slide-counter" id="slideCounter">1 / 15</span>
+  <span class="slide-counter" id="slideCounter">1 / 14</span>
   <div class="nav-dots" id="navDots"></div>
 </div>
 
@@ -2397,21 +2645,23 @@
   if (el) el.textContent = 'in ' + days + ' day' + (days !== 1 ? 's' : '');
 })();
 
-/* Dynamic angel-investor commitment age. Each card sets its own
-   data-commit-date so cards committed on different days render the
-   correct 'committed today / yesterday / N days ago' label. */
+/* Dynamic Ask-slide angel window label. First angel (Tom DiVinnie)
+   committed Fri Apr 10, 2026 3:00 PM local. Label reads 'in the
+   last 24 hours' until 48 hours elapsed, then 'in the last 48 hours'
+   until 72 hours, then 'in the last N days' where N = completed
+   24-hour buckets since Fri 3pm. */
 (function() {
-  const today = new Date();
-  today.setHours(0,0,0,0);
-  document.querySelectorAll('.angel-days-ago[data-commit-date]').forEach(function(el) {
-    const date = new Date(el.getAttribute('data-commit-date') + 'T00:00:00');
-    const diffDays = Math.round((today - date) / 86400000);
-    let label;
-    if (diffDays <= 0)       label = 'committed today';
-    else if (diffDays === 1) label = 'committed yesterday';
-    else                     label = 'committed ' + diffDays + ' days ago';
-    el.textContent = label;
-  });
+  const el = document.getElementById('askWindow');
+  if (!el) return;
+  const firstCommit = new Date('2026-04-10T15:00:00');
+  const now = new Date();
+  const hoursElapsed = (now - firstCommit) / 3600000;
+  const days = Math.floor(hoursElapsed / 24);
+  let label;
+  if (days <= 1)      label = 'in the last 24 hours';
+  else if (days === 2) label = 'in the last 48 hours';
+  else                 label = 'in the last ' + days + ' days';
+  el.textContent = label;
 })();
 
 (function() {
@@ -2446,10 +2696,14 @@
 
     // Reflect current slide in the URL hash so readers can bookmark,
     // reload, or share a direct link without scrolling through the deck.
-    // Uses replaceState so the browser back button isn't flooded with
-    // per-slide history entries.
+    // Each slide has a data-slide-name attribute (e.g. 'ask', 'team',
+    // 'market') so URLs are semantic: #ask instead of #slide=13.
+    // Falls back to #slide=N if no name is set. Uses replaceState so
+    // the browser back button isn't flooded with per-slide history
+    // entries.
     try {
-      const targetHash = '#slide=' + (current + 1);
+      const name = slides[current].getAttribute('data-slide-name');
+      const targetHash = name ? '#' + name : '#slide=' + (current + 1);
       if (location.hash !== targetHash) {
         history.replaceState(null, '', targetHash);
       }
@@ -2561,21 +2815,60 @@
     fsBtn.textContent = document.fullscreenElement ? 'ESC · Exit' : 'F11 · Fullscreen';
   });
 
-  // Deep-link: ?slide=N or #slide=N opens directly on slide N (1-indexed)
-  // Hash form is required for file:// URLs, which strip query strings via `open`.
-  let slideParam = parseInt(new URLSearchParams(location.search).get('slide'), 10);
-  if (!Number.isFinite(slideParam) && location.hash) {
-    const hashMatch = location.hash.match(/slide=(\d+)/);
-    if (hashMatch) slideParam = parseInt(hashMatch[1], 10);
+  // Deep-link: accepts three formats
+  //   1. Named hash:    #ask, #team, #market, #distribution, etc.
+  //                     (preferred, matches data-slide-name attribute)
+  //   2. Legacy hash:   #slide=N (1-indexed, kept for backward compat)
+  //   3. Query string:  ?slide=N  (kept for backward compat on http://)
+  // Hash form is required for file:// URLs, which strip query strings
+  // via `open`.
+  function slideIndexFromHash() {
+    const hash = location.hash.replace(/^#/, '');
+    if (!hash) return null;
+    // Try named hash first
+    for (let i = 0; i < total; i++) {
+      if (slides[i].getAttribute('data-slide-name') === hash) return i;
+    }
+    // Fall back to slide=N form
+    const m = hash.match(/slide=(\d+)/);
+    if (m) {
+      const n = parseInt(m[1], 10);
+      if (n >= 1 && n <= total) return n - 1;
+    }
+    return null;
   }
-  if (Number.isFinite(slideParam) && slideParam >= 1 && slideParam <= total) {
-    const target = slideParam - 1;
-    if (target !== current) {
-      slides[current].classList.remove('active');
-      slides[target].classList.add('active');
-      current = target;
+
+  let targetIdx = slideIndexFromHash();
+  if (targetIdx === null) {
+    const qParam = parseInt(new URLSearchParams(location.search).get('slide'), 10);
+    if (Number.isFinite(qParam) && qParam >= 1 && qParam <= total) {
+      targetIdx = qParam - 1;
     }
   }
+  if (targetIdx !== null && targetIdx !== current) {
+    slides[current].classList.remove('active');
+    slides[targetIdx].classList.add('active');
+    current = targetIdx;
+  }
+
+  // Belt-and-suspenders hash sync. Fires on every scenario where the
+  // URL bar might get updated externally:
+  //   - hashchange: user edits URL, clicks a bookmarked deep link
+  //   - pageshow:   browser restores tab from bfcache (back/forward)
+  //   - focus:      macOS `open file://...#name` focuses an existing
+  //                 tab and updates the hash; Chrome sometimes
+  //                 doesn't fire hashchange in this case
+  //   - visibilitychange: tab becomes visible again
+  function syncFromHash() {
+    const idx = slideIndexFromHash();
+    if (idx !== null && idx !== current) goTo(idx);
+  }
+  window.addEventListener('hashchange',       syncFromHash);
+  window.addEventListener('pageshow',         syncFromHash);
+  window.addEventListener('focus',            syncFromHash);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) syncFromHash();
+  });
 
   updateUI();
 })();
