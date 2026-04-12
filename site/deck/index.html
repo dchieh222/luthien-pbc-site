@@ -173,7 +173,7 @@
 <script>
 // SHA-256 hash of the password. To change the password, run in browser console:
 // crypto.subtle.digest('SHA-256', new TextEncoder().encode('yourpassword')).then(b => console.log(Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2,'0')).join('')))
-const HASH = 'a0db84e71a3ff459e45c5e051e6b8f4f8b2a8ef tried897f6d2ff1fd68c3ec3dfe';
+const HASH = '0fcd568a5cb9bdb4677b69354b11ee415af8f784519cff3da49a26f84eaee7f2';
 
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
