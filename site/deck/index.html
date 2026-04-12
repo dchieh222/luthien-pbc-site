@@ -137,11 +137,14 @@
       font-family: var(--mono);
       font-size: 0.75rem;
       color: var(--text-dim);
-      text-decoration: none;
+      background: none;
+      border: none;
       border-bottom: 1px solid rgba(154, 146, 174, 0.3);
+      cursor: pointer;
       transition: color 0.2s, border-color 0.2s;
       position: relative;
       z-index: 10;
+      padding: 0;
     }
 
     .request-link:hover {
@@ -169,13 +172,28 @@
       <input type="text" class="pw-input" id="pw" placeholder="Password" autocomplete="off" data-1p-ignore data-lpignore="true" data-bwignore data-form-type="other" autofocus>
       <button type="submit" class="pw-btn">&rarr;</button>
     </form>
-    <a class="request-link" href="mailto:scott@luthienresearch.org?subject=Deck%20access%20request&body=Hi%20Scott%2C%0A%0AI'm%20%5BName%5D%20from%20%5BOrganization%5D%2C%20and%20I'd%20like%20access%20to%20your%20deck%20please.%0A%0A%5BPlease%20provide%20relevant%20context%5D">Request access</a>
+    <button class="request-link" id="requestBtn" onclick="copyRequest()">Request access</button>
   </div>
 
 <script>
 // SHA-256 hash of the password. To change the password, run in browser console:
 // crypto.subtle.digest('SHA-256', new TextEncoder().encode('yourpassword')).then(b => console.log(Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2,'0')).join('')))
 const HASH = '0fcd568a5cb9bdb4677b69354b11ee415af8f784519cff3da49a26f84eaee7f2';
+
+function copyRequest() {
+  const text = 'To: scott@luthienresearch.org\nSubject: Deck access request\n\nHi Scott,\n\nI\'m [Name] from [Organization], and I\'d like access to your deck please.\n\n[Please provide relevant context]';
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('requestBtn');
+    btn.textContent = 'Copied to clipboard';
+    btn.style.color = 'var(--blue)';
+    btn.style.borderBottomColor = 'var(--blue)';
+    setTimeout(function() {
+      btn.textContent = 'Request access';
+      btn.style.color = '';
+      btn.style.borderBottomColor = '';
+    }, 2000);
+  });
+}
 
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
