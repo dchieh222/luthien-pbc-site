@@ -932,21 +932,21 @@
       opacity: 0.85;
     }
 
-    /* ============ ASK SLIDE: F3 V3 (spotlight + gradient center divider + 8 faces) ============ */
+    /* ============ ASK SLIDE: F3 V3 (spotlight + gradient center divider + faces) ============ */
     .ask-f3 {
       display: grid;
-      grid-template-columns: 0.8fr 2px 1.2fr;
-      gap: 40px;
+      grid-template-columns: 0.7fr 2px 1.3fr;
+      gap: 32px;
       align-items: center;
       max-width: 1440px;
       margin: 0 auto;
     }
     .ask-f3-spotlight {
       display: flex;
-      gap: 18px;
+      gap: 14px;
       align-items: center;
       justify-content: flex-end;
-      padding: 14px 0;
+      padding: 10px 0;
     }
     .ask-f3-spotlight-photo-link {
       display: block;
@@ -972,8 +972,8 @@
       background: rgba(59, 148, 148, 0.12);
     }
     .ask-f3-spotlight-photo {
-      width: 76px;
-      height: 76px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--border);
@@ -1013,13 +1013,13 @@
     }
     .ask-f3-spotlight-meta {
       font-family: var(--mono);
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       color: var(--text-dim);
-      letter-spacing: 0.03em;
-      margin-top: 6px;
+      letter-spacing: 0.02em;
+      margin-top: 4px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       flex-wrap: wrap;
     }
     .ask-f3-yc-badge {
@@ -1057,26 +1057,20 @@
       border-bottom-color: var(--blue);
     }
     .ask-f3-spotlight-prior {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .ask-f3-spotlight-prior-label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      letter-spacing: 0.04em;
+      gap: 6px;
+      margin-left: 6px;
     }
     .ask-f3-spotlight-prior-logo {
-      height: 15px;
+      height: 12px;
       width: auto;
-      max-width: 70px;
+      max-width: 56px;
       object-fit: contain;
     }
     .ask-f3-spotlight-prior-logo.invert {
       filter: brightness(0) invert(1);
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     /* V3 gradient divider: dim at top/bottom, full verdigris in the middle */
@@ -1103,8 +1097,8 @@
     }
     .ask-f3-faces {
       display: grid;
-      grid-template-columns: repeat(8, 1fr) 1.8fr;
-      gap: 10px;
+      grid-template-columns: repeat(8, 1fr) 1.6fr;
+      gap: 8px;
       align-items: start;
     }
     .ask-f3-face-logos.ask-f3-face-logos-nowrap {
@@ -1130,7 +1124,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       text-decoration: none;
       transition: transform 0.2s;
       min-width: 0;
@@ -2639,10 +2633,10 @@
                 <span>YC W21</span>
               </a>
               <a href="https://www.businesswire.com/news/home/20251029918704/en/R2-Joins-Ant-International-to-Expand-Credit-Access-for-SMEs-in-LATAM" target="_blank" rel="noopener noreferrer" class="ask-f3-spotlight-meta-link">Oct 2025: Ant Int'l strategic investment</a>
-            </div>
-            <div class="ask-f3-spotlight-prior">
-              <img class="ask-f3-spotlight-prior-logo invert" src="../assets/images/logos/amazon-light.svg" alt="Amazon">
-              <img class="ask-f3-spotlight-prior-logo invert" src="../assets/images/logos/jpmorgan-brown.svg" alt="J.P. Morgan">
+              <span class="ask-f3-spotlight-prior">
+                <img class="ask-f3-spotlight-prior-logo invert" src="../assets/images/logos/amazon-light.svg" alt="Amazon">
+                <img class="ask-f3-spotlight-prior-logo invert" src="../assets/images/logos/jpmorgan-brown.svg" alt="J.P. Morgan">
+              </span>
             </div>
           </div>
         </div>
