@@ -180,14 +180,16 @@
 // crypto.subtle.digest('SHA-256', new TextEncoder().encode('yourpassword')).then(b => console.log(Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2,'0')).join('')))
 const HASH = '0fcd568a5cb9bdb4677b69354b11ee415af8f784519cff3da49a26f84eaee7f2';
 
+var copyTimer;
 function copyRequest() {
   const text = 'To: scott@luthienresearch.org\nSubject: Deck access request\n\nHi Scott,\n\nI\'m [Name] from [Organization], and I\'d like access to your deck please.\n\n[Please provide relevant context]';
+  var btn = document.getElementById('requestBtn');
+  clearTimeout(copyTimer);
   navigator.clipboard.writeText(text).then(function() {
-    var btn = document.getElementById('requestBtn');
     btn.textContent = 'Email draft copied to your clipboard';
     btn.style.color = 'var(--blue)';
     btn.style.borderBottomColor = 'var(--blue)';
-    setTimeout(function() {
+    copyTimer = setTimeout(function() {
       btn.textContent = 'Request access';
       btn.style.color = '';
       btn.style.borderBottomColor = '';
