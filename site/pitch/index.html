@@ -814,7 +814,7 @@
       gap: 8px;
     }
 
-    .fs-btn, .cite-btn {
+    .fs-btn {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 6px;
@@ -827,7 +827,31 @@
       letter-spacing: 0.05em;
     }
 
-    .fs-btn:hover, .cite-btn:hover {
+    .fs-btn:hover {
+      background: var(--bg-elevated);
+      color: var(--text);
+      border-color: var(--text-dim);
+    }
+
+    /* ============ FOOTNOTES BUTTON (bottom-left) ============ */
+    .cite-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 28px;
+      z-index: 100;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-dim);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+    }
+
+    .cite-btn:hover {
       background: var(--bg-elevated);
       color: var(--text);
       border-color: var(--text-dim);
@@ -837,6 +861,10 @@
       border-color: var(--blue);
       color: var(--blue);
       background: var(--blue-glow);
+    }
+
+    .cite-btn.hidden {
+      display: none;
     }
 
     .citation {
@@ -2105,7 +2133,7 @@
   <!-- ======== SLIDE 3: THE PROBLEM  -  DEVELOPER FRUSTRATION ======== -->
   <div class="slide" data-slide="2" data-slide-name="problem-dev">
     <div class="slide-inner">
-      <div class="label anim-up">The Problem: Developer</div>
+      <div class="label anim-up">Problem: Devs</div>
       <h1 class="headline headline-lg anim-up delay-1" style="white-space: nowrap;">Claude Code's Squandered Potential</h1>
       <p class="subtitle anim-up delay-1" style="max-width: 900px;">Developers are frustrated: they can't let Claude Code run, so they babysit it instead.</p>
       <div class="spacer-md"></div>
@@ -2114,13 +2142,19 @@
       <p class="anim-up delay-3" style="text-align: center; font-size: clamp(1rem, 1.5vw, 1.2rem); color: var(--text); line-height: 1.5; max-width: 900px; margin: 0 auto;">
         Claude Code can run autonomously for <span style="color: var(--blue); font-weight: 700;">12 hours</span>. In practice, humans babysit in <span style="color: #C45050; font-weight: 700;">45-second</span> increments because the risks of letting it run are too high: compliance violations, technical mistakes, security vulnerabilities, or simply failing to follow instructions.
       </p>
+      <div class="slide-footnotes">
+        <div class="citation">
+          12-hour autonomy: <a href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview" target="_blank" rel="noopener noreferrer">Claude Code documentation, Anthropic</a>.
+          45-second babysitting cadence: observed across 20+ user discovery calls with developers using Claude Code 30+ hrs/week (Luthien internal research, Mar-Apr 2026).
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- ======== SLIDE 4: THE PROBLEM  -  CTO facts vs feeling ======== -->
   <div class="slide" data-slide="3" data-slide-name="problem-cto">
     <div class="slide-inner">
-      <div class="label anim-up">The Problem: CTO</div>
+      <div class="label anim-up">Problem: CTOs</div>
       <h1 class="headline headline-lg anim-up delay-1" style="white-space: nowrap;">Foregone revenue. Unacceptable risk.</h1>
       <p class="subtitle anim-up delay-1" style="max-width: 900px;">CTOs want the productivity gains coding agents promise, but InfoSec is uncomfortable approving Claude Code without guardrails.</p>
       <div class="spacer-md"></div>
@@ -2130,8 +2164,8 @@
           <div class="facts-pull" style="text-align: center;">
             "Top-quartile developer velocity correlates with <span style="font-family: var(--sans); font-weight: 800; font-size: 1.9em; color: var(--white);">4-5x</span><br>faster revenue growth than bottom-quartile."
           </div>
-          <div class="facts-attrib" style="margin-top: 14px; justify-content: center;">
-            <span class="mck-pill"><img src="../assets/images/logos/mckinsey.png" alt="McKinsey &amp; Company"></span>
+          <div class="facts-attrib" style="margin-top: 14px; justify-content: flex-start;">
+            <span class="mck-pill"><img src="../assets/images/logos/mckinsey.png" alt="McKinsey &amp; Company" style="height: 45px;"></span>
           </div>
         </div>
 
@@ -2761,9 +2795,10 @@
 
 <!-- Top-right controls -->
 <div class="top-controls">
-  <button class="cite-btn" id="citeBtn" title="Toggle footnotes">Footnotes</button>
   <button class="fs-btn" id="fsBtn" title="Toggle fullscreen">F11 &middot; Fullscreen</button>
 </div>
+<!-- Bottom-left footnote toggle (hidden on slides without footnotes) -->
+<button class="cite-btn" id="citeBtn" title="Toggle footnotes">Footnotes</button>
 
 <script>
 /* Chart hover: tap-to-toggle on touch devices */
@@ -2822,6 +2857,7 @@
   const progress = document.getElementById('progressFill');
   const dotsContainer = document.getElementById('navDots');
   const fsBtn = document.getElementById('fsBtn');
+  const citeBtn = document.getElementById('citeBtn');
   const navLeft = document.getElementById('navLeft');
   const navRight = document.getElementById('navRight');
 
@@ -2841,6 +2877,10 @@
     });
     navLeft.classList.toggle('hidden', current === 0);
     navRight.classList.toggle('hidden', current === total - 1);
+
+    // Show footnote button only on slides that have footnotes
+    const hasFootnotes = slides[current].querySelector('.slide-footnotes') !== null;
+    citeBtn.classList.toggle('hidden', !hasFootnotes);
 
     // Reflect current slide in the URL hash so readers can bookmark,
     // reload, or share a direct link without scrolling through the deck.
@@ -2956,7 +2996,6 @@
   fsBtn.addEventListener('click', toggleFullscreen);
 
   // Citation toggle
-  const citeBtn = document.getElementById('citeBtn');
   citeBtn.addEventListener('click', () => {
     document.body.classList.toggle('citations-visible');
     citeBtn.classList.toggle('active');
