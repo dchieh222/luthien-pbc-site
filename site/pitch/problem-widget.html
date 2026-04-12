@@ -508,36 +508,41 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== CARD NAV ARROWS ========== */
-    .card-nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    /* ========== CARD NAV ARROWS (side-positioned) ========== */
+    .card-grid-fade {
+      position: relative;
     }
 
     .card-nav-btn {
-      width: 44px;
-      height: 44px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       border: 1px solid #28243A;
-      background: transparent;
+      background: rgba(20, 18, 22, 0.85);
       color: #a1a1aa;
-      font-size: 1rem;
+      font-size: 0.9rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.15s;
-      flex-shrink: 0;
+      z-index: 10;
     }
+
+    .card-nav-btn.nav-prev { left: -4px; }
+    .card-nav-btn.nav-next { right: -4px; }
 
     .card-nav-btn:hover:not(:disabled) {
       border-color: #3B9494;
       color: #3B9494;
+      background: rgba(20, 18, 22, 0.95);
     }
 
     .card-nav-btn:disabled {
-      opacity: 0.25;
+      opacity: 0.15;
       cursor: default;
     }
 
@@ -546,6 +551,8 @@
       font-size: 0.7rem;
       color: #a1a1aa;
       white-space: nowrap;
+      text-align: center;
+      margin-top: 6px;
     }
 
     @media (max-width: 500px) {
@@ -562,7 +569,7 @@
       .filter-pill { padding: 6px 10px; font-size: 0.68rem; }
       .card-grid > .card-wrapper { flex: 0 0 80vw; }
       .card-grid-footer { margin-top: 6px; }
-      .card-nav-btn { width: 32px; height: 32px; }
+      .card-nav-btn { width: 28px; height: 28px; font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -574,13 +581,11 @@
 
       <div class="card-grid-fade">
         <div class="card-grid" id="cardGrid"></div>
+        <button class="card-nav-btn nav-prev" id="cardPrev" aria-label="Previous cards">&larr;</button>
+        <button class="card-nav-btn nav-next" id="cardNext" aria-label="Next cards">&rarr;</button>
       </div>
       <div class="card-grid-footer">
-        <div class="card-nav">
-          <button class="card-nav-btn" id="cardPrev" aria-label="Previous cards">&larr;</button>
-          <span class="card-nav-count" id="cardCount" aria-live="polite"></span>
-          <button class="card-nav-btn" id="cardNext" aria-label="Next cards">&rarr;</button>
-        </div>
+        <span class="card-nav-count" id="cardCount" aria-live="polite"></span>
       </div>
     </div>
   </section>
