@@ -4,10 +4,15 @@
 
 | Version | Date | Summary |
 |---------|------|---------|
+| v11.4 | 2026-04-11 | Pitch deck CTO slide: replace card grid with McKinsey 4-5x hero stat + composite CTO voice split (PR #90) |
 | v11.3 | 2026-04-08 | Switch primary CTA from "View on GitHub" + curl install to "Apply for beta" (Tally form). Remove public curl install everywhere. Addresses investor concern about public GitHub star count. |
 | v10.6 | 2026-03-09 | Address Josh Levy's agentic feedback: add long-session and multi-session persistence language to hero + architecture section |
 | v10.5 | 2026-03-05 | Feedback synthesis from S14/S15 user interviews; footer tagline ("Power is nothing without control") |
 | v10 | 2026-02-26 | Initial repo migration from scottwofford.com/luthien/landing_v8/ |
+
+## 2026-04-11
+
+- v11.4: Pitch deck CTO problem slide (slide 4) redesigned. Replaced "Lost potential" / "Security risk" card grid + problem-widget iframe with a facts-vs-feeling split. Left half: hero 4-5x stat (McKinsey Developer Velocity Index, April 2020) with verbatim pull quote and linen McKinsey wordmark chip. Right half: three-beat composite CTO voice with verdigris accent on the emotional turn. Headline tightened to "Lost revenue. Unacceptable risk." Full McKinsey citation in slide-footnotes. (PR #90)
 
 ## 2026-04-08
 
