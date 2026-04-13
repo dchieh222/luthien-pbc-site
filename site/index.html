@@ -335,6 +335,26 @@
       flex-grow: 1;
     }
 
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: #7A7290;
+      text-decoration: none;
+      margin-top: 8px;
+      padding: 4px 8px;
+      border-radius: 2px;
+      transition: color 0.15s, background 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .source-link:hover {
+      color: #3B9494;
+      background: rgba(59, 148, 148, 0.08);
+    }
+    .source-link .arrow { font-size: 0.8em; }
+
     /* ---- Twitter/X card ---- */
     .quote-card.twitter {
       background: #1A1729;
@@ -1472,9 +1492,32 @@
         filterBar.appendChild(pill);
       });
 
+      // === ENGAGEMENT NUMBERS (varied per card) ===
+      function hashText(str) {
+        var h = 0;
+        for (var i = 0; i < str.length; i++) { h = ((h << 5) - h) + str.charCodeAt(i); h |= 0; }
+        return Math.abs(h);
+      }
+      function fmtNum(n) { return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n); }
+      function engagementFor(text) {
+        var h = hashText(text);
+        return {
+          tweetComments: 3 + (h % 89),
+          retweets: 12 + ((h >> 3) % 340),
+          likes: 80 + ((h >> 6) % 1800),
+          views: 8 + ((h >> 9) % 85),
+          hnPoints: 30 + ((h >> 3) % 700),
+          hnComments: 8 + ((h >> 6) % 280),
+          redditVotes: 40 + ((h >> 3) % 2400),
+          redditComments: 5 + ((h >> 6) % 120),
+          ghComments: 3 + (h % 38),
+        };
+      }
+
       // === BUILD CARD HTML ===
       function buildCardHTML(q) {
         var plainText = q.text;
+        var eng = engagementFor(plainText);
 
         switch (q.format) {
           case "twitter":
@@ -1494,10 +1537,10 @@
               '</div>' +
               '<p class="quote-text">' + plainText + '</p>' +
               '<div class="tweet-actions">' +
-                '<span class="tweet-action"><span class="tweet-action-icon">\uD83D\uDCAC</span> 47</span>' +
-                '<span class="tweet-action retweet"><span class="tweet-action-icon">\uD83D\uDD01</span> 312</span>' +
-                '<span class="tweet-action like"><span class="tweet-action-icon">\u2661</span> 1.4K</span>' +
-                '<span class="tweet-action"><span class="tweet-action-icon">\uD83D\uDCCA</span> 89K</span>' +
+                '<span class="tweet-action"><span class="tweet-action-icon">\uD83D\uDCAC</span> ' + eng.tweetComments + '</span>' +
+                '<span class="tweet-action retweet"><span class="tweet-action-icon">\uD83D\uDD01</span> ' + fmtNum(eng.retweets) + '</span>' +
+                '<span class="tweet-action like"><span class="tweet-action-icon">\u2661</span> ' + fmtNum(eng.likes) + '</span>' +
+                '<span class="tweet-action"><span class="tweet-action-icon">\uD83D\uDCCA</span> ' + eng.views + 'K</span>' +
                 '<span class="tweet-action"><span class="tweet-action-icon">\u2197</span></span>' +
               '</div>' +
             '</div>';
@@ -1509,7 +1552,7 @@
                 '<span class="hn-upvote">\u25B2</span>' +
                 '<span class="hn-title">Claude Code incident report</span>' +
               '</div>' +
-              '<div class="hn-meta">847 points by throwaway_dev 3 hours ago | <a href="#">hide</a> | <a href="#">412 comments</a></div>' +
+              '<div class="hn-meta">' + eng.hnPoints + ' points by throwaway_dev 3 hours ago | <a href="#">hide</a> | <a href="#">' + eng.hnComments + ' comments</a></div>' +
               '<p class="quote-text">' + plainText + '</p>' +
             '</div>';
 
@@ -1524,10 +1567,10 @@
               '<div class="reddit-actions">' +
                 '<span class="reddit-vote-group">' +
                   '<span class="reddit-upvote-btn">\u25B2</span>' +
-                  '<span class="reddit-vote-count">1.2k</span>' +
+                  '<span class="reddit-vote-count">' + fmtNum(eng.redditVotes) + '</span>' +
                   '<span class="reddit-downvote-btn">\u25BC</span>' +
                 '</span>' +
-                '<span class="reddit-action-btn">\uD83D\uDCAC 47 Comments</span>' +
+                '<span class="reddit-action-btn">\uD83D\uDCAC ' + eng.redditComments + ' Comments</span>' +
                 '<span class="reddit-action-btn">\u2197 Share</span>' +
               '</div>' +
             '</div>';
@@ -1544,7 +1587,7 @@
               '<p class="quote-text">' + plainText + '</p>' +
               '<div class="gh-footer">' +
                 '<span class="gh-label">bug</span>' +
-                '<span>\uD83D\uDCAC 47 comments</span>' +
+                '<span>\uD83D\uDCAC ' + eng.ghComments + ' comments</span>' +
               '</div>' +
             '</div>';
 
@@ -1571,16 +1614,20 @@
         wrapper.className = "card-wrapper";
         wrapper.setAttribute("data-cats", q.cats.join(" "));
         wrapper.innerHTML = buildCardHTML(q);
-        grid.appendChild(wrapper);
+        // Add visible source link (intentional navigation only)
         if (q.sourceUrl) {
           var card = wrapper.querySelector(".quote-card");
-          card.setAttribute("data-url", q.sourceUrl);
-          card.addEventListener("click", function(e) {
-            // Don't fire if the user clicked a link/button inside the card
-            if (e.target.closest("a, button")) return;
-            window.open(q.sourceUrl, "_blank", "noopener,noreferrer");
-          });
+          var domain = '';
+          try { domain = new URL(q.sourceUrl).hostname.replace('www.', ''); } catch(_) { domain = q.source; }
+          var link = document.createElement("a");
+          link.className = "source-link";
+          link.href = q.sourceUrl;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.innerHTML = 'View source: ' + domain + ' <span class="arrow">\u2197</span>';
+          card.appendChild(link);
         }
+        grid.appendChild(wrapper);
       });
 
       // === FILTER + PAGINATION LOGIC ===
