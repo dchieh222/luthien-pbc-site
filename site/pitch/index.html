@@ -782,11 +782,13 @@
       font-size: 1.4rem;
       transition: all 0.2s;
       opacity: 0;
+      pointer-events: none;
     }
 
     .deck:hover ~ .nav-arrow,
     .nav-arrow:hover {
       opacity: 1;
+      pointer-events: auto;
     }
 
     .nav-arrow:hover {
@@ -2574,8 +2576,8 @@
       <div class="spacer-md"></div>
       <p class="subtitle anim-up delay-2">AI coding agents are the fastest-growing product category in software history. $0 to $2.5B ARR in 9 months.</p>
       <div class="spacer-md"></div>
-      <div class="anim-up delay-3" style="text-align: center;">
-        <img id="metr-chart-thumb" src="../assets/images/metr-the-chart.png" alt="METR: Time horizon of software tasks different LLMs can complete, doubling approximately every 4-6 months" style="max-width: 100%; max-height: 320px; border: 1px solid var(--border); border-radius: 3px; cursor: pointer;">
+      <div class="anim-up delay-3" id="metr-chart-container" style="text-align: center; cursor: pointer;">
+        <img id="metr-chart-thumb" src="../assets/images/metr-the-chart.png" alt="METR: Time horizon of software tasks different LLMs can complete, doubling approximately every 4-6 months" style="max-width: 100%; max-height: 320px; border: 1px solid var(--border); border-radius: 3px;">
         <p style="font-size: 0.7rem; color: var(--text-dim); margin-top: 6px;">Source: <a href="https://metr.org/time-horizons/" target="_blank" rel="noopener noreferrer" style="color: var(--text-dim); text-decoration: underline;">METR.org</a></p>
       </div>
       <div class="spacer-md"></div>
@@ -3587,9 +3589,12 @@
   var lbImg = document.getElementById('lightbox-img');
   if (!lb || !lbImg) return;
 
-  document.getElementById('metr-chart-thumb').addEventListener('click', function() {
-    lbImg.src = this.src;
-    lbImg.alt = this.alt;
+  var thumb = document.getElementById('metr-chart-thumb');
+  var container = document.getElementById('metr-chart-container');
+  (container || thumb).addEventListener('click', function(e) {
+    if (e.target.closest('a')) return;
+    lbImg.src = thumb.src;
+    lbImg.alt = thumb.alt;
     lb.classList.add('open');
   });
 
@@ -3735,8 +3740,12 @@
   };
 
   document.querySelectorAll('.card-clickable[data-modal]').forEach(function(card) {
+    // Disable links inside summary cards; full links are in the modals
+    card.querySelectorAll('a').forEach(function(a) {
+      a.style.pointerEvents = 'none';
+      a.removeAttribute('target');
+    });
     card.addEventListener('click', function(e) {
-      if (e.target.closest('a')) return;
       e.preventDefault();
       openModal(card.getAttribute('data-modal'), card);
     });
