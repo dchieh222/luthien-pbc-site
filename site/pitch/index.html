@@ -3896,19 +3896,27 @@
 
   // Click-to-advance disabled  -  use arrow keys, swipe, or nav arrows instead
 
-  // Touch/swipe
+  // Touch/swipe — track via touchmove because touchend's changedTouches
+  // can be stale when the browser consumes the gesture for scrolling
   let touchStartX = 0;
   let touchStartY = 0;
+  let touchLastX = 0;
+  let touchLastY = 0;
   document.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
+    touchStartX = touchLastX = e.touches[0].clientX;
+    touchStartY = touchLastY = e.touches[0].clientY;
   }, { passive: true });
 
-  document.addEventListener('touchend', (e) => {
+  document.addEventListener('touchmove', (e) => {
+    touchLastX = e.touches[0].clientX;
+    touchLastY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', () => {
     if (window._evidenceModalOpen && window._evidenceModalOpen()) return;
     if (window._lightboxOpen && window._lightboxOpen()) return;
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    const dy = e.changedTouches[0].clientY - touchStartY;
+    const dx = touchLastX - touchStartX;
+    const dy = touchLastY - touchStartY;
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
       if (dx < 0) {
         if (window._socratesAdvance && window._socratesAdvance()) return;
