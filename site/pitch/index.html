@@ -1070,8 +1070,9 @@
     }
     .ask-f3-faces {
       display: grid;
-      grid-template-columns: repeat(9, 1fr);
-      gap: 6px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px 6px;
+      row-gap: 20px;
       align-items: start;
     }
     .ask-f3-face {
@@ -1132,7 +1133,7 @@
       color: var(--blue);
       letter-spacing: 0.02em;
       text-align: center;
-      margin-top: 2px;
+      margin-top: 0;
     }
 
     /* ============ SLIDE FOOTNOTES (bottom-left, revealed by Footnotes toggle) ============ */
@@ -2334,7 +2335,7 @@
       <div class="anim-up delay-2 feature-matrix" style="border: 1px solid var(--border); border-radius: 3px; overflow: hidden;">
         <div class="compare-row header" style="grid-template-columns: 1.6fr 1.1fr 1fr 1fr 0.8fr;">
           <div class="compare-cell"></div>
-          <div class="compare-cell"><img class="compare-logo" src="../assets/images/logos/litellm.png" alt="LiteLLM"> / <img class="compare-logo compare-logo-2x" src="../assets/images/logos/helicone.png" alt="Helicone"></div>
+          <div class="compare-cell" style="white-space: nowrap;"><img class="compare-logo" src="../assets/images/logos/litellm.png" alt="LiteLLM"> / <img class="compare-logo" src="../assets/images/logos/helicone.png" alt="Helicone"></div>
           <div class="compare-cell"><img class="compare-logo" src="../assets/images/logos/guardrails-ai.png" alt="Guardrails AI"></div>
           <div class="compare-cell"><img class="compare-logo" src="../assets/images/logos/coderabbit.png" alt="CodeRabbit"></div>
           <div class="compare-cell luthien"><img class="compare-logo compare-logo-2x" src="../assets/images/logos/luthien-wordmark.png" alt="Luthien"></div>
@@ -2632,7 +2633,7 @@
   <!-- ======== SLIDE 11b: USERS REALLY WANT THIS (QUOTES) ======== -->
   <div class="slide" data-slide="10" data-slide-name="quotes">
     <div class="slide-inner">
-      <div class="label anim-up">Traction</div>
+      <div class="label anim-up">Feedback</div>
       <h1 class="headline headline-lg anim-up delay-1">Users really want this</h1>
       <div class="spacer-md"></div>
 
