@@ -2711,7 +2711,7 @@
         <div class="ask-f3-divider"></div>
 
         <div class="ask-f3-also">
-          <div class="ask-f3-also-label">10 more angels <span id="askWindow">in the last 48 hours</span></div>
+          <div class="ask-f3-also-label">10 more angels <span id="askWindow">this past weekend</span></div>
           <div class="ask-f3-faces">
             <a class="ask-f3-face" href="https://www.linkedin.com/in/tom-divinnie-07964323/" target="_blank" rel="noopener noreferrer">
               <img src="../assets/images/photo-tom-divinnie.png" alt="Tom DiVinnie">
@@ -2875,23 +2875,11 @@
   if (el) el.textContent = 'in ' + days + ' day' + (days !== 1 ? 's' : '');
 })();
 
-/* Dynamic Ask-slide angel window label. First angel (Tom DiVinnie)
-   committed Fri Apr 10, 2026 3:00 PM local. Label reads 'in the
-   last 24 hours' until 48 hours elapsed, then 'in the last 48 hours'
-   until 72 hours, then 'in the last N days' where N = completed
-   24-hour buckets since Fri 3pm. */
+/* Angel window label - static, update manually if needed */
 (function() {
   const el = document.getElementById('askWindow');
   if (!el) return;
-  const firstCommit = new Date('2026-04-10T15:00:00');
-  const now = new Date();
-  const hoursElapsed = (now - firstCommit) / 3600000;
-  const days = Math.floor(hoursElapsed / 24);
-  let label;
-  if (days <= 1)      label = 'in the last 24 hours';
-  else if (days === 2) label = 'in the last 48 hours';
-  else                 label = 'in the last ' + days + ' days';
-  el.textContent = label;
+  el.textContent = 'this past weekend';
 })();
 
 (function() {
