@@ -70,6 +70,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
+      touch-action: pan-y;
     }
 
     /* ============ SLIDES ============ */
@@ -1651,7 +1652,7 @@
     /* ============ RESPONSIVE ============ */
     @media (max-width: 900px) {
       html { font-size: 100%; }
-      .slide { padding: 40px 32px 72px; overflow-y: auto; }
+      .slide { padding: 40px 32px 72px; overflow-y: auto; touch-action: pan-y; }
       .label { left: 32px; top: 32px; }
       .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
       /* Solution: hide desktop diagram, show mobile version at tablet too */
@@ -1727,7 +1728,7 @@
 
     @media (max-width: 600px) {
       html { font-size: 100%; }
-      .slide { padding: 32px 20px 72px; overflow-y: auto; justify-content: flex-start; padding-top: 60px; }
+      .slide { padding: 32px 20px 72px; overflow-y: auto; touch-action: pan-y; justify-content: flex-start; padding-top: 60px; }
       .label { left: 20px; top: 24px; font-size: 0.85rem; }
       .slide.title-slide { justify-content: center; padding-top: 32px; }
       .headline-lg { font-size: 1.5rem; margin-bottom: 8px; }
